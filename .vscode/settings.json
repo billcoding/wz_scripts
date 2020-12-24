@@ -1,4 +1,5 @@
 {
     "files.encoding": "gbk",
-    "files.autoGuessEncoding": true
+    "files.autoGuessEncoding": true,
+    "files.eol": "auto",
 }
