@@ -27,11 +27,11 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             }
-            if (cm.getPlayer().getClient().getChannel() != 3) {
+/*             if (cm.getPlayer().getClient().getChannel() != 3) {
                 cm.sendOk("进阶扎昆只能在 3 频道挑战。");
                 cm.dispose();
                 return;
-            }
+            } */
             var em = cm.getEventManager("ChaosZakum");
             if (em == null) {
                 cm.sendOk("配置清单为空，请联系管理员。");
@@ -239,11 +239,11 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             }
-            if (cm.getPlayer().getClient().getChannel() != 2) {
+/*             if (cm.getPlayer().getClient().getChannel() != 2) {
                 cm.sendOk("扎昆大怪只能在 2 频道召唤。");
                 cm.dispose();
                 return;
-            }
+            } */
             var em = cm.getEventManager("ZakumBattle");
             if (em == null) {
                 cm.sendOk("配置清单为空，请联系管理员。");
@@ -262,18 +262,18 @@ function action(mode, type, selection) {
                 var squadAvailability = cm.getSquadAvailability("ZAK");
                 if (squadAvailability == -1) {
                     status = 1;
-                    if (time + (6 * 3600000) >= cm.getCurrentTime() && !cm.getPlayer().isGM()) {
+/*                     if (time + (6 * 3600000) >= cm.getCurrentTime() && !cm.getPlayer().isGM()) {
                         cm.sendOk("You have already went to Zakum in the past 6 hours. Time left: " + cm.getReadableMillis(cm.getCurrentTime(), time + (6 * 360000)));
                         cm.dispose();
                         return;
-                    }
+                    } */
                     cm.sendYesNo("现在可以申请远征队，你想成为远征队队长吗？");
                 } else if (squadAvailability == 1) {
-                    if (time + (6 * 3600000) >= cm.getCurrentTime() && !cm.getPlayer().isGM()) {
+/*                     if (time + (6 * 3600000) >= cm.getCurrentTime() && !cm.getPlayer().isGM()) {
                         cm.sendOk("You have already went to Zakum in the past 6 hours. Time left: " + cm.getReadableMillis(cm.getCurrentTime(), time + (6 * 360000)));
                         cm.dispose();
                         return;
-                    }
+                    } */
                     // -1 = Cancelled, 0 = not, 1 = true
                     var type = cm.isSquadLeader("ZAK");
                     if (type == -1) {
@@ -309,14 +309,14 @@ function action(mode, type, selection) {
                                 cm.dispose();
                                 return;
                             }
-                            cm.sendYesNo("The squad's battle against the boss has already begun.\r\n" + squd.getNextPlayer());
+                            cm.sendYesNo("扎昆Boss的对抗已经开始了.\r\n" + squd.getNextPlayer());
                             status = 3;
                         } else {
-                            cm.sendOk("The squad's battle against the boss has already begun.");
+                            cm.sendOk("扎昆Boss的对抗已经开始了.");
                             cm.safeDispose();
                         }
                     } else {
-                        cm.sendYesNo("Ah, you have returned. Would you like to join your squad in the fight again?");
+                        cm.sendYesNo("啊，你回来了。你想再次加入你的队伍吗?");
                         status = 1;
                     }
                 }
@@ -325,19 +325,19 @@ function action(mode, type, selection) {
                 if (eim == null) {
                     var squd = cm.getSquad("ZAK");
                     if (squd != null) {
-                        if (time + (6 * 3600000) >= cm.getCurrentTime() && !cm.getPlayer().isGM()) {
+/*                         if (time + (6 * 3600000) >= cm.getCurrentTime() && !cm.getPlayer().isGM()) {
                             cm.sendOk("You have already went to Zakum in the past 6 hours. Time left: " + cm.getReadableMillis(cm.getCurrentTime(), time + (6 * 360000)));
                             cm.dispose();
                             return;
-                        }
-                        cm.sendYesNo("The squad's battle against the boss has already begun.\r\n" + squd.getNextPlayer());
+                        } */
+                        cm.sendYesNo("扎昆Boss的对抗已经开始了.\r\n" + squd.getNextPlayer());
                         status = 3;
                     } else {
-                        cm.sendOk("The squad's battle against the boss has already begun.");
+                        cm.sendOk("扎昆Boss的对抗已经开始了.");
                         cm.safeDispose();
                     }
                 } else {
-                    cm.sendYesNo("Ah, you have returned. Would you like to join your squad in the fight again?");
+                    cm.sendYesNo("啊，你回来了。你想再次加入你的队伍吗?");
                     status = 1;
                 }
             }
@@ -347,7 +347,7 @@ function action(mode, type, selection) {
                 if (cm.registerSquad("ZAK", 5, " 已经成为了远征队队长。如果你想加入远征队，请重新打开对话申请加入远征队。")) {
                     cm.sendOk("你已经成为了远征队队长。接下来的5分钟，请等待队员们的申请。");
                 } else {
-                    cm.sendOk("An error has occurred adding your squad.");
+                    cm.sendOk("添加你的队员时发生了一个错误.");
                 }
             } else {
                 cm.sendOk("如果你想申请远征队的话，那么就来找我吧。")
@@ -365,7 +365,7 @@ function action(mode, type, selection) {
                 var squd = cm.getSquad("ZAK");
                 if (squd != null && !squd.getAllNextPlayer().contains(cm.getPlayer().getName())) {
                     squd.setNextPlayer(cm.getPlayer().getName());
-                    cm.sendOk("You have reserved the spot.");
+                    cm.sendOk("你已经预定了位置.");
                 }
             }
             cm.dispose();

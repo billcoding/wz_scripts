@@ -23,8 +23,8 @@ function init() {
 function scheduleNew() {
     em.setProperty("docked", "true");
     em.setProperty("entry", "true");
-    KC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地鐵列車到站了。"));
-    NLC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地鐵列車到站了。"));
+    KC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地铁列车2号线:开往废弃都市的列车已经到达。"));
+    NLC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地铁列车1号线:开往新叶城的列车已经到达。"));
     em.schedule("stopEntry", closeTime);
     em.schedule("takeoff", beginTime);
 }

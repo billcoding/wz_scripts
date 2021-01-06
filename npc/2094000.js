@@ -1,7 +1,7 @@
 var status = 0;
-var minLevel = 55;
-var maxLevel = 200;
-var minPartySize = 2;
+var minLevel = 50;
+var maxLevel = 255;
+var minPartySize = 1;
 var maxPartySize = 6;
 
 function start() {

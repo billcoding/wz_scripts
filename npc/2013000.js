@@ -1,8 +1,8 @@
 var status = -1;
 var minLevel = 51; // 35
-var maxLevel = 200; // 65
+var maxLevel = 255; // 65
 
-var minPartySize = 5;
+var minPartySize = 2;
 var maxPartySize = 6;
 
 function action(mode, type, selection) {
@@ -22,7 +22,7 @@ function action(mode, type, selection) {
 	}
     if (status == 0) {
 	for (var i = 4001044; i < 4001064; i++) {
-		cm.removeAll(i); //holy
+		//cm.removeAll(i); //holy
 	}
 	if (cm.getParty() == null) { // No Party
 	    cm.sendSimple("你貌似没有达到要求...:\r\n\r\n#r要求: " + minPartySize + " 玩家成员, 每个人的等级必须在 " + minLevel + " 到 等级 " + maxLevel + ".#b\r\n#L0#我要用40个女神的羽翼兑换女神手镯#l");

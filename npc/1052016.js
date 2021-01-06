@@ -31,7 +31,7 @@ function action(mode, type, selection) {
     else
 	status--;
     if (status == 0) {
-	cm.sendNext("您好~! 堕落城市计程车. 想要往其他村庄安全又快速的移动吗? 如果是这样 为了优先考量满足顾客, 请使用 #b#p1052016##k 亲切的送你到想要到达的地方！");
+	cm.sendNext("您好~! 滴滴出行顺风车. 想要往其他村庄安全又快速的移动吗? 如果是这样 为了优先考量满足顾客, 请使用 #b#p1052016##k 亲切的送你到想要到达的地方！");
     } else if (status == 1) {
 	var job = cm.getJob();
 	if (job == 0 || job == 1000 || job == 2000) {
@@ -59,7 +59,7 @@ function action(mode, type, selection) {
 	selectedMap = selection;
     } else if (status == 3) {
 	if (cm.getMeso() < sCost) {
-	    cm.sendNext("很抱歉由于你没有足够的金币 所以你将无法乘坐出租车!");
+	    cm.sendNext("很抱歉由于你没有足够的金币 所以你将无法乘坐滴滴出行，请下载手机APP重新下单！");
 	} else {
 	    cm.gainMeso(-sCost);
 	    cm.warp(maps[selectedMap]);

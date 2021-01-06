@@ -18,7 +18,7 @@ function action(mode, type, selection) {
         cm.sendYesNo("嘟...嘟...你想要离开吗？？");
     } else if (status == 1) {
         cm.刷新地图();
-        cm.deleteboss();
+        // cm.deleteboss();
         cm.warpParty(220080000);
         if (cm.getPlayerCount(220080001) == 0) {
             cm.getMap(220080000).resetReactors();

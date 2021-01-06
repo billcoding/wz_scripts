@@ -3,9 +3,9 @@ function enter(pi) {
 	if (pi.isLeader()) {
 	    pi.warpParty(925100500); //next
 	} else {
-	    pi.playerMessage(5, "The leader must be here");
+	    pi.playerMessage(5, "队长一定要在这里！");
 	}
     } else {
-	pi.playerMessage(5, "The portal is not opened yet.");
+	pi.playerMessage(5, "门还没有打开！");
     }
 }

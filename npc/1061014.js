@@ -16,13 +16,6 @@ function action(mode, type, selection) {
 	    }
 	    break;
 	case 0:
-	    var em = cm.getEventManager("BossBalrog");
-
-	    if (em == null) {
-		cm.sendOk("目前副本出了一点问题，请联系GM！");
-		cm.safeDispose();
-		return;
-	    }
 
 	var prop = em.getProperty("state");
 	if (prop == null || prop.equals("0")) {

@@ -11,7 +11,7 @@ function start(mode, type, selection) {
 		if (status == 0) {
 			if(qm.getQuestStatus(4771)==2){
 			qm.sendOk("你的奖励已经全部领取完。");
-						qm.completeQuest();
+			qm.completeQuest();
 			qm.dispose();
 			}else{
 			qm.sendNext("恭喜你当前等级已经到达#b72#k级。");

@@ -21,8 +21,8 @@
 
 var ticket = new Array(4031047, 4031074, 4031331, 4031576);
 var cost = new Array(5000, 6000, 30000, 5000, 6000);
-var mapNames = new Array("前往魔法森林", "前往玩具城", "前往神木村", "前往纳西沙漠");
-var mapName2 = new Array("前往魔法森林", "前往玩具城", "前往神木村", "前往纳西沙漠");
+var mapNames = new Array("前往魔法森林", "前往玩具城", "前往神木村", "前往阿里安特");
+var mapName2 = new Array("前往魔法森林", "前往玩具城", "前往神木村", "前往阿里安特");
 var select;
 var status = 0;
 

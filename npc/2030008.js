@@ -55,9 +55,9 @@ function action(mode, type, selection) {
                 cm.sendNext("你们沒有我需要的物品吗？这可不是慈善事业！");
             } else {
                 if (cm.haveItem(4001109)) {
-                    cm.sendSimple("好。。。我看你们有充分的资格，你想挑战那一阶段？ #b\r\n#L0#废矿调查 (第一阶段)#l\r\n#L1#扎昆迷宫调查 (第二阶段)#l\r\n#L2#治炼邀请 (第三阶段)#l\r\n#L4#跳过任务 (需要花钱)#l");//#L4#跳过任务 (需要花钱)
+                    cm.sendSimple("好。。。我看你们有充分的资格，你想挑战那一阶段？ #b\r\n#L0#废矿调查 (第一阶段)#l\r\n#L1#扎昆迷宫调查 (第二阶段)#l\r\n#L2#治炼邀请 (第三阶段)#l\r\n#L4#跳过任务 (需要花钱)#l\r\n#r#L5#主播领取10次挑战次数#l");//#L4#跳过任务 (需要花钱)
                 } else {
-                    cm.sendSimple("好。。。我看你们有充分的资格，你想挑战那一阶段？ #b\r\n#L0#废矿调查 (第一阶段)#l\r\n#L1#扎昆迷宫调查 (第二阶段)#l\r\n#L2#治炼邀请 (第三阶段)#l\r\n#L4#跳过任务 (需要花钱)#l");
+                    cm.sendSimple("好。。。我看你们有充分的资格，你想挑战那一阶段？ #b\r\n#L0#废矿调查 (第一阶段)#l\r\n#L1#扎昆迷宫调查 (第二阶段)#l\r\n#L2#治炼邀请 (第三阶段)#l\r\n#L4#跳过任务 (需要花钱)#l\r\n#r#L5#主播领取10次挑战次数#l");
                 }//#L4#跳过任务 (需要花钱)
             }
             if (cm.getQuestStatus(100201) == 2) { // They're done the quests
@@ -115,7 +115,7 @@ function action(mode, type, selection) {
                     //all requirements met, make an instance and start it up
                     var em = cm.getEventManager("ZakumPQ");
                     if (em == null) {
-                        cm.sendOk("我不能让你进入这个未知的世界，因为管理員还沒有准备好开放。");
+                        cm.sendOk("我不能让你进入这个未知的世界，因为管理员还没有准备好开放。");
                     } else {
                         var prop = em.getProperty("started");
                         if (prop.equals("false") || prop == null) {
@@ -171,6 +171,8 @@ function action(mode, type, selection) {
                 cm.sendYesNo("你想收买我？哈哈，可以啊！但你必须给我 #e500,000,000#n 金币，我就可以让你直接跳过任务。");
                 status = 3;
             }
+        } else if (selection == 5) {
+			cm.sendOk("#b你不是主播，申请主播请联系GM！");
         }
     } else if (status == 2) {
         if (stage == 1) {
