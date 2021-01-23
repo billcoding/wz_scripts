@@ -19,7 +19,7 @@ function action(mode, type, sel){
 	
 	if (status == 0){
 		var msg = "请选择你要的#d功能\r\n\r\n";
-		msg += "#L1##r宠物改名#l\r\n";
+		//msg += "#L1##r宠物改名#l\r\n";
 		msg += "#L0##b宠物复活#l\r\n";
 		cm.sendSimple(msg);
 	} else if (status == 1) {

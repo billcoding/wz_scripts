@@ -1,10 +1,10 @@
 /**
 	Cloto - Hidden Street : 1st Accompaniment
 **/
-importPackage(java.awt);
-importPackage(Packages.tools);
-importPackage(Packages.server);
-importPackage(Packages.handling.world);
+//importPackage(java.awt);
+//importPackage(Packages.tools);
+//importPackage(Packages.server);
+//importPackage(Packages.handling.world);
 
 var status;
 var curMap;
@@ -19,11 +19,11 @@ var questions = Array("请问法师一转要多少等级",
 var qanswers = Array(8, 10, 20, 25, 30, 35);
 var party;
 var preamble;
-var stage2rects = Array(Rectangle(-770,-132,28,178),Rectangle(-733,-337,26,105),Rectangle(-601,-328,29,105),Rectangle(-495,-125,24,165));
+var stage2rects = Array(new java.awt.Rectangle(-770,-132,28,178),new java.awt.Rectangle(-733,-337,26,105),new java.awt.Rectangle(-601,-328,29,105),new java.awt.Rectangle(-495,-125,24,165));
 var stage2combos = Array(Array(0,1,1,1),Array(1,0,1,1),Array(1,1,0,1),Array(1,1,1,0));
-var stage3rects = Array(Rectangle(608,-180,140,50),Rectangle(791,-117,140,45),Rectangle(958,-180,140,50),Rectangle(876,-238,140,45),Rectangle(702,-238,140,45));
+var stage3rects = Array(new java.awt.Rectangle(608,-180,140,50),new java.awt.Rectangle(791,-117,140,45),new java.awt.Rectangle(958,-180,140,50),new java.awt.Rectangle(876,-238,140,45),new java.awt.Rectangle(702,-238,140,45));
 var stage3combos = Array(Array(0,0,1,1,1),Array(0,1,0,1,1),Array(0,1,1,0,1),Array(0,1,1,1,0),Array(1,0,0,1,1),Array(1,0,1,0,1),Array(1,0,1,1,0),Array(1,1,0,0,1),Array(1,1,0,1,0),Array(1,1,1,0,0));
-var stage4rects = Array(Rectangle(910,-236,35,5),Rectangle(877,-184,35,5),Rectangle(946,-184,35,5),Rectangle(845,-132,35,5),Rectangle(910,-132,35,5),Rectangle(981,-132,35,5));
+var stage4rects = Array(new java.awt.Rectangle(910,-236,35,5),new java.awt.Rectangle(877,-184,35,5),new java.awt.Rectangle(946,-184,35,5),new java.awt.Rectangle(845,-132,35,5),new java.awt.Rectangle(910,-132,35,5),new java.awt.Rectangle(981,-132,35,5));
 var stage4combos = Array(Array(0,0,0,1,1,1),Array(0,0,1,0,1,1),Array(0,0,1,1,0,1),Array(0,0,1,1,1,0),Array(0,1,0,0,1,1),Array(0,1,0,1,0,1),Array(0,1,0,1,1,0),Array(0,1,1,0,0,1),Array(0,1,1,0,1,0),Array(0,1,1,1,0,0),Array(1,0,0,0,1,1),Array(1,0,0,1,0,1),Array(1,0,0,1,1,0),Array(1,0,1,0,0,1),Array(1,0,1,0,1,0),Array(1,0,1,1,0,0),Array(1,1,0,0,0,1),Array(1,1,0,0,1,0),Array(1,1,0,1,0,0),Array(1,1,1,0,0,0));
 var eye = 9300002;
 var necki = 9300000;
@@ -168,7 +168,7 @@ function action(mode, type, selection) {
 			}
 		} // End first map scripts
     } else if (2 <= curMap && 4 >= curMap) {
-		rectanglestages(cm);
+		Rectanglestages(cm);
     } else if (curMap == 5) { // Final stage
 	var eim = cm.getChar().getEventInstance();
 	var stage5done = eim.getProperty("5stageclear");
@@ -227,7 +227,7 @@ function failstage(eim, cm) {
     cm.playSound(true, "Party1/Failed");
 }
 
-function rectanglestages (cm) {
+function Rectanglestages (cm) {
     // Debug makes these stages clear without being correct
     var debug = false;
     var eim = cm.getChar().getEventInstance();
