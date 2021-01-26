@@ -22,8 +22,8 @@ function init() {
 function scheduleNew() {
     Geenie_Station.setDocked(true);
     Orbis_Station.setDocked(true);
-    Geenie_Station.broadcastMessage(MaplePacketCreator.boatPacket(true));
-    Orbis_Station.broadcastMessage(MaplePacketCreator.boatPacket(true));
+    Geenie_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(true));
+    Orbis_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(true));
     em.setProperty("docked", "true");
     em.setProperty("entry", "true");
     em.schedule("stopEntry", 240000);
@@ -37,8 +37,8 @@ function stopEntry() {
 function takeoff() {
     Geenie_Station.setDocked(false);
     Orbis_Station.setDocked(false);
-    Geenie_Station.broadcastMessage(MaplePacketCreator.boatPacket(false));
-    Orbis_Station.broadcastMessage(MaplePacketCreator.boatPacket(false));
+    Geenie_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(false));
+    Orbis_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(false));
     em.setProperty("docked","false");
     var temp1 = Orbis_btf.getCharacters().iterator();
     while(temp1.hasNext())

@@ -43,10 +43,10 @@ function playerEntry(eim, player) {
 		eim.broadcastPacket(UIPacket.getMidMsg("Currently recruiting players for Battle Mode.", true, 0));
 		if (eim.getPlayerCount() >= (player.isGM() ? 2 : i)) {
 			eim.broadcastPacket(UIPacket.clearMidMsg());
-			eim.broadcastPacket(MaplePacketCreator.getPVPScore(0, false));
-			eim.broadcastPacket(MaplePacketCreator.getPVPMode(type));
-			eim.broadcastPacket(MaplePacketCreator.getPVPMode(12)); //PVP 1.5 EVENT!
-			eim.broadcastPacket(MaplePacketCreator.enablePVP(true));
+			eim.broadcastPacket(tools.MaplePacketCreator.getPVPScore(0, false));
+			eim.broadcastPacket(tools.MaplePacketCreator.getPVPMode(type));
+			eim.broadcastPacket(tools.MaplePacketCreator.getPVPMode(12)); //PVP 1.5 EVENT!
+			eim.broadcastPacket(tools.MaplePacketCreator.enablePVP(true));
 			eim.setProperty("started", "1");
 			doItemDrop(eim);
 			eim.startEventTimer(type == 2 ? 420000 : 600000);
@@ -62,16 +62,16 @@ function playerEntry(eim, player) {
 			} else if (type == 3) {
 				map.spawnAutoDrop(2910000, map.getGuardians().get(0).left);
 				map.spawnAutoDrop(2910001, map.getGuardians().get(1).left);
-				eim.broadcastPacket(MaplePacketCreator.getCapturePosition(map));
-				eim.broadcastPacket(MaplePacketCreator.resetCapture());
+				eim.broadcastPacket(tools.MaplePacketCreator.getCapturePosition(map));
+				eim.broadcastPacket(tools.MaplePacketCreator.resetCapture());
 			}
 			updateScoreboard(eim, true);
 		}
 	} else {
 		if (type != 0) {
-			player.getClient().getSession().write(MaplePacketCreator.getPVPPoints(parseInt(eim.getProperty("red")), parseInt(eim.getProperty("blue"))));
+			player.getClient().getSession().write(tools.MaplePacketCreator.getPVPPoints(parseInt(eim.getProperty("red")), parseInt(eim.getProperty("blue"))));
 		}
-		player.getClient().getSession().write(MaplePacketCreator.getPVPScore(0, false));
+		player.getClient().getSession().write(tools.MaplePacketCreator.getPVPScore(0, false));
 	}
 }
 
@@ -84,11 +84,11 @@ function broadcastType(eim) {
 	for (var xx = 0; xx < players.size(); xx++) {
 		eim.addToPair(players.get(xx).getTeam() == 0 ? c1 : c2, players.get(xx).getId(), players.get(xx).getName());
 	}
-	eim.broadcastTeamPacket(MaplePacketCreator.getPVPType(type, c1, 1, !eim.getProperty("started").equals("0"), lvl), 0);
-	eim.broadcastTeamPacket(MaplePacketCreator.getPVPTeam(c1), 0);
+	eim.broadcastTeamPacket(tools.MaplePacketCreator.getPVPType(type, c1, 1, !eim.getProperty("started").equals("0"), lvl), 0);
+	eim.broadcastTeamPacket(tools.MaplePacketCreator.getPVPTeam(c1), 0);
 	
-	eim.broadcastTeamPacket(MaplePacketCreator.getPVPType(type, c2, 2, !eim.getProperty("started").equals("0"), lvl), 1);
-	eim.broadcastTeamPacket(MaplePacketCreator.getPVPTeam(c2), 1);
+	eim.broadcastTeamPacket(tools.MaplePacketCreator.getPVPType(type, c2, 2, !eim.getProperty("started").equals("0"), lvl), 1);
+	eim.broadcastTeamPacket(tools.MaplePacketCreator.getPVPTeam(c2), 1);
 }
 
 function broadcastType(eim, player) {
@@ -104,8 +104,8 @@ function broadcastType(eim, player) {
 	for (var xx = 0; xx < players.size(); xx++) {
 		eim.addToPair(players.get(xx).getTeam() == 0 ? c1 : c2, players.get(xx).getId(), players.get(xx).getName());
 	}
-	eim.broadcastTeamPacket(MaplePacketCreator.getPVPType(type, player.getTeam() == 0 ? c1 : c2, player.getTeam() + 1, !eim.getProperty("started").equals("0"), lvl), player.getTeam());
-	eim.broadcastTeamPacket(MaplePacketCreator.getPVPTeam(player.getTeam() == 0 ? c1 : c2), player.getTeam());
+	eim.broadcastTeamPacket(tools.MaplePacketCreator.getPVPType(type, player.getTeam() == 0 ? c1 : c2, player.getTeam() + 1, !eim.getProperty("started").equals("0"), lvl), player.getTeam());
+	eim.broadcastTeamPacket(tools.MaplePacketCreator.getPVPTeam(player.getTeam() == 0 ? c1 : c2), player.getTeam());
 }
 
 
@@ -142,7 +142,7 @@ function addPVPScore(eim, player, score) {
 	if (parseInt(eim.getProperty("ice")) == player.getId()) {
 		var xx = java.lang.Math.min(100, parseInt(eim.getProperty("icegage")) + x);
 		eim.setProperty("icegage", "" + xx);
-		player.getClient().getSession().write(MaplePacketCreator.getPVPIceGage(xx));
+		player.getClient().getSession().write(tools.MaplePacketCreator.getPVPIceGage(xx));
 		player.applyIceGage(xx);
 	}
 	
@@ -179,7 +179,7 @@ function getWinningTeam(eim) {
 }
 
 function playerDead(eim, player) {
-	player.getClient().getSession().write(MaplePacketCreator.getPVPKilled(player.getName() + " has been defeated."));
+	player.getClient().getSession().write(tools.MaplePacketCreator.getPVPKilled(player.getName() + " has been defeated."));
 	if (parseInt(eim.getProperty("ice")) == player.getId()) {
 		eim.setProperty("ice", "0");
 		eim.setProperty("red", "99999");
@@ -203,14 +203,14 @@ function playerDead(eim, player) {
 			eim.setProperty("redflag", "0");
 			eim.broadcastPlayerMsg(-7, "The Red Flag has been dropped!");
 			map.spawnAutoDrop(2910000, player.getPosition());
-			eim.broadcastPacket(MaplePacketCreator.getCapturePosition(map));
-			eim.broadcastPacket(MaplePacketCreator.resetCapture());
+			eim.broadcastPacket(tools.MaplePacketCreator.getCapturePosition(map));
+			eim.broadcastPacket(tools.MaplePacketCreator.resetCapture());
 		} else if (parseInt(eim.getProperty("blueflag")) == player.getId()) {
 			eim.setProperty("blueflag", "0");
 			eim.broadcastPlayerMsg(-7, "The Blue Flag has been dropped!");
 			map.spawnAutoDrop(2910001, player.getPosition());
-			eim.broadcastPacket(MaplePacketCreator.getCapturePosition(map));
-			eim.broadcastPacket(MaplePacketCreator.resetCapture());
+			eim.broadcastPacket(tools.MaplePacketCreator.getCapturePosition(map));
+			eim.broadcastPacket(tools.MaplePacketCreator.resetCapture());
 		}
 	}
 	player.cancelAllBuffs();
@@ -231,7 +231,7 @@ function championCheck(eim) {
 	if (champion != null) {
 		eim.setProperty("champion", champion.getId() + "");
 		eim.broadcastPlayerMsg(-7, champion.getName() + " has been made the champion.");
-		champion.getClient().getSession().write(MaplePacketCreator.showOwnChampionEffect());
+		champion.getClient().getSession().write(tools.MaplePacketCreator.showOwnChampionEffect());
 		champion.getMap().broadcastMessage(champion, MaplePacketCreator.showChampionEffect(champion.getId()), false);
 	}
 }
@@ -249,9 +249,9 @@ function updateScoreboard(eim, score) {
 		eim.addToPair_chr(c, parseInt(eim.getProperty("" + players.get(i).getId())), players.get(i));
 	}
 	if (score == true || score == null) {
-		eim.broadcastPacket(MaplePacketCreator.getPVPScoreboard(c, ty));
+		eim.broadcastPacket(tools.MaplePacketCreator.getPVPScoreboard(c, ty));
 		if (ty != 0 && ty != 2) {
-			eim.broadcastPacket(MaplePacketCreator.getPVPPoints(parseInt(eim.getProperty("red")), parseInt(eim.getProperty("blue"))));
+			eim.broadcastPacket(tools.MaplePacketCreator.getPVPPoints(parseInt(eim.getProperty("red")), parseInt(eim.getProperty("blue"))));
 			if (ty == 3 && (parseInt(eim.getProperty("blue")) >= 3 || parseInt(eim.getProperty("red")) >= 3)) {
 				end(eim);
 			}
@@ -273,7 +273,7 @@ function updateScoreboard(eim, score) {
 			players.get(i).gainExp(exp, true, true, true);
 			players.get(i).setTotalBattleExp(players.get(i).getTotalBattleExp() + (((x / 10) * 1.5) | 0)); //PVP 1.5 EVENT!
 			players.get(i).setBattlePoints(players.get(i).getBattlePoints() + (((x / 10) * 1.5) | 0));
-			players.get(i).getClient().getSession().write(MaplePacketCreator.getPVPResult(c, exp, winningTeam + 1, players.get(i).getTeam() + 1));
+			players.get(i).getClient().getSession().write(tools.MaplePacketCreator.getPVPResult(c, exp, winningTeam + 1, players.get(i).getTeam() + 1));
 		}
 	}
 }
@@ -316,8 +316,8 @@ function playerExit(eim, player) {
 
 function end(eim) {
 	eim.setProperty("started", "2");
-	eim.broadcastPacket(MaplePacketCreator.getPVPMode(6));
-	eim.broadcastPacket(MaplePacketCreator.enablePVP(false));
+	eim.broadcastPacket(tools.MaplePacketCreator.getPVPMode(6));
+	eim.broadcastPacket(tools.MaplePacketCreator.enablePVP(false));
 	updateScoreboard(eim, false);
 	var players = eim.getPlayers();
 	for (var i = 0; i < players.size(); i++) {
