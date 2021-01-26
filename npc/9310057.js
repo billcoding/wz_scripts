@@ -56,7 +56,7 @@ function action(mode, type, selection) {
 		    }
 		    cm.sendSimple(selStr);
 		} else if (selection == 2) {
-		    cm.sendNext("#b[英文村]#k 自己#e#rGoogle#k!");
+		    cm.sendNext("#b[英文村]#k 自己#e#r百度搜索#k!");
 		    cm.dispose();
 		}
 	    } else if (status == 2) {
@@ -77,7 +77,7 @@ function action(mode, type, selection) {
 	    break;
 	case 702090400:
     	    if (status == 0) {
-	        cm.sendSimple("Hello~I am Dr.P of #bEnglish School!\r\n\r\n#L0#前往英文村 - 简单#l\r\n#L1#前往英文村 - 中级#l\r\n#L2#前往英文村 - 困难#l\r\n#L3#我要回去了。#l");
+	        cm.sendSimple("Hello~I am Dr.P of #bEnglish School!\r\n\r\n#L1#前往英文村#l\r\n#L3#我要回去了。#l");
     	    } else if (status == 1) {
 	        if (selection == 0 || selection == 1 || selection == 2) {
    		    var em = cm.getEventManager("English");

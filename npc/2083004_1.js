@@ -18,6 +18,9 @@ function start() {
 		cm.dispose();
 		return;
 	}
+	
+	
+	
 //	var party = cm.getPlayer().getParty();
 //   if (party == null) {
 //		cm.sendOk("你的队伍要有2个人以上，你才可以申请远征队长。");
@@ -193,6 +196,17 @@ function action(mode, type, selection) {
 					//	cm.safeDispose();
 					//	return;
 					//}
+					var enteringSquad = cm.getSquad("Horntail")
+					var members = enteringSquad.getMembers();
+					for (var i = 0; i < enteringSquad.getSquadSize(); i++){
+					var character = enteringSquad.getChar(members.get(i));
+					character.setBossLog('HorntailBattle');
+						} 
+					
+					
+					
+					
+					
 					cm.worldMessage(6,"玩家：["+cm.getName()+"]带领远征队伍挑战暗黑龙王！");
 					//cm.sendOk("请你打败黑龙王左头颅，将#v4031050#交给我\r\n然后用#v4031050#交换30个#v4000186#碎片发给你的队友们进入黑龙王的战斗。");
 					dd.startInstance(cm.getSquad("Horntail"), cm.getMap());

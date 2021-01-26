@@ -3,6 +3,6 @@ function enter(pi) {
     if (em != null && em.getProperty("stage4").equals("2")) {
 	pi.warp(926100203,0);
     } else {
-	pi.playerMessage(5, "The portal has not opened yet.");
+	pi.playerMessage(5, "传送点没有开启！");
     }
 }

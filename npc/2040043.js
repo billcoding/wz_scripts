@@ -243,7 +243,7 @@ function boxStage(cm) {
                             cm.sendNext(outstring);
                             var combo = curcombo[parseInt(eim.getProperty("stage" + nthtext + "combo"))];
                         } else {
-                            cm.sendNext("It looks like you haven't found the 5 " + nthobj + " just yet. Please think of a different combination of " + nthobj + ". Only 5 are allowed to " + nthverb + " on " + nthobj + ", and if you " + nthpos + " it may not count as an answer, so please keep that in mind. Keep going!");
+                            cm.sendNext("看起来你还没有找到那5个盒子。请想一个不同的盒子组合。只允许5人站在盒子上，如果你站得太靠近边沿，就不能算答案，所以请记住这一点。继续前进!");
                             cm.dispose();
                         }
                     }

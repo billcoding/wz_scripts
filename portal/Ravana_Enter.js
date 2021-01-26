@@ -20,7 +20,7 @@ function enter(pi) {
 		return true;
 	}
     if (pi.getPlayer().getParty() == null || !pi.isLeader()) {
-	pi.playerMessage(5, "The leader of the party must be here.");
+	pi.playerMessage(5, "队长一定要在这个地图.");
 	return false;
 }
 	//9500390 = level 50-90, 9500391 = level 90-120, 9500392 = level 120+
@@ -51,7 +51,7 @@ function enter(pi) {
 	if (next) {
 		var em = pi.getEventManager("Ravana_" + rav);
 		if (em == null) {
-			pi.playerMessage(5, "This event is currently not available.");
+			pi.playerMessage(5, "此事件目前不可用.");
 		} else {
 			var prop = em.getProperty("state");
 			if (prop == null || prop.equals("0")) {

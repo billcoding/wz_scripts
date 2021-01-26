@@ -1,5 +1,5 @@
-importPackage(Packages.client);
-importPackage(Packages.client.inventory);
+//importPackage(Packages.client);
+//importPackage(Packages.client.inventory);
 
 var status = -1;
 

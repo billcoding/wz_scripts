@@ -1,18 +1,19 @@
-//importPackage(java.lang);
-//importPackage(Packages.client);
-//importPackage(Packages.client.inventory);
-//importPackage(Packages.server);
-//importPackage(Packages.constants);
-//importPackage(Packages.net.channel);
-//importPackage(Packages.tools);
-//importPackage(Packages.scripting);
-//importPackage(Packages.tools.packet);
-//importPackage(Packages.tools.data);
-//importPackage(Packages.tools);
+/* importPackage(java.lang);
+importPackage(Packages.client);
+importPackage(Packages.client.inventory);
+importPackage(Packages.server);
+importPackage(Packages.constants);
+importPackage(Packages.net.channel);
+importPackage(Packages.tools);
+importPackage(Packages.scripting);
+importPackage(Packages.tools.packet);
+importPackage(Packages.tools.data);
+importPackage(Packages.tools); */
 
 var status = -1;
 var itemss;
 var slot = Array();
+var shul;
 
 function start() {
     action(1, 0, 0);
@@ -28,7 +29,7 @@ function action(mode, type, selection) {
         cm.dispose();
         return;
     }
-
+	
     if (status == 0) {
 		var avail = "";
 		for (var i = 0; i < 96; i++) {
@@ -55,14 +56,17 @@ function action(mode, type, selection) {
 			}
 			slot.push(i);
 		}
-		cm.sendSimple("#e#r请选择你需要清除的物品：\r\n#b" + avail);
+		cm.sendSimple("#e#r请选择你需要清除的物品:\r\n#b" + avail);
 	 
     } else if (status == 1) {
         itemss = selection;
-		var shul = cm.getPlayer().getItemQuantity(itemss, false);
+		shul = cm.getPlayer().getItemQuantity(itemss, false);
+		cm.sendYesNo("确定要删除 #d#i" + itemss + ":# #t" + itemss + ":# 数量：#e#r" + shul + "#n#b 吗？\r\n");
+	} else if( status == 2 ) {
+		//Ok("我已经将 #d#i" + itemss + ":# #t" + itemss + ":# 数量：#e#r" + shul + "#n#b 从你的背包删除！");
 		cm.removeAll(itemss);
-		Ok("#b我已经将你背包里的 #d#i" + itemss + ":# #t" + itemss + ":# 数量：#e#r" + shul + "#n#b\r\n从你的背包删除！");
 		cm.dispose();
+        cm.openNpc(9900004,32);
     } else {
         cm.dispose();
     }//status

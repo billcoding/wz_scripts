@@ -10,7 +10,7 @@ function action(mode, type, selection) {
 	else
 		status--;
 	if (status == 0) {
-		cm.sendSimple("地方的老虎需要#b月妙的元宵#k...#b\r\n#L0#我带来10个月妙的元宵孝敬您了#l\r\n#L1#我要用20个月妙的年宵兑换潮帽#l#k");
+		cm.sendSimple("地方的老虎需要#b月妙的元宵#k...#b\r\n#L0#我带来10个月妙的年糕孝敬您了#l\r\n#L1#我要用20个月妙的年宵兑换潮帽#l#k");
 	} else if (status == 1) {
 		if (selection == 0) {
 			if (!cm.isLeader()) {
@@ -21,7 +21,7 @@ function action(mode, type, selection) {
 					cm.gainItem(4001101, -10);
 					cm.showEffect(true, "quest/party/clear");
 					cm.playSound(true, "Party1/Clear");
-					cm.givePartyExp(1600);
+					cm.givePartyExp(16000);
 					cm.endPartyQuest(1200);
 					cm.warpParty(910010100);
 		                        cm.dispose();

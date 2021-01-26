@@ -23,12 +23,12 @@ function action(mode, type, selection) {
 		}
 		cm.safeDispose();
 	    } else {
-		cm.sendOk("欢迎来到第四阶段。#b遗弃之塔PQ#k 请收集#r#t4001022##k 来找我即可完成任务。");
+		cm.sendOk("欢迎来到第四阶段。#b玩具塔101组队#k 请收集#r#t4001022##k 来找我即可完成任务。");
 		eim.setProperty("stage4leader","done");
 		cm.safeDispose();
 	    }
 	} else { // Members
-	    cm.sendNext("欢迎来到第四阶段。#b遗弃之塔PQ#k 请收集#r#t4001022##k 给你的队长，然后叫队长来找我即可完成任务。");
+	    cm.sendNext("欢迎来到第四阶段。#b玩具塔101组队#k 请收集#r#t4001022##k 给你的队长，然后叫队长来找我即可完成任务。");
 	    cm.safeDispose();
 	}
     } else {

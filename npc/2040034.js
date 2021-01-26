@@ -4,9 +4,9 @@
 
 var status = -1;
 var minLevel = 35; // 35
-var maxLevel = 200; // 65
+var maxLevel = 255; // 65
 
-var minPartySize = 5;
+var minPartySize = 2;
 var maxPartySize = 6;
 
 function action(mode, type, selection) {

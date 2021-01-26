@@ -14,7 +14,7 @@ function action(mode, type, selection) {
     } else if (status == 1) {
 	if (selection == 2) {
 	    if (cm.getPlayer().getParty() == null || !cm.isLeader()) {
-		cm.sendOk("The leader of the party must be here.");
+		cm.sendOk("队长一定要在这个地图.");
 	    } else {
 		var party = cm.getPlayer().getParty().getMembers();
 		var mapId = cm.getPlayer().getMapId();
@@ -39,11 +39,11 @@ function action(mode, type, selection) {
 		    if (prop.equals("0") || prop == null) {
 			em.startInstance(cm.getPlayer().getParty(), cm.getPlayer().getMap(), 200);
 		    } else {
-			cm.sendOk("Another party quest has already entered this channel.");
+			cm.sendOk("另一个小队任务已经进入了这个通道.");
 		    }
 			}
 		} else {
-			cm.sendOk("All 2+ members of your party must be here and level 120 or greater.");
+			cm.sendOk("你的队伍中所有2+的成员必须达到120级或以上.");
 		}
 	    }
 	} else if (selection == 3 || selection == 4 || selection == 5 || selection == 6 || selection == 7) {
@@ -53,7 +53,7 @@ function action(mode, type, selection) {
 			cm.gainItem(1132091 + selection, 1);
 			cm.gainItem(4001534, -50);
 		} else {
-			cm.sendOk("Come back with 50 Guard Key.");
+			cm.sendOk("带着50个守卫钥匙回来.");
 		}
 	}
 	cm.dispose();

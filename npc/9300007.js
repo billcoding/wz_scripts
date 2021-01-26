@@ -20,7 +20,7 @@ function action(mode, type, selection) {
         status--;
     }
     if (status == 0) {
-        cm.sendSimple("这里结婚的红鸾宫门口。你想做什么？\r\n#b#L0#我想进去红鸾宫。#l\r\n#L1#请告诉我关于结婚的信息。#l\r\n#L2#我是贺客。我想去宴客堂。#l\r\n#L3#请告诉我关于离婚的说明。#l\r\n#L4#我想进去孤星殿。#l\r\n#L5#我想回家。#l");
+        cm.sendSimple("这里结婚的红鸾宫门口。你想做什么？\r\n#b#L0#我想进去红鸾宫。#l\r\n#L1#请告诉我关于结婚的信息。#l\r\n#L3#请告诉我关于离婚的说明。#l\r\n#L4#我想进去孤星殿。#l\r\n#L5#我想回家。#l");
     } else if (status == 1) {
         if (selection == 0) { //我想进去红鸾宫
             if (cm.getParty() == null || !cm.isLeader()) {
@@ -58,30 +58,27 @@ function action(mode, type, selection) {
         } else if (cm.getPlayer().getMarriageId() > 0) { //查看玩家是否已经结婚。
             cm.sendNext("你已经结婚了吧… 结婚的话是不能再结婚的。");
             cm.dispose();
-        } else if (cm.MarrageChecking() == 3) { //检测组队中是否已经结婚
+        } else if (cm.ShowMarrageEffect() == 3) { //检测组队中是否已经结婚
             cm.sendNext("你的组队中，已经有人结过婚了。\r\n请检查后再试。");
             cm.dispose();
         } else if (cm.allMembersHere() == false) { //检测是否在同1地图
             cm.sendNext("请确保您的伴侣和您在同一地图。");
             cm.dispose();
-        } else if (cm.MarrageChecking() == 4) {
+        } else if (cm.ShowMarrageEffect() == 4) {
             cm.sendNext("我不支持同性结婚。所以不让你们进去");
             cm.dispose();
-        } else if (cm.MarrageChecking() == 5) {
+        } else if (cm.ShowMarrageEffect() == 5) {
             cm.sendNext("男士:#b#b#t1050121##k或#b#b#t1050122##k或#b#b#t1050113##k，女士:#b#t1051129##k或#b#t1051130##k或#b#t1051114##k。其中#b#t1050121##k，#b#t1051129##k，#b#t1050113##k，#b#t1051114##k,这些道具在冒险商城可以购买，#b#t1050122##k和#b#t1051130##k是在那边那位红线女那里卖。\r\n\r\n#b请穿上礼服后再和我对话。");
             cm.dispose();
-        } else if (cm.MarrageChecking() == 6) {
+        } else if (cm.ShowMarrageEffect() == 6) {
             cm.sendNext("组队成员中有人没有结婚戒指。");
             cm.dispose();
         } else {
-            var maps = Array(700000100, 700000200, 700000300);
-            for (var i = 0; i < maps.length; i++) {
-                if (cm.getMap(maps[i]).getCharactersSize() > 0) {
+                if (cm.getMap(700000100).getCharactersSize() > 0) {
                     cm.sendNext("结婚地图现在有别的玩家正在举行婚礼，请稍后在试。");
                     cm.dispose();
                     return;
                 }
-            }
             cm.warpParty(700000100);
             cm.dispose();
             //cm.worldMessage(5, "<频道 " + cm.getClient().getChannel() + "> " + cm.getPlayer().getName() + " 和 " + chr.getName() + " 的婚礼即将开始。");
@@ -101,14 +98,14 @@ function action(mode, type, selection) {
         cm.sendNextPrev("这里只能一对一对新人结婚，后面的恋人需要等待。所以你们进去结婚时，请务必在5分钟之内办完所有手续。");
         cm.dispose();
     } else if (status == 10) {
-        if (cm.getMap(700000100).getCharactersSize() <= 0 && cm.getMap(700000200).getCharactersSize() <= 0) {
+        if (cm.getMap(700000100).getCharactersSize() <= 0 && cm.getMap(700000100).getCharactersSize() <= 0) {
             cm.sendNext("结婚地图现在没有玩家进行结婚，请稍后在试。");
             cm.dispose();
              return;
         }
         if (cm.haveItem(4212002)) {
             cm.gainItem(4212002, -1);
-            cm.warp(700000200);
+            cm.warp(700000100);
             cm.sendNext("看来你带来了#v4212002#(1个)，我已经将你送到宴客堂。");
             cm.dispose();
         } else {

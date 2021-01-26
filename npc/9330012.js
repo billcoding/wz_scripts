@@ -7,7 +7,7 @@
  64µÈ 650Íò 10000
  **/
 
-importPackage(java.lang);
+//importPackage(java.lang);
 
 var status = -1;
 var oldWepName;

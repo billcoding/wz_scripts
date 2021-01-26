@@ -1,231 +1,139 @@
-/* global cm */
-//var 爱心 = "#fUI/GuildMark.img/Mark/Etc/00009001/14#";
+var 礼包物品 = "#v1302000#";
+var x1 = "1302000,+1";// 物品ID,数量
+var x2;
+var x3;
+var x4;
+var 爱心 = "#fEffect/CharacterEff/1022223/4/0#";
+var 礼包物品 = "#v1302000#";
+var add = "#fEffect/CharacterEff/1112903/0/0#";//红桃心
+var aaa = "#fUI/UIWindow.img/Quest/icon9/0#";//红色右箭头
+var zzz = "#fUI/UIWindow.img/Quest/icon8/0#";//蓝色右箭头
+var sss = "#fUI/UIWindow.img/QuestIcon/3/0#";//选择道具
+var 正方箭头 = "#fUI/Basic/BtHide3/mouseOver/0#";
+var 感叹号 = "#fUI/UIWindow/Quest/icon0#";
+var 美化new = "#fUI/UIWindow/Quest/icon5/1#";
+var 红色箭头 = "#fEffect/CharacterEff/1112908/0/1#";  //彩光3
+var ttt1 = "#fEffect/CharacterEff/1062114/1/0#";  //爱心
+var 蓝色角点 = "#fUI/UIWindow.img/PvP/Scroll/enabled/next2#";
+var ca = java.util.Calendar.getInstance();
+var year = ca.get(java.util.Calendar.YEAR); //获得年份
+var month = ca.get(java.util.Calendar.MONTH) + 1; //获得月份
+var day = ca.get(java.util.Calendar.DATE);//获取日
+var hour = ca.get(java.util.Calendar.HOUR_OF_DAY); //获得小时
+var minute = ca.get(java.util.Calendar.MINUTE);//获得分钟
+var second = ca.get(java.util.Calendar.SECOND); //获得秒
+var weekday = ca.get(java.util.Calendar.DAY_OF_WEEK)-1;//获得星期
+var 正方箭头 = "#fUI/Basic/BtHide3/mouseOver/0#";
+var 爱心 = "#fEffect/CharacterEff/1022223/4/0#";
 
-var 爱心 = "#fUI/GuildMark.img/Mark/Etc/00009001/14#";
+var 粉爱心 = "#fItem/Etc/0427/04270005/Icon8/1#";  //
+var 菊花 = "#fUI/PredictHarmony/card/19#";//卡片效果菊花
+var 笑 = "#fUI/GuildBBS/GuildBBS/Emoticon/Basic/0#";//笑脸
+var 金枫叶 ="#fMap/MapHelper/weather/maple/2#";
+var 红枫叶 ="#fMap/MapHelper/weather/maple/1#";
+var 巫女 ="#fMap/MapHelper/weather/witch/0#";//巫女
+var 气球 ="#fMap/MapHelper/weather/balloon/4#";//气球
+var 射箭 ="#fMap/MapHelper/weather/LoveEffect2/4/0#";//射箭
+var 玫瑰 ="#fMap/MapHelper/weather/rose/0#";//玫瑰花
+var 烟花 ="#fMap/MapHelper/weather/squib/squib1/3#";//烟花
 
+var 大粉红爱心 = "#fItem/Etc/0427/04270001/Icon8/4#";  //
+var 小粉红爱心 = "#fItem/Etc/0427/04270001/Icon8/5#";  //
+var 小黄星 = "#fItem/Etc/0427/04270001/Icon9/0#";  //
+var 大黄星 = "#fItem/Etc/0427/04270001/Icon9/1#";  //
+var 小水滴 = "#fItem/Etc/0427/04270001/Icon10/5#";  //
+var 大水滴 = "#fItem/Etc/0427/04270001/Icon10/4#";  //
+var tz = "#fEffect/CharacterEff/1082565/4/0#";  //粉兔子
+var tz1 = "#fEffect/CharacterEff/1082565/0/0#";  //橙兔子
+var tz2 = "#fEffect/CharacterEff/1082565/2/0#";  //蓝兔子
+var 邪恶小兔 = "#fEffect/CharacterEff/1112960/3/0#";  //邪恶小兔 【小】
+var 邪恶小兔2 = "#fEffect/CharacterEff/1112960/3/1#";  //邪恶小兔 【大】
+var 花草 ="#fEffect/SetEff/208/effect/walk2/4#";
+var 花草1 ="#fEffect/SetEff/208/effect/walk2/3#";
+var 小花 ="#fMap/MapHelper/weather/birthday/2#";
+var 桃花 ="#fMap/MapHelper/weather/rose/4#";
+var 银杏叶 ="#fMap/MapHelper/weather/maple/3#";
+var 小烟花 ="#fMap/MapHelper/weather/squib/squib4/1#";
+var 星星 ="#fMap/MapHelper/weather/witch/3#";
+var 星星2 = "#fEffect/CharacterEff/1114000/2/0#";
+var 副本 = Array("玩具玩具","海盗副本","玩具3","玩具4","玩具5","玩具6","玩具7")
+var 星期 = Array("一","二","三","四","五","六","天")
+var 蓝色箭头 = "#fUI/UIWindow/Quest/icon2/7#";
 function start() {
     status = -1;
+
     action(1, 0, 0);
 }
-
 function action(mode, type, selection) {
     if (mode == -1) {
         cm.dispose();
     } else {
         if (status >= 0 && mode == 0) {
+
             cm.sendOk("感谢你的光临！");
             cm.dispose();
             return;
         }
         if (mode == 1) {
             status++;
-        } else {
+        }
+        else {
             status--;
         }
         if (status == 0) {
+            var tex2 = "";
             var text = "";
-            for (i = 0; i < 10; i++) {
-                text += "";
-            }
-    text += "#L36##fUI/GuildMark.img/Mark/Etc/00009001/14#快捷传送#l#L27##fUI/GuildMark.img/Mark/Etc/00009001/14#副本传送#l#L29##fUI/GuildMark.img/Mark/Etc/00009001/14#BOSS重返#l\r\n\r\n"
-	text += "#L1005##fUI/GuildMark.img/Mark/Etc/00009001/14#物品装备#l#L32##fUI/GuildMark.img/Mark/Etc/00009001/14#道具回收#l#L30##fUI/GuildMark.img/Mark/Etc/00009001/14#查询爆率#l\r\n\r\n"
-    text += "#L51##fUI/GuildMark.img/Mark/Etc/00009001/14#每日狩猎#l#L52##fUI/GuildMark.img/Mark/Etc/00009001/14#每日副本#l#L53##fUI/GuildMark.img/Mark/Etc/00009001/14#每日BOSS#l\r\n\r\n"
-	text += "#L28##fUI/GuildMark.img/Mark/Etc/00009001/14#征集喇叭#l#L7##fUI/GuildMark.img/Mark/Etc/00009001/14#查看排行#l#L2##fUI/GuildMark.img/Mark/Etc/00009001/14#在线奖励#l\r\n\r\n"
-	text += "#L39##fUI/GuildMark.img/Mark/Etc/00009001/14#精灵吊坠#l#L40##fUI/GuildMark.img/Mark/Etc/00009001/14#枫叶兑换#l#L41##fUI/GuildMark.img/Mark/Etc/00009001/14#中介兑换#l\r\n\r\n"
-	text += "#L13##fUI/GuildMark.img/Mark/Etc/00009001/14#豆屋娱乐#l#L22##fUI/GuildMark.img/Mark/Etc/00009001/14#快捷商店#l#L12##fUI/GuildMark.img/Mark/Etc/00009001/14#皇家大全#l\r\n\r\n"
-	  
-            if (cm.getPlayer().isGM()) {
-            //   text += " \r\n\\r\n\r\n\t\t#r以下功能，仅管理员可见，普通玩家看不见\r\n"
-            //   text += "#L36#快捷传送#l\t#L37#快速转职#l\r\n"
-            //   text += "#L1002#刷新当前地图#l#L1003#刷新个人状态#l\r\n"
-            //   text += "#L1005#重载副本#l#L1006#重载爆率#l#L1007#重载反应堆#l#L1008#重载传送点#l\r\n"
-            //   text += "#L1009#重载任务#l#L1010#重载商店#l#L1011#重载封包头#l#L1004#查看管理员指令#l\r\n"
-            }
-            cm.sendSimple(text);
-			
-        } else if (selection == 1) {//传送自由市场
-	    cm.warp(910000000);
-            cm.dispose();
-           
-        } else if (selection == 2) {//在线时间奖励
+			 text +=  ""+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+星星2+"\r\n"
+			 text +="\t\t\t  #e欢迎来到#b悠悠冒险岛v079 #k!#n\r\n\r\n"
+			 text +=邪恶小兔 +"服务器时间：#r"+year+"#k 年 #r"+month+"#k 月 #r"+day+"#k 日 #r"+hour+"#k 点 #r"+minute+"#k 分 星期 #r"+星期[ weekday ]+"#k\r\n" 
+			 text +=邪恶小兔 +"今日开放副本：#e#b"+ 副本[ weekday ]+"  "
+			 text +=邪恶小兔 +"#k#n当前在线时间：#b#e"+cm.getGamePoints()+"#k#n 分钟"+"\r\n"
+			 
+			 text +=邪恶小兔 +"你的个人游戏ID为：#r"+(20000+cm.getPlayer().getId())+"#k  "
+			 text +=邪恶小兔 +"推广玩家数量为：#r#e3\r\n#n"
+			//text += "   "+烟花+""+烟花+""+烟花+"#k\r\n";
+            //text += ""+花草+"             "+花草1+"\r\n"
+		  	
+			//text += "#d杀怪总数：#b"+cm.getPlayer().getSG()+"\r\n"	
+		   //text += ""+星星+星星+星星+星星+星星+星星+星星+星星+星星+星星+星星+星星+星星+"\r\n"
+		  text += ""+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+"\r\n"
+		//var tex2 = ""+cm.getHyPay(1)+"";
+            //text += "#L910000000##b" + 邪恶小兔 + "#r回自由市场#l#l#L9310034##b" + 邪恶小兔 + "#r#rBOSS传送#l\r\n\r\n"//3
+			//text += "#L14##b" + 小粉红爱心 + "万能传送#l#l#L1##b" + 小粉红爱心 + "每日签到#l#l#L7018##b" + 小粉红爱心 + "杂货商店#l#L23##b" + 小粉红爱心 + "发型脸型#l#l\r\n"//3
+            //text += "#L7009##b" + 小粉红爱心 + "装备制作#l#l#L6##b" + 小粉红爱心 + "点卷商城#l#L15##b" + 小粉红爱心 + "快速转职#l#L9##b" + 小粉红爱心 + "每日跑环#l\r\n#L7005##b" + 小粉红爱心 + "道具删除#l#L7001##b" + 小粉红爱心 + "特色副本#l#L9000036##b" + 小粉红爱心 + "兑换系统#l#L20##b" + 小粉红爱心 + "杀怪奖励#l\r\n"//3
+			//text += "#L1247##b" + 小粉红爱心 + "家族任务#l#L7004##b"+ 小粉红爱心 + "购买双倍#l#l#L1000##b" + 小粉红爱心 + "VIP系统#l #L8888##b" + 小粉红爱心 + "装备强化#l#l\r\n"//3
+//text += "#L19##b" + 小粉红爱心 + "金榜题名#l#L9000041##b" + 小粉红爱心 + "点券兑换#l#l#L7003##b" + 小粉红爱心 + "血衣合成#l#l#L8787##b" + 小粉红爱心 + "皇家骑宠#l#l\r\n"//l#L17##b" + 蓝色角点 + "强化次数#l#l\r\n\r\n"
+//text += "#l#L7006##b" + 小粉红爱心 + "技能全满#l#l#L9981##b" + 小粉红爱心 + "金币赌博#l#l#L9100201#" + 小粉红爱心 + "点券赌场#l#L19910808#" + 小粉红爱心 + "鉴定系统#l\r\n\r\n\r\n"
+ //text += "#L1243##b" + 红色箭头 + "澳门赌博#l#l#L1249##b" + 红色箭头 + "中介抽奖#l#l#L1245##b" + 红色箭头 + "充值抽奖#l\r\n\r\n"
+ //text += "#L1246##b" + 红色箭头 + "砸卷强化#l#l#L1252##b" + 红色箭头 + "中介兑换#l#l#L1253##b" + 红色箭头 + "超级强化#l\r\n\r\n"
+
+ text +="#L1##r#e" + 蓝色箭头 + "新服刚开冲级活动(Boss首杀奖励稀有道具)"+"#l\r\n"
+ text +="#L2##d" + 蓝色箭头 + "悠悠岛限时活动 (现金/稀有道具等你来拿)"+"#l\r\n\r\n#n"
+ text += "#L11##b" + 小粉红爱心 + "临时功能#l#l#L12##b" + 小粉红爱心 + "地图爆率#l#l#L13##b" + 小粉红爱心 + "删除道具#l#L14##b" + 小粉红爱心 + "#e充值赞助#l#l\r\n#n"
+ text += "#L21##b" + 小粉红爱心 + "在线奖励#l#l#L22##b" + 小粉红爱心 + "师徒系统#l#l#L23##b" + 小粉红爱心 + "待定待定#l#L24##b" + 小粉红爱心 + "#e战力评分#l#l\r\n#n"
+ 
+ 
+ text += "\r\n"+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花+小烟花
+
+
+		    cm.sendSimple(text);
+			} else if (selection == 1) {
+            cm.openNpc(9900004,999);
+
+		   } else if (selection == 2) {
+		    cm.dispose();
+		   } else if (selection == 11) {
+            cm.openNpc(9900004,999);		
+		   } else if (selection == 12) {
+		    cm.openNpc(9900004,30);			
+		   } else if (selection == 13) {
+            cm.openNpc(9900004,32);		
+		   } else if (selection == 14) {
+		    cm.dispose();			
+		   } else if (selection == 21) {
             cm.openNpc(9900004,2);
-
-        } else if (selection == 3) { //等级领取奖励
-            cm.openNpc(9900004,3);
-
-        } else if (selection == 4) {//充值礼包领取
-            cm.openNpc(9900004,4);
-
-        } else if (selection == 5) {//每日签到
-            cm.openNpc(9900004,5);
-
-        } else if (selection == 6) {//每日任务一系列。
-            cm.openNpc(9900004,6);
-
-        } else if (selection == 7) {//综合排行
-            cm.openNpc(9900004,7);
-
-        } else if (selection == 8) {//限时答题
-            cm.openNpc(9900004,8);
-
-        } else if (selection == 9) {//装备制造
-            cm.openNpc(9000018,0);
-
-        } else if (selection == 10) {//副本兑换
-            cm.openNpc(9310084,0);
-        } else if (selection == 11) {//黄金猪抽奖
-            cm.openNpc(9900004,11);
-
-        } else if (selection == 12) {//皇家综合
-            cm.openNpc(9900004,12);
-
-        } else if (selection == 13) {
-            cm.warp(809030000);//豆豆屋
-
-        } else if (selection == 11111) {//
-            cm.openShop(84);//NPCID是：2040051
-            cm.dispose();
-
-        } else if (selection == 12111) {//
-            cm.openShop(30);//NPCID:1200002
-            cm.dispose();
-
-        } else if (selection == 13111) {//
-            cm.openShop(39);//NPCID:2070002墨铁
-            cm.dispose();
-
-        } else if (selection == 14) {//带新人奖励
-            cm.sendOk("暂不开放");
-		cm.dispose();
-        //    cm.openNpc(9900004,14);
-
-        } else if (selection == 15) {//经验兑换
-            cm.openNpc(9900004,15);
-
-        } else if (selection == 16) {//杀怪兑换
-	    cm.openNpc(9900004,16);
-
-        } else if (selection == 17) {//七星兑换
-            cm.sendOk("暂不开放");
-		cm.dispose();
-		//cm.openNpc(9900004,17);
-
-        } else if (selection == 18) {//开心钓鱼
-            cm.openNpc(9330045,0);
-
-        } else if (selection == 19) {//红鸾宫入口
-	    cm.warp(700000000);
-            cm.dispose();
-
-        } else if (selection == 20) {//
-            cm.openNpc(9900004,20);
-
-        } else if (selection == 21) {//
-            cm.openShop(81);//NPCID是：2040051
-            cm.dispose();
-
-        } else if (selection == 22) {//
-            cm.openShop(39);//NPCID:2070002墨铁
-            cm.dispose();
-        } else if (selection == 23) {//七星注力
-            cm.openNpc(9900004,23);
-        } else if (selection == 24) {//老虎机
-            cm.openNpc(9900004,24);
-        } else if (selection == 25) {//血衣
-		cm.sendOk("暂不开放");
-            //cm.openNpc(9900004,25);
-		cm.dispose();
-        } else if (selection == 26) {//盖楼
-            cm.openNpc(9900004,26);
-        } else if (selection == 27) {//副本传送
-            cm.openNpc(9900004,27);
-        } else if (selection == 28) {//征集喇叭
-            cm.openNpc(9900004,28);
-
-        } else if (selection == 29) {//重返BOSS
-            cm.openNpc(9900004,29);
-
-        } else if (selection == 30) {//查询爆率
-            cm.openNpc(9900004,30);
-
-        } else if (selection == 31) {//飞天猪
-            cm.openNpc(9900004,31);
-
-        } else if (selection == 32) {//回收
-            cm.openNpc(9900004,32);
-
-        } else if (selection == 33) {//消耗类兑换
-            cm.openNpc(9900004,33);
-
-        } else if (selection == 34) {//赌博
-            cm.openNpc(9900004,34);
-
-        } else if (selection == 35) {//赌博
-            cm.openNpc(9900004,35);
-
-        } else if (selection == 34) {//赌博
-            cm.openNpc(9900004,34);
-
-        } else if (selection == 34) {//赌博
-            cm.openNpc(9900004,34);
-		} else if (selection == 39) {//精灵吊坠
-            cm.openNpc(9900004,39);
-		} else if (selection == 40) {//枫叶兑换
-            cm.openNpc(9000041,0);
-		} else if (selection == 41) {//中介兑换
-            cm.openNpc(9000040,0);
-		} else if (selection == 51) {//每日副本
-            cm.openNpc(9900004,101);
-		} else if (selection == 52) {//每日副本
-            cm.openNpc(9900004,100);
-		} else if (selection == 53) {//每日副本
-            cm.openNpc(9900004,103);
-        } else if (selection == 36) {//
-            cm.openNpc(9900004, 36);
-        } else if (selection == 37) {//
-            cm.openNpc(9900004, 37);
-        } else if (selection == 1002) {//
-            cm.刷新地图();
-            cm.dispose();
-        } else if (selection == 1003) {//
-            cm.刷新状态();
-            cm.dispose();
-        } else if (selection == 1004) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1005) {//
-            cm.openNpc(9900004, 1005);
-        } else if (selection == 1006) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1007) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1008) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1009) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1010) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1011) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 38) {//
-            cm.openNpc(9900004, 38);
-        } else if (selection == 1013) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1014) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        } else if (selection == 1015) {//
-            cm.sendOk("暂不开放，请等待功能完成");
-            cm.dispose();
-        }
-    }
+     	}
+	}
 }
 
 

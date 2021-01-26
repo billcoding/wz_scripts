@@ -14,7 +14,8 @@ function action(mode, type, selection) {
         return;
     }
     if (status == 0) {
-        cm.sendSimple("你好，你来到这想要做什么？\r\n#b#L0#我要离婚#l\r\n#L1#删除戒指#l#k");
+        //cm.sendSimple("你好，你来到这想要做什么？\r\n#b#L0#我要离婚#l\r\n#L1#删除戒指#l#k");
+		cm.sendSimple("你好，你来到这想要做什么？\r\n#b#L0#我要离婚#l");
     } else if (status == 1) {
         if (selection == 0) {
             cm.sendYesNo("离婚吗？你确定吗？你想离婚？确定想好要离婚了吗？");
@@ -48,7 +49,7 @@ function action(mode, type, selection) {
             } else {
                 if (cm.getMeso() >= 1000000) {
                     cm.handleDivorce();
-                    cm.gainMeso( - 1000000);
+                    cm.gainMeso(-1000000);
                 } else {
                     cm.sendNext("离婚手续费需要100万金币,你没有足够的金币。");
                     cm.dispose();

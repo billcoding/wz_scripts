@@ -1,4 +1,4 @@
-﻿var Naozhong = 2;
+﻿var 闹钟 = 2;
 function enter(pi) {
     if (pi.getPlayer().getClient().getChannel() != 1 && pi.getPlayer().getClient().getChannel() != 2 && pi.getPlayer().getClient().getChannel() != 3) {
         pi.playerMessage(5, "★帕普拉图斯★只能在频道1、2、3能打。");
@@ -14,20 +14,20 @@ function enter(pi) {
     } else {
 		pi.getPlayer().removeAll(4031172);
 	} */
-	if (pi.getBossLog("Naozhong") >= 2) {
+	if (pi.getBossLog("闹钟") >= 2) {
 		pi.playerMessage(5, "一天只能打两次★帕普拉图斯★");
 		return false;
 	}
     if (pi.getPlayerCount(220080001) <= 0) { // Papu Map
         var papuMap = pi.getMap(220080001);
         papuMap.resetFully();
-		pi.setBossLog("Naozhong");
+		pi.setBossLog("闹钟");
         pi.playPortalSE();
         pi.warp(220080001, "st00");
         return true;
     } else {
         if (pi.getMap(220080001).getSpeedRunStart() == 0 && (pi.getMonsterCount(220080001) <= 0 || pi.getMap(220080001).isDisconnected(pi.getPlayer().getId()))) {
-			pi.setBossLog("Naozhong");
+			pi.setBossLog("闹钟");
             pi.playPortalSE();
             pi.warp(220080001, "st00");
             return true;

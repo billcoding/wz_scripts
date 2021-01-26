@@ -20,7 +20,7 @@ function action(mode, type, selection) {
 			return;
     		    }
 		    if (cm.getPlayer().getParty() == null || !cm.isLeader()) {
-			cm.sendOk("The leader of the party must be here.");
+			cm.sendOk("队长一定要在这个地图.");
 		    } else {
 			var s = selection;
 			var party = cm.getPlayer().getParty().getMembers();
@@ -41,10 +41,10 @@ function action(mode, type, selection) {
 		    		if (em.getInstance("Olivia" + s) == null) {
 					em.startInstance_Party("" + s, cm.getPlayer());
 		    		} else {
-					cm.sendOk("Another party quest has already entered this channel.");
+					cm.sendOk("另一个小队任务已经进入了这个通道.");
 		    		}
 			} else {
-				cm.sendOk("All members of your party must be here.");
+				cm.sendOk("你们所有人都必须到齐.");
 			}
 		    }
 	        cm.dispose();

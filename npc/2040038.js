@@ -24,11 +24,11 @@ function action(mode, type, selection) {
 		    cm.sendNext("你确定你有收集了 #r32张 #t4001022##k？？");
 		}
 	    } else {
-		cm.sendOk("欢迎来到第三阶段。#b遗弃之塔PQ#k 请收集#r#t4001022##k 来找我即可完成任务。");
+		cm.sendOk("欢迎来到第三阶段。#b玩具塔101组队#k 请收集#r#t4001022##k 来找我即可完成任务。");
 		eim.setProperty("stage3leader","done");
 	    }
 	} else { // Members
-	    cm.sendNext("欢迎来到第三阶段。#b遗弃之塔PQ#k 请收集#r#t4001022##k 给你的队长，然后叫队长来找我即可完成任务。");
+	    cm.sendNext("欢迎来到第三阶段。#b玩具塔101组队#k 请收集#r#t4001022##k 给你的队长，然后叫队长来找我即可完成任务。");
 	}
     } else {
 	cm.sendNext("恭喜！你已经通过了第三阶段。快点现在，到第4阶段。");

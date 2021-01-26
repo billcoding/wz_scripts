@@ -1,6 +1,6 @@
 var status = -1;
 var minLevel = 10; // 35
-var maxLevel = 200; // 65
+var maxLevel = 255; // 65
 
 var minPartySize = 1;
 var maxPartySize = 6;
@@ -55,7 +55,7 @@ function action(mode, type, selection) {
                 } else {
                     var prop = em.getProperty("state");
                     if (prop.equals("0") || prop == null) {
-                        for (var i = 4001095; i < 4001099; i++) {
+                        for (var i = 4001095; i < 4001100; i++) {
                             cm.givePartyItems(i, 0, true);
                         }
                         for (var i = 4001100; i < 4001101; i++) {

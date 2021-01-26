@@ -1,6 +1,6 @@
 function enter(pi) {
 	    if (pi.getPlayer().getParty() == null || !pi.isLeader()) {
-		pi.playerMessage("The leader of the party must be here.");
+		pi.playerMessage("队长一定要在这个地图.");
 	    } else {
 		var party = pi.getPlayer().getParty().getMembers();
 		var mapId = pi.getPlayer().getMapId();
@@ -24,9 +24,9 @@ function enter(pi) {
 		    		return;
 			}
 	    	    }
-			pi.playerMessage("Another party quest has already entered this channel.");
+			pi.playerMessage("另一个小队任务已经进入了这个通道.");
 		} else {
-			pi.playerMessage("All 2+ members of your party must be here.");
+			pi.playerMessage("必须2个以上成员在这里.");
 		}
 	    }
 }

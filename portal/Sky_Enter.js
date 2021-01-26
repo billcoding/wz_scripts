@@ -6,7 +6,7 @@ function enter(pi) {
 		return true;
 	}
     if (pi.getPlayer().getParty() == null || !pi.isLeader()) {
-	pi.playerMessage(5, "The leader of the party must be here.");
+	pi.playerMessage(5, "队长一定要在这个地图.");
 	return false;
     }
 	var party = pi.getPlayer().getParty().getMembers();
@@ -28,22 +28,22 @@ function enter(pi) {
 	if (next && size > 3) {
 		var em = pi.getEventManager("Dragonica");
 		if (em == null) {
-			pi.playerMessage(5, "This event is currently not available.");
+			pi.playerMessage(5, "此事件目前不可用.");
 		} else {
 			var prop = em.getProperty("state");
 			if (prop == null || prop.equals("0")) {
 				em.startInstance(pi.getParty(), pi.getMap());
 			} else {
-				pi.playerMessage(5, "Someone is already attempting this boss.");
+				pi.playerMessage(5, "已经有人在打这个BOSS了.");
 			}
 		}
 	} else {
-		pi.playerMessage(5, "Make sure all 3+ party members are in this map.");
+		pi.playerMessage(5, "确保有3名以上的队员都在这张地图上.");
 		return false;
 	}
         return true;
     } else {
-        pi.playerMessage("The door is still blocked.");
+        pi.playerMessage("门还没开.");
         return false;
     }
 }

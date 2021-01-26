@@ -21,13 +21,13 @@ function enter(pi) {
     }
 	
     
-	 if (pi.getBossLog('ZakumBattle') >= 2) {
+	 if (pi.getBossLog('扎昆') >= 2) {
      pi.playerMessage(5, "★Boss扎昆★ 每天只能挑战2次！");
      return false;
 	}
 	 
 	pi.playPortalSE();
-	pi.setBossLog('ZakumBattle'); 
+	pi.setBossLog('扎昆'); 
     pi.warp(pi.getPlayer().getMapId() + 100, "west00");
     return true;
 }

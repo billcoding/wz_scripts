@@ -19,9 +19,9 @@ function action(mode, type, selection) {
 	} else {
 	    var hp = cm.getPlayerStat("HP");
 	    if (hp > 500) {
-		cm.addHP(-500);
+		cm.addHP(-(hp / 2));
 	    } else if (hp > 1 && hp <= 500) {
-		cm.addHP(-(hp - 1));
+		cm.addHP(-(hp / 2));
 	    }
 	    cm.sendNext("这就够了，人类！任何人不许越过此处离开这里！");
 	}

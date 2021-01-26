@@ -118,14 +118,14 @@ function action(mode, type, selection) {
                             cm.dispose();
                             return;
                         }
-                        cm.sendYesNo("The squad's battle against the boss has already begun.\r\n" + squd.getNextPlayer());
+                        cm.sendYesNo("对抗Boss的战斗已经开始了.\r\n" + squd.getNextPlayer());
                         status = 3;
                     } else {
-                        cm.sendOk("The squad's battle against the boss has already begun.");
+                        cm.sendOk("对抗Boss的战斗已经开始了.");
                         cm.safeDispose();
                     }
                 } else {
-                    cm.sendYesNo("Ah, you have returned. Would you like to join your squad in the fight again?");
+                    cm.sendYesNo("小队与Boss的战斗已经开始了啊，你回来了。你想再次加入你的队伍吗?");
                     status = 2;
                 }
             }
@@ -135,7 +135,7 @@ function action(mode, type, selection) {
                 if (cm.registerSquad("ChaosZak", 5, " 已经成为了远征队队长。如果你想加入远征队，请重新打开对话申请加入远征队。")) {
                     cm.sendOk("你已经成为了远征队队长。接下来的5分钟，请等待队员们的申请。");
                 } else {
-                    cm.sendOk("An error has occurred adding your squad.");
+                    cm.sendOk("添加你的队员时发生了一个错误.");
                 }
             } else {
                 cm.sendOk("如果你想申请远征队的话，那么就来找我吧。")
