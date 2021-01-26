@@ -1,9 +1,9 @@
 
-//importPackage(java.lang);
+importPackage(java.lang);
 
 var status = 0;
 var slot = Array();
-var stats = Array("ÆßÐÇ×¢Á¦");
+var stats = Array("ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½");
 var selected;
 var statsSel;
 
@@ -23,7 +23,7 @@ function action(mode, type, selection) {
         status--;
     }
     if (status == 0) {
-            cm.sendSimple("Ç×°®µÄ#r#h ##kÄúºÃ,ÕâÀïÊÇÆßÐÇ×¢Á¦£¨¹¥»÷Á¦-Ä§·¨Á¦£©\r\n\r\nÎäÆ÷º¬ÓÐ¹¥»÷Á¦»òÕßÄ§·¨Á¦»òÕß2ÖÖ¶¼´æÔÚ¶¼»áËæ»ú×¢Á¦\r\n\r\n×¢Á¦Ò»´ÎÐèÒªÏûºÄ1¸ö#r#v4032323##z4032323#\r\n\r\nÊôÐÔ½«Ëæ»ú×¢Èë#r¸ù¾ÝÔ­×°±¸µÄ¹¥»÷Á¦»òÕßÄ§·¨Á¦µÄ#k»ù´¡ÉÏ ÉÏÏÂ¸¡¶¯30µã¡£\r\n\r\n±ÈÈç£º#rÔ­×°±¸¹¥»÷Á¦¸úÄ§·¨Á¦¶¼ÊÇ50.ÄÇÃ´¾Í»áËæ»ú¸¡¶¯£¬×î¸ß¸¡¶¯30µã\r\n\r\nÒ²¾ÍÊÇËµ×î¸ß¿ÉÄÜ×¢Èëµ½80£¬×îµÍ¿ÉÄÜ½µµÍµ½20.Ô­»ù´¡ÉÏ¸¡¶¯30µã~\r\n\r\n#L2#ÆßÐÇ×¢Á¦£¨¹¥»÷Á¦-Ä§·¨Á¦£©-ÐèÒª£º#r#v4032323##z4032323##l");
+            cm.sendSimple("ï¿½×°ï¿½ï¿½ï¿½#r#h ##kï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n\r\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½\r\n\r\n×¢ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½#r#v4032323##z4032323#\r\n\r\nï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½#rï¿½ï¿½ï¿½ï¿½Ô­×°ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½30ï¿½ã¡£\r\n\r\nï¿½ï¿½ï¿½ç£º#rÔ­×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½50.ï¿½ï¿½Ã´ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¸ï¿½ï¿½ï¿½30ï¿½ï¿½\r\n\r\nÒ²ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ß¿ï¿½ï¿½ï¿½×¢ï¿½ëµ½80ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½Ü½ï¿½ï¿½Íµï¿½20.Ô­ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½30ï¿½ï¿½~\r\n\r\n#L2#ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½Òªï¿½ï¿½#r#v4032323##z4032323##l");
         } else if (selection == 2) {
             var avail = "";
             for (var i = -1; i > -199; i--) {
@@ -32,30 +32,30 @@ function action(mode, type, selection) {
                 }
                 slot.push(i);
             }
-            cm.sendSimple("ÇëÑ¡ÔñÄúÐèÒªÆßÐÇ×¢Á¦µÄ×°±¸:\r\n#b" + avail);
+            cm.sendSimple("ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½:\r\n#b" + avail);
     } else if (status == 2) {
         selected = selection - 1;
         var text = "";
         for (var i = 0; i < stats.length; i++) {
             text += "#L" + i + "#" + stats[i] + "#l\r\n";
         }
-        cm.sendSimple("ÄãÑ¡ÔñÁËÐèÒªÆßÐÇ×¢Á¦µÄ×°±¸ #b#t" + cm.getInventory( - 1).getItem(slot[selected]).getItemId() + "##k ×°±¸\r\n#b" + text);
+        cm.sendSimple("ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ #b#t" + cm.getInventory( - 1).getItem(slot[selected]).getItemId() + "##k ×°ï¿½ï¿½\r\n#b" + text);
     } else if (status == 3) {
         statsSel = selection;
-        cm.playerMessage("µ±Ç°Ñ¡Ôñ " + selection+"  "+slot[selected]);
+        cm.playerMessage("ï¿½ï¿½Ç°Ñ¡ï¿½ï¿½ " + selection+"  "+slot[selected]);
         if (selection == 20) {
-            cm.sendGetText("ÄãÈ·¶¨ÊÇÕâ¸ö×°±¸Âð #b#t" + cm.getInventory( - 1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " to?");
+            cm.sendGetText("ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ #b#t" + cm.getInventory( - 1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " to?");
 	} else {
-       cm.sendYesNo("ÇëÈ·ÈÏÐèÒªÆßÐÇ×¢Á¦µÄ×°±¸£¡");
+       cm.sendYesNo("ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½");
         }
     } else if (status == 4) {
 	   if(cm.haveItem(4032323,1)){
 	//cm.getPlayer().modifyCSPoints(1,-10000)
 	cm.gainItem(4032323, -1);
         cm.equipqh(slot[selected], true); 
-        cm.sendOk("×°±¸ÆßÐÇ×¢Á¦³É¹¦£¡");
+        cm.sendOk("×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 	   }else{
-        cm.sendOk("#v4032323#²»×ã1¸öÎÞ·¨Éý¼¶£¡");
+        cm.sendOk("#v4032323#ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 	   }
         cm.dispose();
     } else {

@@ -1,4 +1,4 @@
-/* importPackage(java.lang);
+importPackage(java.lang);
 importPackage(Packages.client);
 importPackage(Packages.client.inventory);
 importPackage(Packages.server);
@@ -8,7 +8,7 @@ importPackage(Packages.tools);
 importPackage(Packages.scripting);
 importPackage(Packages.tools.packet);
 importPackage(Packages.tools.data);
-importPackage(Packages.tools); */
+importPackage(Packages.tools);
 
 var status = -1;
 var itemss;
@@ -55,13 +55,13 @@ function action(mode, type, selection) {
 			}
 			slot.push(i);
 		}
-		cm.sendSimple("ÇëÑ¡ÔñÄãÐèÒªÇå³ýµÄÎïÆ·:\r\n#b" + avail);
+		cm.sendSimple("ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·:\r\n#b" + avail);
 	 
     } else if (status == 1) {
         itemss = selection;
 		var shul = cm.getPlayer().getItemQuantity(itemss, false);
 		cm.removeAll(itemss);
-		Ok("ÎÒÒÑ¾­½«Äã±³°üÀïµÄ #d#i" + itemss + ":# #t" + itemss + ":# ÊýÁ¿£º#e#r" + shul + "#n#b\r\n´ÓÄãµÄ±³°üÉ¾³ý£¡");
+		Ok("ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ã±³ï¿½ï¿½ï¿½ï¿½ï¿½ #d#i" + itemss + ":# #t" + itemss + ":# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#e#r" + shul + "#n#b\r\nï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½");
 		cm.dispose();
     } else {
         cm.dispose();

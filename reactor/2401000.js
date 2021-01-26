@@ -8,9 +8,6 @@
 -------------------------
 */
 
-/* importPackage(net.sf.odinms.server.maps); 
-importPackage(net.sf.odinms.net.channel); 
-importPackage(net.sf.odinms.tools); */ 
 function act(){
 if (rm.getPlayer().getMap().getMonsterById(8810000) == null && rm.getPlayer().getMap().getMonsterById(8810001) == null && rm.getPlayer().getMap().getMonsterById(8810002) == null && rm.getPlayer().getMap().getMonsterById(8810003) == null && rm.getPlayer().getMap().getMonsterById(8810004) == null && rm.getPlayer().getMap().getMonsterById(8810005) == null && rm.getPlayer().getMap().getMonsterById(8810006) == null && rm.getPlayer().getMap().getMonsterById(8810007) == null && rm.getPlayer().getMap().getMonsterById(8810008) == null && rm.getPlayer().getMap().getMonsterById(8810009) == null && rm.getPlayer().getMap().getMonsterById(8810010) == null && rm.getPlayer().getMap().getMonsterById(8810011) == null && rm.getPlayer().getMap().getMonsterById(8810012) == null && rm.getPlayer().getMap().getMonsterById(8810013) == null && rm.getPlayer().getMap().getMonsterById(8810014) == null && rm.getPlayer().getMap().getMonsterById(8810015) == null && rm.getPlayer().getMap().getMonsterById(8810016) == null && rm.getPlayer().getMap().getMonsterById(8810017) == null && rm.getPlayer().getMap().getMonsterById(8810018) == null) {
 	 rm.changeMusic("Bgm14/HonTale");

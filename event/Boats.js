@@ -2,9 +2,9 @@
 	魔法森林搭船系統改寫 by:Kodan
 **/
 
-//importPackage(Packages.client);
-//importPackage(Packages.tools);
-//importPackage(Packages.server.life);
+importPackage(Packages.client);
+importPackage(Packages.tools);
+importPackage(Packages.server.life);
 
 //變數跟時間設定區
 var closeTime = 2 * 60 * 1000; //船關閉搭乘的時間
@@ -37,8 +37,8 @@ function init() {
 function scheduleNew() {
     Ellinia_docked.setDocked(true);
     Orbis_Station.setDocked(true);
-    Ellinia_docked.broadcastMessage(tools.MaplePacketCreator.boatPacket(true));
-    Orbis_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(true));
+    Ellinia_docked.broadcastMessage(MaplePacketCreator.boatPacket(true));
+    Orbis_Station.broadcastMessage(MaplePacketCreator.boatPacket(true));
     em.setProperty("docked", "true");
     em.setProperty("entry", "true");
     em.setProperty("haveBalrog","false");
@@ -69,8 +69,8 @@ function takeoff() {
     }
     Ellinia_docked.setDocked(false);
     Orbis_Station.setDocked(false);
-    Ellinia_docked.broadcastMessage(tools.MaplePacketCreator.boatPacket(false));
-    Orbis_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(false));
+    Ellinia_docked.broadcastMessage(MaplePacketCreator.boatPacket(false));
+    Orbis_Station.broadcastMessage(MaplePacketCreator.boatPacket(false));
 	try{
     em.schedule("invasion", invasionTime);
     em.schedule("arrived", rideTime);
@@ -117,18 +117,18 @@ function invasion() {
         }
         Boat_to_Orbis.setDocked(true);
         Boat_to_Ellinia.setDocked(true);
-        Boat_to_Orbis.broadcastMessage(tools.MaplePacketCreator.boatEffect(1034));
-        Boat_to_Ellinia.broadcastMessage(tools.MaplePacketCreator.boatEffect(1034));
-        Boat_to_Orbis.broadcastMessage(tools.MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
-        Boat_to_Ellinia.broadcastMessage(tools.MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
+        Boat_to_Orbis.broadcastMessage(MaplePacketCreator.boatEffect(1034));
+        Boat_to_Ellinia.broadcastMessage(MaplePacketCreator.boatEffect(1034));
+        Boat_to_Orbis.broadcastMessage(MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
+        Boat_to_Ellinia.broadcastMessage(MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
         em.setProperty("haveBalrog","true");
     } else if (numspawn == 1) {
 		Boat_to_Orbis.setDocked(true);
         Boat_to_Ellinia.setDocked(true);
-        Boat_to_Orbis.broadcastMessage(tools.MaplePacketCreator.boatEffect(1034));
-        Boat_to_Ellinia.broadcastMessage(tools.MaplePacketCreator.boatEffect(1034));
-        Boat_to_Orbis.broadcastMessage(tools.MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
-        Boat_to_Ellinia.broadcastMessage(tools.MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
+        Boat_to_Orbis.broadcastMessage(MaplePacketCreator.boatEffect(1034));
+        Boat_to_Ellinia.broadcastMessage(MaplePacketCreator.boatEffect(1034));
+        Boat_to_Orbis.broadcastMessage(MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
+        Boat_to_Ellinia.broadcastMessage(MaplePacketCreator.musicChange("Bgm04/ArabPirate"));
         em.setProperty("haveBalrog1","true");
 	}
 }

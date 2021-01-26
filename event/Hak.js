@@ -21,7 +21,7 @@ function playerEntry(eim, player) {
     em.setProperty("isRiding","true");
     em.schedule("timeOut", 60000);
     player.changeMap(onRide, onRide.getPortal(0));
-//    player.getClient().getSession().write(tools.MaplePacketCreator.getClock(timeOnRide));
+//    player.getClient().getSession().write(MaplePacketCreator.getClock(timeOnRide));
 }
 
 function timeout() {

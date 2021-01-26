@@ -1,4 +1,4 @@
-//importPackage(Packages.tools);
+importPackage(Packages.tools);
 
 var Orbis_btf;
 var Boat_to_Orbis;
@@ -22,8 +22,8 @@ function init() {
 function scheduleNew() {
     leafre_Station.setDocked(true);
     Orbis_Station.setDocked(true);
-    leafre_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(true));
-    Orbis_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(true));
+    leafre_Station.broadcastMessage(MaplePacketCreator.boatPacket(true));
+    Orbis_Station.broadcastMessage(MaplePacketCreator.boatPacket(true));
     em.setProperty("docked", "true");
     em.setProperty("entry", "true");
     em.schedule("stopEntry", 240000);
@@ -37,8 +37,8 @@ function stopEntry() {
 function takeoff() {
     leafre_Station.setDocked(false);
     Orbis_Station.setDocked(false);
-    leafre_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(false));
-    Orbis_Station.broadcastMessage(tools.MaplePacketCreator.boatPacket(false));
+    leafre_Station.broadcastMessage(MaplePacketCreator.boatPacket(false));
+    Orbis_Station.broadcastMessage(MaplePacketCreator.boatPacket(false));
     em.setProperty("docked","false");
     var temp1 = Orbis_btf.getCharacters().iterator();
     while(temp1.hasNext())

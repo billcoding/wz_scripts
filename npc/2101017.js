@@ -5,22 +5,22 @@
  * @func: Ariant PQ (Outdated GMS-like text, AriantPQ is closed off and I am unable to get this.)
 */
 
-//importPackage(Packages.tools);
-//importPackage(Packages.client);
+importPackage(Packages.tools);
+importPackage(Packages.client);
 
 var status = -1;
 var sel;
 
 function start() {
     if ((cm.getPlayer().getLevel() < 50) && !cm.getPlayer().isGM()) {
-		cm.sendNext("Äã²»ÔÚ level 20 and 30. ¶Ô²»Æð£¬Äú¿ÉÄÜ²»²Î¼Ó.");
+		cm.sendNext("ï¿½ã²»ï¿½ï¿½ level 20 and 30. ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü²ï¿½ï¿½Î¼ï¿½.");
         cm.dispose();
         return;
     }
     if(cm.getPlayer().getMapId() % 10 == 1)
-        cm.sendSimple("Äã¶ÔÎÒÓÐÒ»¸öÇëÇóÂð?\r\n#b#L0# ¸øÎÒ #t2270002# and #t2100067#.#l\r\n#L1# ÎÒ¸Ã×öÊ²Ã´?#l\r\n#L2# ÈÃÎÒÀë¿ªÕâÀï.#l");
+        cm.sendSimple("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?\r\n#b#L0# ï¿½ï¿½ï¿½ï¿½ #t2270002# and #t2100067#.#l\r\n#L1# ï¿½Ò¸ï¿½ï¿½ï¿½Ê²Ã´?#l\r\n#L2# ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½.#l");
     else
-        cm.sendSimple(cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) == cm.getPlayer().getName() ? "ÄãÏë¿ªÊ¼±ÈÈüÂð?#b\r\n#b#L3# ×¼±¸½øÈëÕ½³¡!!#l\r\n#L1# ÎÒÏëÌßÁíÒ»¸ö½ÇÉ«.#l\r\n#L2# ÈÃÎÒÀë¿ªÕâÀï.#l" : "ÄãÏëÒªÊ²Ã´?#b\r\n#L2# ÈÃÎÒÀë¿ªÕâÀï.#l");
+        cm.sendSimple(cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) == cm.getPlayer().getName() ? "ï¿½ï¿½ï¿½ë¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?#b\r\n#b#L3# ×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½!!#l\r\n#L1# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½É«.#l\r\n#L2# ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½.#l" : "ï¿½ï¿½ï¿½ï¿½ÒªÊ²Ã´?#b\r\n#L2# ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½.#l");
 }
 
 function action(mode, type, selection){
@@ -39,19 +39,19 @@ function action(mode, type, selection){
                 sel = selection;
             if (sel == 0) {
                 if (cm.haveItem(2270002))
-                    cm.sendNext("ÄãÒÑ¾­ÓµÓÐ #b#t2270002##k.");
+                    cm.sendNext("ï¿½ï¿½ï¿½Ñ¾ï¿½Óµï¿½ï¿½ #b#t2270002##k.");
                 else if (cm.canHold(2270002) && cm.canHold(2100067)) {
                     if (cm.haveItem(2100067))
                         cm.removeAll(2100067);
                     cm.gainItem(2270002, 32);
                     cm.gainItem(2100067, 5);
-                    cm.sendNext("ÏÖÔÚ½µµÍ¹ÖÎïµÄHP£¬²¢Ê¹ÓÃ #b#t2270002##k ÎüÊÕËûÃÇµÄÁ¦Á¿!");
+                    cm.sendNext("ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½HPï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ #b#t2270002##k ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½!");
                 } else
-                    cm.sendNext("¼ì²éºÍ²é¿´ÊÇ·ñÊ¹ÓÃ¿â´æÊÇÈ«");
+                    cm.sendNext("ï¿½ï¿½ï¿½Í²é¿´ï¿½Ç·ï¿½Ê¹ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½È«");
                 cm.dispose();
             } else if(sel == 1) {
 				status = 1;
-                cm.sendNext("ÄãÐèÒª×öÊ²Ã´£¿ÄãÒ»¶¨ÊÇÐÂÀ´µÄ¡£ÇëÔÊÐíÎÒÏêÏ¸½âÊÍ.");
+                cm.sendNext("ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ê²Ã´ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½.");
             } else
                 cm.sendYesNo("Are you sure you want to leave?"); //No GMS like.
         } else if (status == 1) {
@@ -61,11 +61,11 @@ function action(mode, type, selection){
                 return;
             }
 		} else if (status == 2) {
-            cm.sendNextPrev("ÕâÕæµÄºÜ¼òµ¥¡£Äã»áµÃµ½ #b#t2270002##k ´ÓÎÒÉíÉÏ£¬ÄãµÄÈÎÎñ¾ÍÊÇÒªÏû³ýÒ»¸ö¼¯ºÏµÄÁ¿ HP´Ó¹ÖÎï£¬È»ºóÊ¹ÓÃ #b#t2270002##k ÎüÈ¡Æä¾Þ´óµÄÁ¦Á¿.");
+            cm.sendNextPrev("ï¿½ï¿½ï¿½ï¿½ÄºÜ¼òµ¥¡ï¿½ï¿½ï¿½ï¿½Ãµï¿½ #b#t2270002##k ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ HPï¿½Ó¹ï¿½ï¿½ï£¬È»ï¿½ï¿½Ê¹ï¿½ï¿½ #b#t2270002##k ï¿½ï¿½È¡ï¿½ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
         } else if (status == 3)
-            cm.sendNextPrev("ºÜ¼òµ¥¡£Èç¹ûÄãÎüÊÕÁË¹ÖÎïµÄÁ¦Á¿#b#t2270002##k, È»ºóÄã»á×ö #b#t4031868##k, ÕâÊÇÅ®Íõ°¢ÁÐ´ï°®¡£Óë´ó¶àÊýÖé±¦Õ½¶·»ñÊ¤¡£ÎªÁËÓ®µÃ±ÈÈü£¬ÎªÁË·ÀÖ¹±ðÈËµÄÎüÊÕ£¬ÕâÊµ¼ÊÉÏÊÇÒ»¸ö´ÏÃ÷µÄÏë·¨.");
+            cm.sendNextPrev("ï¿½Ü¼òµ¥¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#b#t2270002##k, È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #b#t4031868##k, ï¿½ï¿½ï¿½ï¿½Å®ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï°®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é±¦Õ½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½Îªï¿½ï¿½Ó®ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ë·ï¿½Ö¹ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Õ£ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë·¨.");
         else if (status == 4)
-            cm.sendNextPrev("Ò»¼þÊÂ. #rÄã¿ÉÄÜ²»»áÊ¹ÓÃ³èÎï.#kÀí½â?~!");
+            cm.sendNextPrev("Ò»ï¿½ï¿½ï¿½ï¿½. #rï¿½ï¿½ï¿½ï¿½Ü²ï¿½ï¿½ï¿½Ê¹ï¿½Ã³ï¿½ï¿½ï¿½.#kï¿½ï¿½ï¿½?~!");
         else if (status == 5)
             cm.dispose();
     } else {
@@ -75,7 +75,7 @@ function action(mode, type, selection){
                 sel = selection;
             if (sel == 1)
                 if (cm.getPlayerCount(cm.getPlayer().getMapId()) > 1) {
-                    var text = "ÄãÏë´ÓË­µÄ·¿¼äÀïÌßÒ»½Å?"; //Not GMS like text
+                    var text = "ï¿½ï¿½ï¿½ï¿½ï¿½Ë­ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½?"; //Not GMS like text
                     var name;
                     for (var i = 0; nextchar.hasNext(); i++) {
                         name = nextchar.next().getName();
@@ -84,19 +84,19 @@ function action(mode, type, selection){
                     }
                     cm.sendSimple(text);
                 } else {
-                    cm.sendNext("ÏÖÔÚÃ»ÓÐÊ²Ã´¿ÉÒÔ±»ÌßµÄ½ÇÉ«¡£");
+                    cm.sendNext("ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê²Ã´ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ßµÄ½ï¿½É«ï¿½ï¿½");
                     cm.dispose();
                 }
             else if (sel == 2) {
                 if (cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) == cm.getPlayer().getName())
-                    cm.sendYesNo("ÄãÈ·¶¨ÄãÒªÀë¿ªÂð£¿ÄãÊÇ¾º¼¼³¡µÄÁìÐä£¬ËùÒÔÈç¹ûÄãÀë¿ª£¬Õû¸öÕ½¶·¾º¼¼³¡½«¹Ø±Õ.");
+                    cm.sendYesNo("ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Òªï¿½ë¿ªï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½.");
                 else
-                    cm.sendYesNo("ÄãÈ·¶¨ÄãÒªÀë¿ªÂð?"); //No GMS like.
+                    cm.sendYesNo("ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Òªï¿½ë¿ªï¿½ï¿½?"); //No GMS like.
             } else if (sel == 3)
                 if (cm.getPlayerCount(cm.getPlayer().getMapId()) > 0 )
-                    cm.sendYesNo("·¿¼ä¶¼ÊÇÒ»Ì×£¬Ã»ÓÐÆäËûµÄ½ÇÉ«¿ÉÒÔ¼ÓÈëÕâ³¡Õ½¶·µÄ¾º¼¼³¡¡£ÄãÏëÏÖÔÚ¿ªÊ¼ÓÎÏ·Âð?");
+                    cm.sendYesNo("ï¿½ï¿½ï¿½ä¶¼ï¿½ï¿½Ò»ï¿½×£ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½É«ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½â³¡Õ½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½Ê¼ï¿½ï¿½Ï·ï¿½ï¿½?");
                 else {
-                    cm.sendNext("ÄãÖÁÉÙÐèÒª2Ãû²ÎÓëÕßÀ´¿ªÊ¼±ÈÈü.");
+                    cm.sendNext("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½.");
                     cm.dispose();
                 }
         } else if (status == 1) {
@@ -107,13 +107,13 @@ function action(mode, type, selection){
                         break;
                     } else
                         nextchar.next();
-                cm.sendNext("Íæ¼Ò±»Ìß³öÁËÎèÌ¨."); //Not GMS like
+                cm.sendNext("ï¿½ï¿½Ò±ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨."); //Not GMS like
             } else if(sel == 2) {
                 if (cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) != cm.getPlayer().getName())
                     cm.warp(980010000);
                 else {
                     cm.getPlayer().removeAriantRoom((cm.getPlayer().getMapId() / 100) % 10);
-                    cm.mapMessage(6, cm.getPlayer().getName() + " ÒÑ¾­Àë¿ªÁËÎèÌ¨£¬ËùÒÔÎèÌ¨ÉÏÏÖÔÚ½«¹Ø±Õ.");
+                    cm.mapMessage(6, cm.getPlayer().getName() + " ï¿½Ñ¾ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Ø±ï¿½.");
                     cm.warpMap(980010000);
                 }
             } else {
