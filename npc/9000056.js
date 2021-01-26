@@ -1,8 +1,8 @@
 /* global cm, Packages, MapleItemInformationProvider, World, MaplePacketCreator */
 
-//importPackage(Packages.tools);
-//importPackage(Packages.handling.world);
-//importPackage(Packages.server);
+importPackage(Packages.tools);
+importPackage(Packages.handling.world);
+importPackage(Packages.server);
 
 var status = -1;
 var selected = 0;
@@ -22,14 +22,14 @@ var inv = null;
 var statsSel = null;
 
 var slot = Array();
-var bosslog = ["Àñ°ÝÈÕ", "Àñ°ÝÒ»", "Àñ°Ý¶þ", "Àñ°ÝÈý", "Àñ°ÝËÄ", "Àñ°ÝÎå", "Àñ°ÝÁù"];
+var bosslog = ["ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½Ò»", "ï¿½ï¿½Ý¶ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½"];
 
 var d = new Date();
 var day = d.getDay();
 
 function start() {
     if (edit && !cm.getPlayer().isGM()) {
-        msg = "±¾NPC#rÎ¬ÐÞÖÐ#k£¬ÇëÉÔºóÔÙÊÔ¡£";
+        msg = "ï¿½ï¿½NPC#rÎ¬ï¿½ï¿½ï¿½ï¿½#kï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô¡ï¿½";
         cm.sendNext(msg);
         cm.dispose();
         return;
@@ -48,30 +48,30 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        if (cm.getPlayer().getAcLog(bosslog[day] + "_¹ã²¥") >= maxtimesperday) {
-            msg = "Ò»Ìì×î¶àÊ¹ÓÃ´ÎÊýÎª#r" + maxtimesperday;
+        if (cm.getPlayer().getAcLog(bosslog[day] + "_ï¿½ã²¥") >= maxtimesperday) {
+            msg = "Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã´ï¿½ï¿½ï¿½Îª#r" + maxtimesperday;
             cm.sendNext(msg);
             cm.dispose();
             return;
         }
-        msg = "±¾NPC¿ÉÒÔÌá¹©¸øÄú¹ã²¥¹¦ÄÜ£¬Ê¹ÓÃÒ»´ÎÎª" + neededCash + "µãµãÊý(¿ÉÒÔÑ¡ÔñµãÊý/·ãÒ¶µãÊý)\r\n" +
-                "ÇëÑ¡ÔñËùÊ¹ÓÃµÄµãÊý£º\r\n \r\n#r" +
-                "#L1#Ò»°ãµãÊý\r\n" +
-                "#L2#·ãÒ¶µãÊý";
+        msg = "ï¿½ï¿½NPCï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ã²¥ï¿½ï¿½ï¿½Ü£ï¿½Ê¹ï¿½ï¿½Ò»ï¿½ï¿½Îª" + neededCash + "ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½)\r\n" +
+                "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄµï¿½ï¿½ï¿½ï¿½ï¿½\r\n \r\n#r" +
+                "#L1#Ò»ï¿½ï¿½ï¿½ï¿½ï¿½\r\n" +
+                "#L2#ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½";
         cm.sendSimple(msg);
     } else if (status == 1) {
         if (mode == 1) {
             Cash = selection;
         }
-        msg = "ÇëÑ¡ÔñÒª··ÂôµÄµÀ¾ßÖÖÀà#r\r\n" +
-                "#L1#×°±¸À¸\r\n" +
-                "#L2#ÏûºÄÀ¸\r\n" +
-                "#L3#×°ÊÎÀ¸\r\n" +
-                "#L4#ÆäËûÀ¸\r\n" +
-                "#L5#ÌØÊâÀ¸";
+        msg = "ï¿½ï¿½Ñ¡ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#r\r\n" +
+                "#L1#×°ï¿½ï¿½ï¿½ï¿½\r\n" +
+                "#L2#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n" +
+                "#L3#×°ï¿½ï¿½ï¿½ï¿½\r\n" +
+                "#L4#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\r\n" +
+                "#L5#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
         cm.sendSimple(msg);
     } else if (status == 2) {
-        msg = "ÇëÑ¡ÔñÒª¹ã²¥µÄµÀ¾ß\r\n";
+        msg = "ï¿½ï¿½Ñ¡ï¿½ï¿½Òªï¿½ã²¥ï¿½Äµï¿½ï¿½ï¿½\r\n";
         if (mode == 1) {
             bag = selection;
             inv = cm.getInventory(bag);
@@ -88,7 +88,7 @@ function action(mode, type, selection) {
     } else if (status == 3) {
         selected = selection - 1;
         if (selected >= inv.getSlotLimit()) {
-            msg = "´íÎó£¬ÇëÉÔºóÔÙÊÔ¡£";
+            msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô¡ï¿½";
             cm.sendNext(msg);
             cm.dispose();
             return;
@@ -99,22 +99,22 @@ function action(mode, type, selection) {
 
         }
         if (statsSel == null) {
-            msg = "´íÎó£¬ÇëÉÔºóÔÙÊÔ¡£";
+            msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô¡ï¿½";
             cm.sendNext(msg);
             cm.dispose();
             return;
         }
         itemId = statsSel.getItemId();
-        msg = "ÇëÈ·ÈÏÒÔÏÂÊÂÏîÊÇ·ñÕýÈ·£º\r\n" +
-                "\tÒ»¡¢Ê¹ÓÃµãÊýÀàÐÍÎª£º" + (Cash == 1 ? "ÆÕÍ¨µãÊý" : Cash == 2 ? "·ãÒ¶µãÊý" : "·¢Éú´íÎó") + "\r\n" +
-                "\t¶þ¡¢Ñ¡ÔñµÀ¾ßÀ¸Î»Îª£º" + (bag == 1 ? "×°±¸" : bag == 2 ? "ÏûºÄ" : bag == 3 ? "×°ÊÎ" : bag == 4 ? "ÆäËû" : bag == 5 ? "ÌØÊâ" : "·¢Éú´íÎó") + "À¸\r\n" +
-                "\tÈý¡¢ËùÑ¡ÔñµÄµÀ¾ßÎª£º#v" + itemId + "##t" + itemId + "#\r\n";
+        msg = "ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·ï¿½ï¿½\r\n" +
+                "\tÒ»ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½" + (Cash == 1 ? "ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½" : Cash == 2 ? "ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½" : "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½") + "\r\n" +
+                "\tï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»Îªï¿½ï¿½" + (bag == 1 ? "×°ï¿½ï¿½" : bag == 2 ? "ï¿½ï¿½ï¿½ï¿½" : bag == 3 ? "×°ï¿½ï¿½" : bag == 4 ? "ï¿½ï¿½ï¿½ï¿½" : bag == 5 ? "ï¿½ï¿½ï¿½ï¿½" : "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½") + "ï¿½ï¿½\r\n" +
+                "\tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Äµï¿½ï¿½ï¿½Îªï¿½ï¿½#v" + itemId + "##t" + itemId + "#\r\n";
         cm.sendYesNo(msg);
     } else if (status == 4) {
-        // ¾É°æ¹¦ÄÜ
-        // msg = "ÇëÊäÈëÒª¹ã²¥µÄÑ¶Ï¢";
+        // ï¿½É°æ¹¦ï¿½ï¿½
+        // msg = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ã²¥ï¿½ï¿½Ñ¶Ï¢";
         // cm.sendGetText(msg);
-        msg = "ÇëÑ¡ÔñÒª¹ã²¥³öÀ´µÄÆµµÀÊýÖµ( ÆµµÀ-¶´Êý µÄÆµµÀ)\r\n" +
+        msg = "ï¿½ï¿½Ñ¡ï¿½ï¿½Òªï¿½ã²¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Öµ( Æµï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æµï¿½ï¿½)\r\n" +
                 "#L1#1\r\n" +
                 "#L2#2\r\n" +
                 "#L3#3\r\n" +
@@ -127,7 +127,7 @@ function action(mode, type, selection) {
         cm.sendSimple(msg);
     } else if (status == 5) {
         s = selection;
-        msg = "ÇëÑ¡ÔñÒª¹ã²¥³öÀ´µÄ¶´ÊýÊýÖµ( ÆµµÀ-¶´Êý µÄ¶´Êý)\r\n" +
+        msg = "ï¿½ï¿½Ñ¡ï¿½ï¿½Òªï¿½ã²¥ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Öµ( Æµï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½)\r\n" +
                 "#L1#1\r\n" +
                 "#L2#2\r\n" +
                 "#L3#3\r\n" +
@@ -141,7 +141,7 @@ function action(mode, type, selection) {
     } else if (status == 6) {
         h = selection;
         if (cm.getPlayer().getCSPoints(Cash) < neededCash) {
-            msg = "ÄúµÄµãÊý²»×ã¡£";
+            msg = "ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¡£";
             cm.sendNext(msg);
             cm.dispose();
             return;
@@ -149,7 +149,7 @@ function action(mode, type, selection) {
         cm.getPlayer().setAcLog(bosslog[day]);
         cm.getPlayer().modifyCSPoints(Cash, -neededCash, false);
         // var text = cm.getText();
-        var text = "      " + s + " - " + h + " ¿ìÀ´Õâ±ßÕÒÎÒÂò°É!";
+        var text = "      " + s + " - " + h + " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
         World.Broadcast.broadcastMessage(MaplePacketCreator.getGachaponMega(cm.getPlayer().getName(), " : " + text, statsSel, 0).getBytes());
         cm.dispose();
     } else {

@@ -68,8 +68,8 @@ function action(mode, type, selection) {
             } else if (cm.getPlayer().getCSPoints(1) >= 9999) {
                 cm.gainNX(-520);
                 //cm.gainItem(4031409, 1);//
-				Packages.handling.world.World.Broadcast.broadcastSmega(Packages.tools.MaplePacketCreator.serverNotice(12, cm.getClient().getChannel(),"张三 : 你好啊啊",true).getBytes());
-                //cm.喇叭(1, "恭喜[" + cm.getPlayer().getName() + "]成功购买结婚钥匙一个，请和你的伴侣一起进入结婚地图，准备结婚吧！！");
+				//Packages.handling.world.World.Broadcast.broadcastSmega(Packages.tools.MaplePacketCreator.serverNotice(12, cm.getClient().getChannel(),"张三 : 你好啊啊",true).getBytes());
+                cm.喇叭(2, "恭喜[" + cm.getPlayer().getName() + "]成功购买结婚钥匙一个，请和你的伴侣一起进入结婚地图，准备结婚吧！！");
                 cm.sendOk("购买成功！");
                 cm.dispose();
             } else {

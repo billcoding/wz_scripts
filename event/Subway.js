@@ -1,4 +1,4 @@
-//importPackage(Packages.tools);
+importPackage(Packages.tools);
 
 var closeTime = 120000; //The time to close the gate
 var beginTime = 120000; //The time to begin the ride
@@ -23,8 +23,8 @@ function init() {
 function scheduleNew() {
     em.setProperty("docked", "true");
     em.setProperty("entry", "true");
-    KC_docked.broadcastMessage(tools.MaplePacketCreator.serverNotice(6, "地铁列车2号线:开往废弃都市的列车已经到达。"));
-    NLC_docked.broadcastMessage(tools.MaplePacketCreator.serverNotice(6, "地铁列车1号线:开往新叶城的列车已经到达。"));
+    KC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地铁列车2号线:开往废弃都市的列车已经到达。"));
+    NLC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地铁列车1号线:开往新叶城的列车已经到达。"));
     em.schedule("stopEntry", closeTime);
     em.schedule("takeoff", beginTime);
 }
@@ -43,11 +43,11 @@ function takeoff() {
     while(temp2.hasNext()) {
         temp2.next().changeMap(Subway_to_KC, Subway_to_KC.getPortal(0));
     }
-    KC_docked.broadcastMessage(tools.MaplePacketCreator.serverNotice(6, "地鐵列車已經離開了."));
-    NLC_docked.broadcastMessage(tools.MaplePacketCreator.serverNotice(6, "地鐵列車已經離開了."));
+    KC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地鐵列車已經離開了."));
+    NLC_docked.broadcastMessage(MaplePacketCreator.serverNotice(6, "地鐵列車已經離開了."));
     var temp = rideTime / 1000;
-    Subway_to_KC.broadcastMessage(tools.MaplePacketCreator.getClock(temp));
-    Subway_to_NLC.broadcastMessage(tools.MaplePacketCreator.getClock(temp));
+    Subway_to_KC.broadcastMessage(MaplePacketCreator.getClock(temp));
+    Subway_to_NLC.broadcastMessage(MaplePacketCreator.getClock(temp));
     em.schedule("arrived", rideTime);
 }
 

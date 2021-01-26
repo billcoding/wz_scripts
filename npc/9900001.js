@@ -3,11 +3,11 @@
  Map(s): 		Victoria Road : Ellinia (180000000)
  Description: 		Maxes out your stats and able to modify your equipment stats
  */
-//importPackage(java.lang);
+importPackage(java.lang);
 
 var status = 0;
 var slot = Array();
-var stats = Array("Á¦Á¿", "Ãô½Ý", "ÖÇÁ¦", "ÐÒÔË", "HP", "MP", "ÎïÀí¹¥»÷", "Ä§·¨¹¥»÷", "ÎïÀí·ÀÓù", "Ä§·¨·ÀÓù", "ÃüÖÐÂÊ", "»Ø±ÜÂÊ", "ÁéÃô¶È", "ÒÆ¶¯ËÙ¶È", "ÌøÔ¾Á¦", "¾íÖáÊý", "»Æ½ðÌú´¸Ê¹ÓÃÊý", "Ê¹ÓÃ¾íÖáÊý", "ÐÇÐÇÊý", "Ç³ÄÜ 1", "Ç³ÄÜ 2", "Ç³ÄÜ 3", "×°±¸Ãû×Ö");
+var stats = Array("ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "HP", "MP", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½Ø±ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½", "ï¿½ï¿½Ô¾ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½", "Ê¹ï¿½Ã¾ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "Ç³ï¿½ï¿½ 1", "Ç³ï¿½ï¿½ 2", "Ç³ï¿½ï¿½ 3", "×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 var selected;
 var statsSel;
 
@@ -28,9 +28,9 @@ function action(mode, type, selection) {
 
     if (status == 0) {
         if (cm.getPlayerStat("ADMIN") == 1) {
-            cm.sendSimple("Ç×°®µÄ#h \r\n¹ÜÀíÔ±ÎÒÄÜÎªÄú×öÊ²Ã´ÄØ£¿£¿#b\r\n#L0#°ïÎÒÄÜÁ¦Öµ¼Óµ½È«Âú£¡£¡#l\r\n#L1#°ïÎÒ¼¼ÄÜ¼Óµ½È«Âú£¡£¡#l\r\n#L2#°ïÎÒÐÞ¸Ä×°±¸ÊýÖµ£¡£¡#l\r\n#L4#°ïÎÒ³õÊ¼»¯AP/SP£¡#l#k");
+            cm.sendSimple("ï¿½×°ï¿½ï¿½ï¿½#h \r\nï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½Ø£ï¿½ï¿½ï¿½#b\r\n#L0#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Óµï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#l\r\n#L1#ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½Ü¼Óµï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#l\r\n#L2#ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½×°ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½#l\r\n#L4#ï¿½ï¿½ï¿½Ò³ï¿½Ê¼ï¿½ï¿½AP/SPï¿½ï¿½#l#k");
         } else if (cm.getPlayerStat("GM") == 1) {
-            cm.sendSimple("Ç×°®µÄ#h \r\n¹ÜÀíÔ±ÎÒÄÜÎªÄú×öÊ²Ã´ÄØ£¿£¿#b\r\n#L0#°ïÎÒÄÜÁ¦Öµ¼Óµ½È«Âú£¡£¡#l\r\n#L1#°ïÎÒ¼¼ÄÜ¼Óµ½È«Âú£¡£¡#l\r\n#L2#°ïÎÒÐÞ¸Ä×°±¸ÊýÖµ£¡£¡#l\r\n#L4#°ïÎÒ³õÊ¼»¯AP/SP£¡#l#k");
+            cm.sendSimple("ï¿½×°ï¿½ï¿½ï¿½#h \r\nï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½Ø£ï¿½ï¿½ï¿½#b\r\n#L0#ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Óµï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#l\r\n#L1#ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½Ü¼Óµï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#l\r\n#L2#ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½×°ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½#l\r\n#L4#ï¿½ï¿½ï¿½Ò³ï¿½Ê¼ï¿½ï¿½AP/SPï¿½ï¿½#l#k");
         } else {
             cm.dispose();
         }
@@ -38,7 +38,7 @@ function action(mode, type, selection) {
         if (selection == 0) {
             if (cm.getPlayerStat("GM") == 1) {
                 cm.maxStats();
-                cm.sendOk("ÒÑ¾­°ïÄú¼ÓÂúÁË£¡£¡");
+                cm.sendOk("ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½");
             }
             cm.dispose();
         } else if (selection == 1) {
@@ -55,18 +55,18 @@ function action(mode, type, selection) {
                 }
                 slot.push(i);
             }
-            cm.sendSimple("ÏëÒªÐÞ¸ÄÄÄÒ»¼þ×°±¸ÄÜÁ¦ÖµÄØ£¿£¿\r\n#b" + avail);
+            cm.sendSimple("ï¿½ï¿½Òªï¿½Þ¸ï¿½ï¿½ï¿½Ò»ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ø£ï¿½ï¿½ï¿½\r\n#b" + avail);
         } else if (selection == 3 && cm.getPlayerStat("ADMIN") == 1) {
             var eek = cm.getAllPotentialInfo();
             var avail = "";
             for (var ii = 0; ii < eek.size(); ii++) {
-                avail += "#L" + eek.get(ii) + "#Ç³ÄÜ ID " + eek.get(ii) + "#l\r\n";
+                avail += "#L" + eek.get(ii) + "#Ç³ï¿½ï¿½ ID " + eek.get(ii) + "#l\r\n";
             }
-            cm.sendSimple("ÇëÎÊÏëÁË½â£¿£¿\r\n#b" + avail);
+            cm.sendSimple("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë½â£¿ï¿½ï¿½\r\n#b" + avail);
             status = 9;
         } else if (selection == 4) {
             cm.getPlayer().resetAPSP();
-            cm.sendNext("Íê³É£¬Çë»»ÆµµÀorÖØÐÂµÇÈë¡£");
+            cm.sendNext("ï¿½ï¿½É£ï¿½ï¿½ë»»Æµï¿½ï¿½orï¿½ï¿½ï¿½Âµï¿½ï¿½ë¡£");
             cm.dispose();
         } else {
             cm.dispose();
@@ -77,17 +77,17 @@ function action(mode, type, selection) {
         for (var i = 0; i < stats.length; i++) {
             text += "#L" + i + "#" + stats[i] + "#l\r\n";
         }
-        cm.sendSimple("ÄãÏëÒªÐÞ¸ÄÄãµÄ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k.\r\nÏëÐÞ¸ÄÄÄ¸öÄÜÁ¦Öµ£¿£¿\r\n#b" + text);
+        cm.sendSimple("ï¿½ï¿½ï¿½ï¿½Òªï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k.\r\nï¿½ï¿½ï¿½Þ¸ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½\r\n#b" + text);
     } else if (status == 3 && cm.getPlayerStat("ADMIN") == 1) {
         statsSel = selection;
         if (selection == 22) {
-            cm.sendGetText("ÇëÎÊÄãÏëÉèÖÃ¶àÉÙ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " ÄÜÁ¦Öµ?");
+            cm.sendGetText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " ï¿½ï¿½ï¿½ï¿½Öµ?");
         } else {
-            cm.sendGetNumber("ÇëÎÊÄãÏëÉèÖÃ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " ¶àÉÙÄÜÁ¦Öµ?", 0, 0, 32767);
+            cm.sendGetNumber("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ?", 0, 0, 32767);
         }
     } else if (status == 4 && cm.getPlayerStat("ADMIN") == 1) {
         cm.changeStat(slot[selected], statsSel, selection);
-        cm.sendOk("ÄãµÄ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " ÒÑ±»ÉèÖÃÎª " + selection + ".");
+        cm.sendOk("ï¿½ï¿½ï¿½ #b#t" + cm.getInventory(-1).getItem(slot[selected]).getItemId() + "##k's " + stats[statsSel] + " ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½Îª " + selection + ".");
         cm.dispose();
         cm.getPlayer().fakeRelog();
     } else if (status == 10 && cm.getPlayerStat("ADMIN") == 1) {

@@ -1,5 +1,5 @@
 
-//importPackage(net.sf.cherry.client);
+
 var status = 0;
 var 确定 = "#fUI/Login.img/BtOk/normal/0#";
 var 取消 = "#fUI/Login.img/BtCancel/normal/0#";

@@ -1,4 +1,3 @@
-// importPackage(net.sf.odinms.client);
 var status = 0;
 
 var ttt = "#fUI/UIWindow.img/Quest/icon9/0#";
@@ -23,9 +22,9 @@ function action(mode, type, selection) {
 
         if (status == 0) {
 
-            var textz = "\r\nÄãÒªÌôÕ½#r ´óòÚò¼Íõ#k£¿Ï£ÍûÄãÓÐÄÇ¸öÊµÁ¦\r\n";
+            var textz = "\r\nï¿½ï¿½Òªï¿½ï¿½Õ½#r ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#kï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½Êµï¿½ï¿½\r\n";
 
-            textz += "#r#L0#" + ttt + "ÌôÕ½òÚò¼Íõ    #d(Ã¿ÌìÏÞÖÆ60´Î,µ±Ç°ÒÑ¾­ÌôÕ½"+cm.getBossLog("òÚò¼")+"´Î)\r\n";
+            textz += "#r#L0#" + ttt + "ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ï¿½    #d(Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½60ï¿½ï¿½,ï¿½ï¿½Ç°ï¿½Ñ¾ï¿½ï¿½ï¿½Õ½"+cm.getBossLog("ï¿½ï¿½ï¿½")+"ï¿½ï¿½)\r\n";
 
             cm.sendSimple(textz);
 
@@ -34,18 +33,18 @@ function action(mode, type, selection) {
             if (selection == 0) {
 				if ((cm.getQuestStatus(4103) == 1 && cm.haveItem(4031289 ,1)) || cm.getQuestStatus(8510) == 2) {
 		} else {
-		cm.sendOk("ÄãÃ»ÓÐÍê³ÉÅ©ÃñµÄ°ÝÍÐÈÎÎñ!");
+		cm.sendOk("ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 		cm.dispose();
 	}
 				
                 if (cm.getLevel() < 40) {
-                    cm.sendOk("µÈ¼¶²»×ã40");
+                    cm.sendOk("ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½40");
                     cm.dispose();
-                } else if (cm.getBossLog("òÚò¼") >= 60) {
-                    cm.sendOk("#b´óòÚò¼Íõ#k Ã¿ÌìÖ»ÄÜÌôÕ½#r 60 #k´Î");
+                } else if (cm.getBossLog("ï¿½ï¿½ï¿½") >= 60) {
+                    cm.sendOk("#bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#k Ã¿ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Õ½#r 60 #kï¿½ï¿½");
                     cm.dispose();
                 } else {
-                    cm.setBossLog("òÚò¼");
+                    cm.setBossLog("ï¿½ï¿½ï¿½");
                     cm.warp(701010321, 0);
                     cm.dispose();
                 }
@@ -73,7 +72,7 @@ function action(mode, type, selection) {
 		cm.warp(701010321);
 		cm.dispose();
 		} else {
-		cm.sendOk("ÄãÃ»ÓÐÍê³ÉÅ©ÃñµÄ°ÝÍÐÈÎÎñ!");
+		cm.sendOk("ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 		cm.dispose();
 	}
 } */
