@@ -1,3 +1,11 @@
+function 取随机数(a, b) {
+    return randRange(a, b);
+}
+
+function 物品类型(itemId) {
+    return itemType(itemId)
+}
+
 function randRange(a, b) {
     if (!(typeof (a) === "number" && typeof (b) === "number")) {
         return 0;
