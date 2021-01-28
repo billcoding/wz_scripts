@@ -1,13 +1,12 @@
 /* ==================
- �ű�����:  NPC	    
- �ű����ߣ�����ؼ     
- ��ϵ��ʽ��840645183  
+ 脚本类型:  NPC	    
+ 脚本作者：故事丶     
+ 联系方式：840645183  
  =====================
  */
 
-
 importPackage(java.awt);
-//���������� �������ˢ����
+//任务道具清除 以免玩家刷道具
 var PQItems = new Array(4001022, 4001023);
 var status;
 
@@ -26,7 +25,7 @@ function action(mode, type, selection) {
         var leaderPreamble = eim.getProperty("crackLeaderPreamble");
         if (leaderPreamble == null) {
             eim.setProperty("crackLeaderPreamble", "done");
-            cm.sendNext("��ӭ���� ���֮�� - (#r�������#k) #bBoss#k�׶�\r\n\r\n�������Ķ�Աһ����#r����ɯ��#k���#b#z4001023##kȻ�󽻸��ҡ���֪������ɯ����ô�ٻ���?���������ĸ�����û��������#r����ɯ��#k�ͻ���֡���");
+            cm.sendNext("欢迎来到 玩具之城 - (#r组队任务#k) #bBoss#k阶段\r\n\r\n请你和你的队员一起打败#r阿丽莎乐#k获得#b#z4001023##k然后交给我……知道阿丽莎乐怎么召唤吗?看到空中哪个老鼠没？消灭它#r阿丽莎乐#k就会出现……");
             cm.dispose();
         } else {
             if (cm.haveItem(4001023) && cm.isLeader()) {
@@ -39,7 +38,7 @@ function action(mode, type, selection) {
                 } else {
                     eim.leftParty(cm.getPlayer());
                 }
-				cm.worldMessage(6,"��ң�["+cm.getName()+"]�������Ķ�������������Ӹ�����");
+				cm.worldMessage(6,"玩家：["+cm.getName()+"]带领他的队伍完成了玩具组队副本！");
 				cm.givePartyItems(4170005,1);
 				if(cm.getPlayer().getmrfbrw() == 2){
 							cm.givePartyFb(1);
@@ -49,14 +48,14 @@ function action(mode, type, selection) {
 
 
 //status = 0;
-                //cm.sendSimple("��л���Ǹ��Ҵ�����#r#z4001023##k�������ڿ��Խ������Ķ�Ա���͵�������ͼ,��������֮ǰ�������һ��ѡ����ô�����ҡ��������Ķ�������ʲô��\r\n\r\n#b#L0#��ȡ���� (���ش�ׯ)#l\r\n");
+                //cm.sendSimple("感谢你们给我带来了#r#z4001023##k。我现在可以将你和你的队员传送到奖励地图,但是在这之前你必须做一个选择。那么告诉我……你和你的队友想做什么？\r\n\r\n#b#L0#领取奖励 (返回村庄)#l\r\n");
             } else {
-                cm.sendNext("��ȷ�����Ҵ�����#r#z4001023##k������һ���Լ��ı���������������#r#z4001023##k�ҿ��Խ������Ķ�Աһ���͵�������ͼ����ô����");
+                cm.sendNext("你确定给我带来了#r#z4001023##k？请检查一下自己的背包。如果你带来了#r#z4001023##k我可以将你和你的队员一起传送到奖励地图。怎么样？");
                 cm.dispose();
             }
         }
     } else if (status == -1 && !cm.isLeader()) {
-        cm.sendNext("��ӭ���� ���֮�� - (#r�������#k) #bBoss#k�׶�\r\n\r\n�������Ķ�Աһ����#r����ɯ��#k���#b#z4001023#k#kȻ�󽻸��ҡ���֪������ɯ����ô�ٻ���?���������ĸ�����û��������#r����ɯ��#k�ͻ���֡���");
+        cm.sendNext("欢迎来到 玩具之城 - (#r组队任务#k) #bBoss#k阶段\r\n\r\n请你和你的队员一起打败#r阿丽莎乐#k获得#b#z4001023#k#k然后交给我……知道阿丽莎乐怎么召唤吗?看到空中哪个老鼠没？消灭它#r阿丽莎乐#k就会出现……");
         cm.dispose();
          } else if (status == 0 && cm.isLeader()) {
         /*
@@ -92,7 +91,7 @@ function action(mode, type, selection) {
          bem.startInstance(cm.getParty(), cm.getPlayer().getMap());
          cm.dispose();
          } else {
-         cm.sendNext("�����ļ�û�п���������ϵ����Ա��");
+         cm.sendNext("配置文件没有开启。请联系管理员。");
          cm.dispose();
          }
          */

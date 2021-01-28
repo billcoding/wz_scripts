@@ -13,14 +13,14 @@ var sel;
 
 function start() {
     if ((cm.getPlayer().getLevel() < 50) && !cm.getPlayer().isGM()) {
-		cm.sendNext("�㲻�� level 20 and 30. �Բ��������ܲ��μ�.");
+		cm.sendNext("你不在 level 20 and 30. 对不起，您可能不参加.");
         cm.dispose();
         return;
     }
     if(cm.getPlayer().getMapId() % 10 == 1)
-        cm.sendSimple("�������һ��������?\r\n#b#L0# ���� #t2270002# and #t2100067#.#l\r\n#L1# �Ҹ���ʲô?#l\r\n#L2# �����뿪����.#l");
+        cm.sendSimple("你对我有一个请求吗?\r\n#b#L0# 给我 #t2270002# and #t2100067#.#l\r\n#L1# 我该做什么?#l\r\n#L2# 让我离开这里.#l");
     else
-        cm.sendSimple(cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) == cm.getPlayer().getName() ? "���뿪ʼ������?#b\r\n#b#L3# ׼������ս��!!#l\r\n#L1# ��������һ����ɫ.#l\r\n#L2# �����뿪����.#l" : "����Ҫʲô?#b\r\n#L2# �����뿪����.#l");
+        cm.sendSimple(cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) == cm.getPlayer().getName() ? "你想开始比赛吗?#b\r\n#b#L3# 准备进入战场!!#l\r\n#L1# 我想踢另一个角色.#l\r\n#L2# 让我离开这里.#l" : "你想要什么?#b\r\n#L2# 让我离开这里.#l");
 }
 
 function action(mode, type, selection){
@@ -39,19 +39,19 @@ function action(mode, type, selection){
                 sel = selection;
             if (sel == 0) {
                 if (cm.haveItem(2270002))
-                    cm.sendNext("���Ѿ�ӵ�� #b#t2270002##k.");
+                    cm.sendNext("你已经拥有 #b#t2270002##k.");
                 else if (cm.canHold(2270002) && cm.canHold(2100067)) {
                     if (cm.haveItem(2100067))
                         cm.removeAll(2100067);
                     cm.gainItem(2270002, 32);
                     cm.gainItem(2100067, 5);
-                    cm.sendNext("���ڽ��͹����HP����ʹ�� #b#t2270002##k �������ǵ�����!");
+                    cm.sendNext("现在降低怪物的HP，并使用 #b#t2270002##k 吸收他们的力量!");
                 } else
-                    cm.sendNext("���Ͳ鿴�Ƿ�ʹ�ÿ����ȫ");
+                    cm.sendNext("检查和查看是否使用库存是全");
                 cm.dispose();
             } else if(sel == 1) {
 				status = 1;
-                cm.sendNext("����Ҫ��ʲô����һ���������ġ�����������ϸ����.");
+                cm.sendNext("你需要做什么？你一定是新来的。请允许我详细解释.");
             } else
                 cm.sendYesNo("Are you sure you want to leave?"); //No GMS like.
         } else if (status == 1) {
@@ -61,11 +61,11 @@ function action(mode, type, selection){
                 return;
             }
 		} else if (status == 2) {
-            cm.sendNextPrev("����ĺܼ򵥡����õ� #b#t2270002##k �������ϣ�����������Ҫ����һ�����ϵ��� HP�ӹ��Ȼ��ʹ�� #b#t2270002##k ��ȡ��޴������.");
+            cm.sendNextPrev("这真的很简单。你会得到 #b#t2270002##k 从我身上，你的任务就是要消除一个集合的量 HP从怪物，然后使用 #b#t2270002##k 吸取其巨大的力量.");
         } else if (status == 3)
-            cm.sendNextPrev("�ܼ򵥡�����������˹��������#b#t2270002##k, Ȼ������� #b#t4031868##k, ����Ů�����дﰮ���������鱦ս����ʤ��Ϊ��Ӯ�ñ�����Ϊ�˷�ֹ���˵����գ���ʵ������һ���������뷨.");
+            cm.sendNextPrev("很简单。如果你吸收了怪物的力量#b#t2270002##k, 然后你会做 #b#t4031868##k, 这是女王阿列达爱。与大多数珠宝战斗获胜。为了赢得比赛，为了防止别人的吸收，这实际上是一个聪明的想法.");
         else if (status == 4)
-            cm.sendNextPrev("һ����. #r����ܲ���ʹ�ó���.#k���?~!");
+            cm.sendNextPrev("一件事. #r你可能不会使用宠物.#k理解?~!");
         else if (status == 5)
             cm.dispose();
     } else {
@@ -75,7 +75,7 @@ function action(mode, type, selection){
                 sel = selection;
             if (sel == 1)
                 if (cm.getPlayerCount(cm.getPlayer().getMapId()) > 1) {
-                    var text = "�����˭�ķ�������һ��?"; //Not GMS like text
+                    var text = "你想从谁的房间里踢一脚?"; //Not GMS like text
                     var name;
                     for (var i = 0; nextchar.hasNext(); i++) {
                         name = nextchar.next().getName();
@@ -84,19 +84,19 @@ function action(mode, type, selection){
                     }
                     cm.sendSimple(text);
                 } else {
-                    cm.sendNext("����û��ʲô���Ա��ߵĽ�ɫ��");
+                    cm.sendNext("现在没有什么可以被踢的角色。");
                     cm.dispose();
                 }
             else if (sel == 2) {
                 if (cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) == cm.getPlayer().getName())
-                    cm.sendYesNo("��ȷ����Ҫ�뿪�����Ǿ����������䣬����������뿪������ս�����������ر�.");
+                    cm.sendYesNo("你确定你要离开吗？你是竞技场的领袖，所以如果你离开，整个战斗竞技场将关闭.");
                 else
-                    cm.sendYesNo("��ȷ����Ҫ�뿪��?"); //No GMS like.
+                    cm.sendYesNo("你确定你要离开吗?"); //No GMS like.
             } else if (sel == 3)
                 if (cm.getPlayerCount(cm.getPlayer().getMapId()) > 0 )
-                    cm.sendYesNo("���䶼��һ�ף�û�������Ľ�ɫ���Լ����ⳡս���ľ��������������ڿ�ʼ��Ϸ��?");
+                    cm.sendYesNo("房间都是一套，没有其他的角色可以加入这场战斗的竞技场。你想现在开始游戏吗?");
                 else {
-                    cm.sendNext("��������Ҫ2������������ʼ����.");
+                    cm.sendNext("你至少需要2名参与者来开始比赛.");
                     cm.dispose();
                 }
         } else if (status == 1) {
@@ -107,13 +107,13 @@ function action(mode, type, selection){
                         break;
                     } else
                         nextchar.next();
-                cm.sendNext("��ұ��߳�����̨."); //Not GMS like
+                cm.sendNext("玩家被踢出了舞台."); //Not GMS like
             } else if(sel == 2) {
                 if (cm.getPlayer().getAriantRoomLeaderName(((cm.getPlayer().getMapId() / 100) % 10) - 1) != cm.getPlayer().getName())
                     cm.warp(980010000);
                 else {
                     cm.getPlayer().removeAriantRoom((cm.getPlayer().getMapId() / 100) % 10);
-                    cm.mapMessage(6, cm.getPlayer().getName() + " �Ѿ��뿪����̨��������̨�����ڽ��ر�.");
+                    cm.mapMessage(6, cm.getPlayer().getName() + " 已经离开了舞台，所以舞台上现在将关闭.");
                     cm.warpMap(980010000);
                 }
             } else {

@@ -26,58 +26,58 @@ function action(mode, type, selection) {
             var txta = "";
             var txtas = "";
 			if(cm.getPlayer().getLevel() < 10){
-                txt += "#e��10���Ժ��������ҽ�����";
+                txt += "#e请10级以后再来找我接任务！";
                 cm.sendOk(txt);
                 cm.dispose();
-			}else if (cm.getSGRW() == 0 && cm.getSGRWA() == 0 &&��cm.getPlayer().getmrsgrw() == 0 && cm.getPlayer().getmrsgrwa() == 0){
-				txt = "#e#r��ã�������ÿ��ɱ��������Ұ������ɱ�ֵ�ͬʱҲ������������ִ����ܲ���ɡ�\r\n\r\n";
-                txt += "#L1##b��ȡÿ��ɱ������#l";
+			}else if (cm.getSGRW() == 0 && cm.getSGRWA() == 0 &&　cm.getPlayer().getmrsgrw() == 0 && cm.getPlayer().getmrsgrwa() == 0){
+				txt = "#e#r你好，这里是每日杀怪任务，在野外升级杀怪的同时也能完成任务，这种待遇很不错吧。\r\n\r\n";
+                txt += "#L1##b领取每日杀怪任务！#l";
                 cm.sendSimple(txt);
 			}else if (cm.getPlayer().getmrsgrw() > 0 && cm.getPlayer().getmrsgrwa() > 0 && cm.getSGRW() < cm.getPlayer().getmrsgrws() || cm.getSGRWA() < cm.getPlayer().getmrsgrwas()){
-				txt = "��ã�������ÿ��ɱ��������Ұ������ɱ�ֵ�ͬʱҲ������������ִ����ܲ���ɡ�\r\n\r\n";
+				txt = "你好，这里是每日杀怪任务，在野外升级杀怪的同时也能完成任务。这种待遇很不错吧。\r\n\r\n";
 				if(cm.getPlayer().getmrsgrw() == 1130100){
-					txtas = "��ľ��";
+					txtas = "斧木妖";
 				}else if(cm.getPlayer().getmrsgrw() == 210100){
-					txtas = "��ˮ��";
+					txtas = "绿水灵";
 				}else if(cm.getPlayer().getmrsgrw() == 3230308){
-					txtas = "�վ�ȸ";
+					txtas = "空军雀";
 				}else if(cm.getPlayer().getmrsgrw() == 4230100){
-					txtas = "��������";
+					txtas = "冰独眼兽";
 				}else if(cm.getPlayer().getmrsgrw() == 8150100){
-					txtas = "����";
+					txtas = "鲨鱼";
 				}else if(cm.getPlayer().getmrsgrw() == 5130103){
-					txtas = "������";
+					txtas = "黑鳄鱼";
 				}else if(cm.getPlayer().getmrsgrw() == 5200002){
-					txtas = "��ʯ��";
+					txtas = "火石球";
 				}
 				if(cm.getPlayer().getmrsgrwa() == 6230300){
-					txta = "��С��";
+					txta = "红小丑";
 				}else if(cm.getPlayer().getmrsgrwa() == 7130101){
-					txta = "��ǹţħ��";
+					txta = "长枪牛魔王";
 				}else if(cm.getPlayer().getmrsgrwa() == 7130601){
-					txta = "а��٪���";
+					txta = "邪恶侏儒怪";
 				}else if(cm.getPlayer().getmrsgrwa() == 5130102){
-					txta = "��ʯͷ��";
+					txta = "黑石头人";
 				}else if(cm.getPlayer().getmrsgrwa() == 8140103){
-					txta = "����������";
+					txta = "寒冰半人马";
 				}else if(cm.getPlayer().getmrsgrwa() == 8140600){
-					txta = "�Ǻ���";
+					txta = "骨骸鱼";
 				}else if(cm.getPlayer().getmrsgrwa() == 8150300){
-					txta = "�����";
+					txta = "红飞龙";
 				}else if(cm.getPlayer().getmrsgrwa() == 8190005){
-					txta = "������";
+					txta = "泥人妖";
 				}
-                txt += "#b�㵱ǰ������ɽ��ȣ�#l\r\n\r\n";
-                txt += "#r"+txtas+"���������� "+cm.getPlayer().getmrsgrws()+"/"+cm.getSGRW()+" Ŀǰ�Ѿ���ɱ#l\r\n";
-                txt += "#r"+txta+"���������� "+cm.getPlayer().getmrsgrwas()+"/"+cm.getSGRWA()+" Ŀǰ�Ѿ���ɱ#l";
+                txt += "#b你当前任务完成进度：#l\r\n\r\n";
+                txt += "#r"+txtas+"：任务需求 "+cm.getPlayer().getmrsgrws()+"/"+cm.getSGRW()+" 目前已经击杀#l\r\n";
+                txt += "#r"+txta+"：任务需求 "+cm.getPlayer().getmrsgrwas()+"/"+cm.getSGRWA()+" 目前已经击杀#l";
                 cm.sendOk(txt);
                 cm.dispose();
 			}else if (cm.getSGRW() >= cm.getPlayer().getmrsgrws() && cm.getSGRWA() >= cm.getPlayer().getmrsgrwas() && cm.getPlayer().getmrsgrws() > 0 &&  cm.getPlayer().getmrsgrwas() > 0){
-				txt = "��ã�������ÿ��ɱ��������Ұ������ɱ�ֵ�ͬʱҲ������������ִ����ܲ���ɡ�\r\n\r\n";
-                txt += "#L2##b��ϲ�����ÿ��ɱ������[������ȡ����]��#l";
+				txt = "你好，这里是每日杀怪任务，在野外升级杀怪的同时也能完成任务。这种待遇很不错吧。\r\n\r\n";
+                txt += "#L2##b恭喜你完成每日杀怪任务[点我领取奖励]！#l";
                 cm.sendSimple(txt);
             }else{
-                txt += "���Ѿ���ɹ���!\r\n��ڶ���������";
+                txt += "你已经完成过了!\r\n请第二天再来！";
                 cm.sendOk(txt);
                 cm.dispose();
             }
@@ -146,13 +146,13 @@ function action(mode, type, selection) {
 				cm.getPlayer().setmrsgrwa(8190005);	
 				cm.getPlayer().setmrsgrwas(sgsja);	
             }
-                cm.sendOk("�ɹ���ȡÿ��ɱ������\r\n#r�����´��Ҳ鿴�����Լ�Ҫɱ�Ĺ��#l");
+                cm.sendOk("成功领取每日杀怪任务。\r\n#r请重新打开我查看进度以及要杀的怪物。#l");
                 cm.dispose();
         } else if (selection == 2) {
 			if(item > 50){
 					cm.gainItem(4000463, 5);
 				}else{
-					cm.sendOk("������λ����!");
+					cm.sendOk("背包空位不足!");
 					cm.dispose();
 				}
 			
@@ -160,8 +160,8 @@ function action(mode, type, selection) {
 				cm.getPlayer().setmrsgrws(0);
 				cm.getPlayer().setmrsgrwa(0);	
 				cm.getPlayer().setmrsgrwas(0);	
-				cm.worldMessage(6,"��ϲ��ң�["+cm.getName()+"]���ÿ��ɱ�����񣬴��һ��Ĥ�ݰɡ�");
-                cm.sendOk("��ϲ�����ÿ��ɱ����������������!");
+				cm.worldMessage(6,"恭喜玩家：["+cm.getName()+"]完成每日杀怪任务，大家一起膜拜吧。");
+                cm.sendOk("恭喜你完成每日杀怪任务，请明天再来!");
                 cm.dispose();
         }
     }

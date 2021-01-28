@@ -2,10 +2,10 @@ importPackage(Packages.database);
 
 var squadName = "PinkBean";
 var eventName = "PinkBeanBattle";
-var bossID = "Æ·ï¿½ï¿½ï¿½ï¿½"
+var bossID = "Æ·¿ËçÍ"
 var cd = 36 * 60 * 60 * 1000 * 0
 var pbmap = 270050100;
-var minSquadSize = 2;
+var minSquadSize = 1;
 
 var status = -1;
 
@@ -32,58 +32,59 @@ var status = -1;
 function start() {
 	var em = cm.getEventManager(eventName);
 	if (cm.getBossLog(bossID) >= 1 ){
-		cm.sendOk("Ã¿ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Õ½Ò»ï¿½Î£ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ï¿½.");
+		cm.sendOk("Ã¿ÌìÖ»ÄÜÌôÕ½Ò»´Î£¬ÄãÒÑ¾­ÌôÕ½¹ıÁË.");
 		cm.dispose();
 		return;
 	}
 	
-/* 	var nextEnter = getNextEnterTime();
+/* function start() {
+	var em = cm.getEventManager(eventName);
+	if (em == null){
+		cm.sendOk("ÅäÖÃÇåµ¥Îª¿Õ£¬ÇëÁªÏµ¹ÜÀíÔ±.");
+		cm.dispose();
+		return;
+	}
+	
+	var nextEnter = getNextEnterTime();
 	if (nextEnter > cm.getCurrentTime()){
-		cm.sendOk("ï¿½ï¿½ï¿½ï¿½36ï¿½ï¿½Ğ¡Ê±ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Õ½ï¿½ï¿½#b"+ bossID +"#k\r\nÊ£ï¿½ï¿½Ê±ï¿½ä£º" + cm.getReadableMillis(cm.getCurrentTime(), nextEnter));
+		cm.sendOk("ÄúÔÚ36¸öĞ¡Ê±ÄÚÒÑ¾­ÌôÕ½¹ı#b"+ bossID +"#k\r\nÊ£ÓàÊ±¼ä£º" + cm.getReadableMillis(cm.getCurrentTime(), nextEnter));
 		cm.dispose();
 		return;
 	} */
-/* 		if (get){
-		cm.sendOk("ï¿½ï¿½ï¿½ï¿½ï¿½åµ¥Îªï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±.");
-		cm.dispose();
-		return;
-	} */
-	
-	
 	
 	var eim_status = em.getProperty("state");
 	if (eim_status == null || eim_status.equals("0")){
 		var squadAvailability = cm.getSquadAvailability(squadName);
 		if (squadAvailability == -1){
 			status = 0;
-			cm.sendYesNo("ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÔ¶ï¿½ï¿½ï¿½Ó¶Ó³ï¿½ï¿½ï¿½");
+			cm.sendYesNo("ÏÖÔÚ¿ÉÒÔÉêÇëÔ¶Õ÷¶Ó£¬ÄãÏë³ÉÎªÔ¶Õ÷¶Ó¶Ó³¤Âğ£¿");
 		} else if (squadAvailability == 1){ 
 			// -1 = cancelled, 0 = not, 1 = true
 			var type = cm.isSquadLeader(squadName);
 			if (type == -1){
-				cm.sendOk("ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+				cm.sendOk("ÒÑ¾­½áÊøÁËÉêÇë.");
 				cm.dispose();
 			} else if (type  == 0){
 				var memberType = cm.isSquadMember(squadName);
 				if (memberType == 2){
-					cm.sendOk("ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Óµï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½.");
+					cm.sendOk("ÔÚÔ¶Õ÷¶ÓµÄÖÆ²ÃÃûµ¥.");
 					cm.dispose();
 				} else if (memberType == 1){
 					status = 5;
-					cm.sendSimple("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½ï¿½\r\n#b#L2#ï¿½é¿´Ô¶ï¿½ï¿½ï¿½Ó³ï¿½Ô±ï¿½ï¿½#l \r\n#b#L0#ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó¡ï¿½#l ");
+					cm.sendSimple("ÄãÏÖÔÚÏë×öÊ²Ã´£¿\r\n#b#L2#²é¿´Ô¶Õ÷¶Ó³ÉÔ±¡£#l \r\n#b#L0#¼ÓÈëÔ¶Õ÷¶Ó¡£#l ");
 				} else if (memberType == -1) {
-					cm.sendOk("Ô¶ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ñ¾ï¿½ï¿½ïµ½30ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô¡ï¿½");
+					cm.sendOk("Ô¶Õ÷¶ÓÔ±ÒÑ¾­´ïµ½30Ãû£¬ÇëÉÔºóÔÙÊÔ¡£");
 					cm.dispose();
 				} else {
 					status = 5;
-					cm.sendSimple("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½ï¿½\r\n#b#L2#ï¿½é¿´Ô¶ï¿½ï¿½ï¿½Ó³ï¿½Ô±ï¿½ï¿½#l \r\n#b#L0#ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó¡ï¿½#l ");
+					cm.sendSimple("ÄãÏÖÔÚÏë×öÊ²Ã´£¿\r\n#b#L2#²é¿´Ô¶Õ÷¶Ó³ÉÔ±¡£#l \r\n#b#L0#¼ÓÈëÔ¶Õ÷¶Ó¡£#l ");
 				}
 			} else {// IS LEADEAR
 				status = 10;
-				cm.sendSimple("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½ï¿½\r\n#b#L0#ï¿½é¿´Ô¶ï¿½ï¿½ï¿½Ó³ï¿½Ô±ï¿½ï¿½#l \r\n#b#L1#ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó³ï¿½Ô±ï¿½ï¿½#l \r\n#b#L2#ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½#l \r\n#r#L3#ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½#l");
+				cm.sendSimple("ÄãÏÖÔÚÏë×öÊ²Ã´£¿\r\n#b#L0#²é¿´Ô¶Õ÷¶Ó³ÉÔ±¡£#l \r\n#b#L1#¹ÜÀíÔ¶Õ÷¶Ó³ÉÔ±¡£#l \r\n#b#L2#±à¼­ÏŞÖÆÁĞ±í¡£#l \r\n#r#L3#½øÈëµØÍ¼¡£#l");
 			}
 		} else {
-			//ï¿½ï¿½ï¿½PBï¿½ï¿½Í¼ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ğ£ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½
+			//¼ì²âPBµØÍ¼ÓĞÃ»ÓĞÈË£¬Èç¹ûÃ»ÓĞ£¬ÖØÖÃÔ¶Õ÷
 			if( cm.getMonsterCount(pbmap) < 1 || cm.getPlayerCount(pbmap) < 1){
 				var em = cm.getEventManager(eventName);
 				var eim = em.getInstance(eventName);
@@ -98,20 +99,20 @@ function start() {
 			
 			var eim = cm.getDisconnected(eventName);
 			if (eim == null){
-				cm.sendOk("Ô¶ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½Õ½ï¿½Ñ¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½");
+				cm.sendOk("Ô¶Õ÷¶ÓµÄÌôÕ½ÒÑ¾­¿ªÊ¼¡£");
 				cm.safeDispose();
 			} else {
-				cm.sendYesNo("ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+				cm.sendYesNo("ÄãÒª¼ÌĞø½øĞĞÔ¶Õ÷ÈÎÎñÂğ£¿");
 				status = 2;
 			}
 		}
 	} else {
 		var eim = cm.getDisconnected(eventName);
 		if (eim == null) {
-			cm.sendOk("Ô¶ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½Õ½ï¿½Ñ¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½");
+			cm.sendOk("Ô¶Õ÷¶ÓµÄÌôÕ½ÒÑ¾­¿ªÊ¼¡£");
 			cm.safeDispose();
 		} else {
-			cm.sendYesNo("ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			cm.sendYesNo("ÄãÒª¼ÌĞø½øĞĞÔ¶Õ÷ÈÎÎñÂğ£¿");
 			status = 2;
 		}
 	}
@@ -122,17 +123,17 @@ function action(mode, type, selection){
 	switch (status){
 		case 0:
 			if (mode == 1){
-				if (cm.registerSquad(squadName, 5, "ï¿½Ñ¾ï¿½ï¿½ï¿½Îªï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó¶Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ò¿ª¶Ô»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó¡ï¿½" )){
-					cm.sendOk("ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Îªï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó¶Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½Ô±ï¿½Çµï¿½ï¿½ï¿½ï¿½ë¡£");
+				if (cm.registerSquad(squadName, 5, "ÒÑ¾­³ÉÎªÁËÔ¶Õ÷¶Ó¶Ó³¤¡£Èç¹ûÄãÏë¼ÓÈëÔ¶Õ÷¶Ó£¬ÇëÖØĞÂ´ò¿ª¶Ô»°ÉêÇë¼ÓÈëÔ¶Õ÷¶Ó¡£" )){
+					cm.sendOk("ÄãÒÑ¾­³ÉÎªÁËÔ¶Õ÷¶Ó¶Ó³¤¡£½ÓÏÂÀ´µÄ5·ÖÖÓ£¬ÇëµÈ´ı¶ÓÔ±ÃÇµÄÉêÇë¡£");
 					cm.dispose();
 				} else {
-					cm.sendOk("Î´Öªï¿½ï¿½ï¿½ï¿½.");
+					cm.sendOk("Î´Öª´íÎó.");
 				}
 			}
 			break;
 		case 2:
 			if (!cm.reAdd(eventName, squadName)){
-				cm.sendOk("ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½Ä´ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½Ê§ï¿½Ü¡ï¿½");
+				cm.sendOk("ÓÉÓÚÎ´ÖªµÄ´íÎó£¬²Ù×÷Ê§°Ü¡£");
 			}
 			cm.safeDispose();
 			break;
@@ -140,22 +141,22 @@ function action(mode, type, selection){
 			if (selection == 0){//join
 				var ba = cm.addMember(squadName, true);
 				if (ba == 2){
-					cm.sendOk("Ô¶ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ñ¾ï¿½ï¿½ïµ½30ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô¡ï¿½");
+					cm.sendOk("Ô¶Õ÷¶ÓÔ±ÒÑ¾­´ïµ½30Ãû£¬ÇëÉÔºóÔÙÊÔ¡£");
 				} else if (ba == 1){
-					cm.sendOk("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½ï¿½ï¿½Èºï¿½Ó³ï¿½Ö¸Ê¾ï¿½ï¿½");
+					cm.sendOk("ÉêÇë¼ÓÈëÔ¶Õ÷¶Ó³É¹¦£¬ÇëµÈºò¶Ó³¤Ö¸Ê¾¡£");
 				} else {
-					cm.sendOk("ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Î¼ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½Èºï¿½Ó³ï¿½Ö¸Ê¾ï¿½ï¿½");
+					cm.sendOk("ÄãÒÑ¾­²Î¼ÓÁËÔ¶Õ÷¶Ó£¬ÇëµÈºò¶Ó³¤Ö¸Ê¾¡£");
 				}
 			} else if (selection == 1){//withdraw
 				var baa = cm.addMember(squadName, false);
 				if (baa == 1){
-					cm.sendOk("ï¿½Æ²ï¿½Ö¸ï¿½ï¿½ï¿½Ä¶ï¿½Ô±ï¿½É¹ï¿½ï¿½ï¿½");
+					cm.sendOk("ÖÆ²ÃÖ¸¶¨µÄ¶ÓÔ±³É¹¦¡£");
 				} else {
-					cm.sendOk("ï¿½ï¿½Ã»ï¿½Ğ²Î¼ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½");
+					cm.sendOk("ÄãÃ»ÓĞ²Î¼ÓÔ¶Õ÷¶Ó");
 				}
 			} else if (selection == 2){
 				if (!cm.getSquadList(squadName, 0)){
-					cm.sendOk("ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½Ä´ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½Ê§ï¿½ï¿½.");
+					cm.sendOk("ÓÉÓÚÎ´ÖªµÄ´íÎó£¬²Ù×÷Ê§°Ü.");
 				}
 			}
 			cm.dispose();
@@ -164,19 +165,19 @@ function action(mode, type, selection){
 			if (mode == 1){
 				if (selection == 0){
 					if (!cm.getSquadList(squadName, 0)){
-						cm.sendOk("ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½Ä´ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½Ê§ï¿½ï¿½.");
+						cm.sendOk("ÓÉÓÚÎ´ÖªµÄ´íÎó£¬²Ù×÷Ê§°Ü.");
 					}
 					cm.dispose();
 				} else if (selection == 1 ){
 					status = 11;
 					if (!cm.getSquadList(squadName, 0)){
-						cm.sendOk("ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½Ä´ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½Ê§ï¿½ï¿½.");
+						cm.sendOk("ÓÉÓÚÎ´ÖªµÄ´íÎó£¬²Ù×÷Ê§°Ü.");
 						cm.dispose();
 					}
 				} else if (selection == 2){
 					status = 12;
 					if (!cm.getSquadList(squadName, 0)){
-						cm.sendOk("ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½Ä´ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½Ê§ï¿½ï¿½.");
+						cm.sendOk("ÓÉÓÚÎ´ÖªµÄ´íÎó£¬²Ù×÷Ê§°Ü.");
 						cm.dispose();
 					}
 				} else if (selection == 3){
@@ -184,19 +185,19 @@ function action(mode, type, selection){
 					if (enteringSquad != null){
 						var membercount = enteringSquad.getSquadSize();
 						if (membercount < minSquadSize){
-							cm.sendOk("Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½"+ minSquadSize +"ï¿½Ë²Å¿ï¿½ï¿½ë³¡ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+membercount);
+							cm.sendOk("Ô¶Õ÷¶ÓĞèÒªÖÁÉÙ"+ minSquadSize +"ÈË²Å¿ÉÈë³¡¡£Ô¶Õ÷¶ÓÈËÊı£º"+membercount);
 							cm.dispose();
 							return;
 						}
 						var members = enteringSquad.getMembers();
- 						for (var i = 0; i < enteringSquad.getSquadSize(); i++){
+						for (var i = 0; i < enteringSquad.getSquadSize(); i++){
 							var character = enteringSquad.getChar(members.get(i));
 							character.setBossLog(bossID);
-						} 
+						}
 						var dd = cm.getEventManager(eventName);
 						dd.startInstance(cm.getSquad(squadName),cm.getMap());
 					} else {
-						cm.sendOk("ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½Ä´ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½Ê§ï¿½ï¿½.");
+						cm.sendOk("ÓÉÓÚÎ´ÖªµÄ´íÎó£¬²Ù×÷Ê§°Ü.");
 					}
 					cm.dispose();
 				}
