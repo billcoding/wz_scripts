@@ -10,12 +10,12 @@ var status;
 var curMap;
 var playerStatus;
 var chatState;
-var questions = Array("���ʷ�ʦһתҪ���ٵȼ�",
-    "���ʷ���һתҪ���ٵȼ�",
-    "���ʷ�ʦתְ��Ҫ��������",
-    "���ʹ�����תְ��Ҫ��������",
-    "���ʶ��ټ����ܽ��ж�ת",
-    "����սʿһתҪ��������");
+var questions = Array("请问法师一转要多少等级",
+    "请问飞侠一转要多少等级",
+    "请问法师转职需要多少智力",
+    "请问弓箭手转职需要多少敏捷",
+    "请问多少级才能进行二转",
+    "请问战士一转要多少力量");
 var qanswers = Array(8, 10, 20, 25, 30, 35);
 var party;
 var preamble;
@@ -87,23 +87,23 @@ function action(mode, type, selection) {
 			preamble = eim.getProperty("leader1stpreamble");
 
 			if (preamble == null) {
-				cm.sendNext("�ˣ�����#p9020001# ��ӭ��������������Ӹ��� ����Ҫ��Ա��ͨ��֤����ж�Ա�ռ���ɺ�ѿ�Ƭ�ռ�����Ȼ����ҡ�");
+				cm.sendNext("嗨，我是#p9020001# 欢迎来到废弃都市组队副本 我需要队员的通行证，请叫队员收集完成后把卡片收集起来然后给我。");
 				eim.setProperty("leader1stpreamble", "done");
 				cm.dispose();
 			} else { // Check how many they have compared to number of party members
 				// Check for stage completed
 				var complete = eim.getProperty(curMap.toString() + "stageclear");
 				if (complete != null) {
-					cm.sendNext("��ϲ������ ͨ����һ�׶ε����ѿ���!");
+					cm.sendNext("恭喜您过关 通往下一阶段的门已开启!");
 					cm.dispose();
 				} else {
 					var numpasses = (party.size() - 1) < 1 ? 1 : (party.size() - 1);
-					var strpasses = "#b" + numpasses.toString() + " ��ͨ��֤#k";
+					var strpasses = "#b" + numpasses.toString() + " 张通行证#k";
 					if (!cm.haveItem(4001008, numpasses)) {
-						cm.sendNext("�Һܱ�Ǹ�Ҳ���������أ�����Ҫ: " + strpasses + " ������֮���Ҿͻ�������ء�");
+						cm.sendNext("我很抱歉我不能让你过关，我需要: " + strpasses + " 交给我之后我就会让你过关。");
 						cm.dispose();
 					} else {
-						cm.sendNext("���ռ� " + strpasses + "! ��ϲ���ء�");
+						cm.sendNext("你收集 " + strpasses + "! 恭喜过关。");
 						clear(1,eim,cm);
 						cm.givePartyExp(100, party);
 						cm.gainItem(4001008, -numpasses);
@@ -113,7 +113,7 @@ function action(mode, type, selection) {
 				}
 			}
 			}
-		} else { // ���Ƕӳ�
+		} else { // 不是队长
 			var eim = cm.getChar().getEventInstance();
 			pstring = "member1stpreamble" + cm.getChar().getId().toString();
 			preamble = eim.getProperty(pstring);
@@ -125,7 +125,7 @@ function action(mode, type, selection) {
 				var questionNum = Math.floor(Math.random() * questions.length);
 				eim.setProperty(qstring, questionNum.toString());
 			}
-			cm.sendNext("���������Ҫ�ռ� #b֤��#k ����ĿΪ���������𰸡�");
+			cm.sendNext("在这里，你需要收集 #b证书#k 且数目为提出的问题答案。");
 			} else if (status == 0) { // Otherwise, check for stage completed
 				var complete = eim.getProperty(curMap.toString() + "stageclear");
 				if (complete != null) {
@@ -140,14 +140,14 @@ function action(mode, type, selection) {
 				if (!qcorr) { // Not too many
 					qcorr = cm.haveItem(4001007, numcoupons);
 					if (qcorr) { // Just right
-						cm.sendNext("���������Ҵ�Ӧ��� #b#t4001008##k. �����ȥ����Ķӳ��ɡ�");
+						cm.sendNext("来，这是我答应你的 #b#t4001008##k. 快点拿去给你的队长吧。");
 						cm.gainItem(4001007, -numcoupons);
 						cm.gainItem(4001008, 1);
 						enough = true;
 					}
 				}
 				if (!enough) {
-					cm.sendNext("�Һܱ�Ǹ���������ǲ���ȷ�Ĵ𰸣�������������ȷ��������");
+					cm.sendNext("我很抱歉，但是这是不正确的答案！请在您给我正确的数量。");
 				}
 				cm.dispose();
 			}
@@ -177,23 +177,23 @@ function action(mode, type, selection) {
 		var passes = cm.haveItem(4001008,10);
 		if (passes) {
 		    // Clear stage
-		    cm.sendNext("��ϲ���أ�");
+		    cm.sendNext("恭喜过关！");
 		    party = eim.getPlayers();
 		    cm.gainItem(4001008, -10);
 		    clear(5,eim,cm);
 		    cm.givePartyExp(1500, party);
 		    cm.dispose();
 		} else { // Not done yet
-		    cm.sendNext("��ӭ�������ս׶���ֻҪ��ͨ��֤�ռ����������Ҿ����ˣ�");
+		    cm.sendNext("欢迎来到最终阶段你只要把通行证收集起来交给我就行了！");
 		}
 		cm.dispose();
 	    } else { // Members
-		cm.sendNext("��ӭ�������ս׶�~������ֻҪ�����е�ͨ��֤�����ӳ������ˣ�");
+		cm.sendNext("欢迎来到最终阶段~现在你只要把所有的通行证交给队长就行了！");
 		cm.dispose();
 	    }
 	} else { // Give rewards and warp to bonus
 	    if (status == 0) {
-		cm.sendNext("��ĺܲ���˼�飡");
+		cm.sendNext("真的很不可思议！");
 	    }
 	    if (status == 1) {
 		getPrize(eim,cm);
@@ -201,7 +201,7 @@ function action(mode, type, selection) {
 	    }
 	}
     } else { // No map found
-	cm.sendNext("��Ч�ĵ�ͼ��������GM��");
+	cm.sendNext("无效的地图，请联络GM！");
 	cm.dispose();
     }
 }
@@ -233,25 +233,25 @@ function Rectanglestages (cm) {
     var eim = cm.getChar().getEventInstance();
     if (curMap == 2) {
 	var nthtext = "2";
-	var nthobj = "����";
-	var nthverb = "��";
-	var nthpos = "��������̫��";
+	var nthobj = "绳子";
+	var nthverb = "挂";
+	var nthpos = "挂在绳子太低";
 	var curcombo = stage2combos;
 	var currect = stage2rects;
 	var objset = [0,0,0,0];
     } else if (curMap == 3) {
 	var nthtext = "3";
-	var nthobj = "ƽ̨";
-	var nthverb = "վ";
-	var nthpos = "վ��̫������Ե";
+	var nthobj = "平台";
+	var nthverb = "站";
+	var nthpos = "站在太靠近边缘";
 	var curcombo = stage3combos;
 	var currect = stage3rects;
 	var objset = [0,0,0,0,0];
     } else if (curMap == 4) {
 	var nthtext = "4";
-	var nthobj = "��Ͱ";
-	var nthverb = "վ";
-	var nthpos = "վ��̫������Ե";
+	var nthobj = "酒桶";
+	var nthverb = "站";
+	var nthpos = "站在太靠近边缘";
 	var curcombo = stage4combos;
 	var currect = stage4rects;
 	var objset = [0,0,0,0,0,0];
@@ -262,7 +262,7 @@ function Rectanglestages (cm) {
 	    party = eim.getPlayers();
 	    preamble = eim.getProperty("leader" + nthtext + "preamble");
 	    if (preamble == null) {
-		cm.sendNext("�ˣ���ӭ������ " + nthtext + " �׶�. �����Աߣ���ῴ��һЩ " + nthobj + ", #b����Ҫ������Ա����������ҵĴ𰸣�����¶Ծ�������أ����Ͱɣ� \r\n�~���˲���#r" + nthpos + "��Ȼ�᲻�ܹ���Ŷ��");
+		cm.sendNext("嗨，欢迎来到第 " + nthtext + " 阶段. 在我旁边，你会看到一些 " + nthobj + ", #b你需要三名队员挂在上面猜我的答案，如果猜对就让你过关，加油吧！ \r\n喔~对了不能#r" + nthpos + "不然会不能过关哦！");
 		eim.setProperty("leader" + nthtext + "preamble","done");
 		var sequenceNum = Math.floor(Math.random() * curcombo.length);
 		eim.setProperty("stage" + nthtext + "combo",sequenceNum.toString());
@@ -316,7 +316,7 @@ function Rectanglestages (cm) {
 			    }
 			    cm.sendNext(outstring);
 			} else {
-			    cm.sendNext("���ӹҵ�̫�ͣ�3����Ա����վ׼λ��!");
+			    cm.sendNext("绳子挂的太低，3名队员重新站准位置!");
 			}
 			cm.dispose();
 		    }
@@ -383,9 +383,9 @@ function getPrize(eim,cm) {
     cm.removeAll(4001007);
     cm.removeAll(4001008);
     cm.getPlayer().endPartyQuest(1201);
-	var msg = "x"+qty+" ��ϲ���-"+ cm.getPlayer().getName() + "-��ɷ�����Ӹ���,��ҹ�ϲ�ɣ�����";
+	var msg = "x"+qty+" 恭喜玩家-"+ cm.getPlayer().getName() + "-完成废弃组队副本,大家恭喜吧！！！";
 	if(itemSet[sel] / 1000 == 1032){
-		World.Broadcast.broadcastMessage(MaplePacketCreator.getGachaponMega("��������ӡ� ", " : " + msg, item,  0, cm.getPlayer().getClient().getChannel()).getBytes());
+		World.Broadcast.broadcastMessage(MaplePacketCreator.getGachaponMega("『废弃组队』 ", " : " + msg, item,  0, cm.getPlayer().getClient().getChannel()).getBytes());
 	}    
     cm.warp(103000805, "sp");
 }

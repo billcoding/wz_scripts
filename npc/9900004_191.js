@@ -1,4 +1,4 @@
-importPackage(java.lang);
+/* importPackage(java.lang);
 importPackage(Packages.client);
 importPackage(Packages.client.inventory);
 importPackage(Packages.server);
@@ -8,7 +8,7 @@ importPackage(Packages.tools);
 importPackage(Packages.scripting);
 importPackage(Packages.tools.packet);
 importPackage(Packages.tools.data);
-importPackage(Packages.tools);
+importPackage(Packages.tools); */
 
 var status = -1;
 var itemss;
@@ -55,13 +55,13 @@ function action(mode, type, selection) {
 			}
 			slot.push(i);
 		}
-		cm.sendSimple("��ѡ������Ҫ�������Ʒ:\r\n#b" + avail);
+		cm.sendSimple("请选择你需要清除的物品:\r\n#b" + avail);
 	 
     } else if (status == 1) {
         itemss = selection;
 		var shul = cm.getPlayer().getItemQuantity(itemss, false);
 		cm.removeAll(itemss);
-		Ok("���Ѿ����㱳����� #d#i" + itemss + ":# #t" + itemss + ":# ������#e#r" + shul + "#n#b\r\n����ı���ɾ����");
+		Ok("我已经将你背包里的 #d#i" + itemss + ":# #t" + itemss + ":# 数量：#e#r" + shul + "#n#b\r\n从你的背包删除！");
 		cm.dispose();
     } else {
         cm.dispose();

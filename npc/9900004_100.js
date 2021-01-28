@@ -25,41 +25,41 @@ function action(mode, type, selection) {
             var txt = "";
             var txta = "";
             var txtas = "";
-			if (cm.getFBRW() == 0 && cm.getFBRWA() == 0 &&��cm.getPlayer().getmrfbrw() == 0 && cm.getPlayer().getmrfbrwa() == 0){
-				txt = "#e#r��ã����ÿ�ո�����������ɴ�������;���߲��㣩��\r\n\r\n";
-                txt += "#L1##b��ȡÿ�ո�������#l";
+			if (cm.getFBRW() == 0 && cm.getFBRWA() == 0 &&　cm.getPlayer().getmrfbrw() == 0 && cm.getPlayer().getmrfbrwa() == 0){
+				txt = "#e#r你好，完成每日副本后增加完成次数（中途掉线不算）。\r\n\r\n";
+                txt += "#L1##b领取每日副本任务！#l";
                 cm.sendSimple(txt);
 			}else if (cm.getPlayer().getmrfbrw() > 0 && cm.getPlayer().getmrfbrwa() > 0 && cm.getFBRW() < cm.getPlayer().getmrfbrws() || cm.getFBRWA() < cm.getPlayer().getmrfbrwas()){
 				
-				txt = "#e#r��ã����ÿ�ո�����������ɴ�������;���߲��㣩��\r\n\r\n";
+				txt = "#e#r你好，完成每日副本后增加完成次数（中途掉线不算）。\r\n\r\n";
 				if(cm.getPlayer().getmrfbrw() == 1){
-					txtas = "�������������";
+					txtas = "月妙副本废弃副本";
 				}else if(cm.getPlayer().getmrfbrw() == 2){
-					txtas = "��߸���";
+					txtas = "玩具副本";
 				}else if(cm.getPlayer().getmrfbrw() == 3){
-					txtas = "��ո���";
+					txtas = "天空副本";
 				}else if(cm.getPlayer().getmrfbrw() == 4){
-					txtas = "��������";
+					txtas = "废弃副本";
 				}
 				if(cm.getPlayer().getmrfbrwa() == 1){
-					txta = "������";
+					txta = "毒雾副本";
 				}else if(cm.getPlayer().getmrfbrwa() == 2){
-					txta = "��Ů����";
+					txta = "男女副本";
 				}else if(cm.getPlayer().getmrfbrwa() == 3){
-					txta = "��������";
+					txta = "海盗副本";
 				}
-                txt += "#b�㵱ǰ������ɽ��ȣ�#l\r\n\r\n";
-                txt += "#r"+txtas+"���������� "+cm.getPlayer().getmrfbrws()+"/"+cm.getFBRW()+" Ŀǰ�Ѿ����#l\r\n";
-                txt += "#r"+txta+"���������� "+cm.getPlayer().getmrfbrwas()+"/"+cm.getFBRWA()+" Ŀǰ�Ѿ����#l";
+                txt += "#b你当前任务完成进度：#l\r\n\r\n";
+                txt += "#r"+txtas+"：任务需求 "+cm.getPlayer().getmrfbrws()+"/"+cm.getFBRW()+" 目前已经完成#l\r\n";
+                txt += "#r"+txta+"：任务需求 "+cm.getPlayer().getmrfbrwas()+"/"+cm.getFBRWA()+" 目前已经完成#l";
                 cm.sendOk(txt);
                 cm.dispose();
 			}else if (cm.getFBRW() >= cm.getPlayer().getmrfbrws() && cm.getFBRWA() >= cm.getPlayer().getmrfbrwas() && cm.getPlayer().getmrfbrws() > 0 &&  cm.getPlayer().getmrfbrwas() > 0){
 				
-				txt = "#e#r��ã����ÿ�ո�����������ɴ�������;���߲��㣩��\r\n\r\n";
-                txt += "#L2##b��ϲ�����ÿ�ո�������[������ȡ����]��#l";
+				txt = "#e#r你好，完成每日副本后增加完成次数（中途掉线不算）。\r\n\r\n";
+                txt += "#L2##b恭喜你完成每日副本任务[点我领取奖励]！#l";
                 cm.sendSimple(txt);
             }else{
-                txt += "���Ѿ���ɹ���!\r\n��ڶ���������";
+                txt += "你已经完成过了!\r\n请第二天再来！";
                 cm.sendOk(txt);
                 cm.dispose();
             }
@@ -95,21 +95,21 @@ function action(mode, type, selection) {
 				cm.getPlayer().setmrfbrwa(3);	
 				cm.getPlayer().setmrfbrwas(sgsja);		
             }
-                cm.sendOk("�ɹ���ȡÿ�ո�������\r\n#r�����´��Ҳ鿴���ȡ�#l");
+                cm.sendOk("成功领取每日副本任务。\r\n#r请重新打开我查看进度。#l");
                 cm.dispose();
         } else if (selection == 2) {
 			if(item > 50){
 					cm.gainItem(4000463, 5);
 				}else{
-					cm.sendOk("������λ����!");
+					cm.sendOk("背包空位不足!");
 					cm.dispose();
 				}
 				cm.getPlayer().setmrfbrw(0);	
 				cm.getPlayer().setmrfbrws(0);
 				cm.getPlayer().setmrfbrwa(0);	
 				cm.getPlayer().setmrfbrwas(0);	
-				cm.worldMessage(6,"��ϲ��ң�["+cm.getName()+"]���ÿ�ո������񣬴��һ��Ĥ�ݰɡ�");
-                cm.sendOk("��ϲ�����ÿ�ո�����������������!");
+				cm.worldMessage(6,"恭喜玩家：["+cm.getName()+"]完成每日副本任务，大家一起膜拜吧。");
+                cm.sendOk("恭喜你完成每日副本任务，请明天再来!");
                 cm.dispose();
         }
     }

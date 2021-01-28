@@ -1,181 +1,118 @@
-var status = 0;
-var 所需物品ID = 4000025;
-// var properties = [
-//     'Str', 'Dex', 'Int', 'Luk',
-//     'Hp', 'Mp', 'Watk', 'Matk',
-//     'Wdef', 'Mdef', 'Acc', 'Avoid',
-//     'Hands', 'Speed', 'Jump', 'Owner'
-// ];
-//力量,敏捷,智力,运气
-//HP,MP,物攻,魔攻
-//物御,魔防,命中,回避
-//手技,移速,跳跃力
-//Potential1-3,是潜能,079客户端没有这个,剔除
-//属于谁(这里用来做等级的标识)
-//装备鉴定出来的品级 , 以及不同品级会改变的装备属性列表 , 以及属性叠加值
-var 数组 = {
-    "D": {
-        属性s: ['Str', 'Dex', 'Int', 'Luk'],
-        属性值: [10, 10, 10, 10]
-    },
-    "C": {
-        属性s: ['Str', 'Dex', 'Int', 'Luk'],
-        属性值: [20, 20, 20, 20]
-    },
-    "B": {
-        属性s: ['Str', 'Dex', 'Int', 'Luk'],
-        属性值: [40, 40, 40, 40]
-    },
-    "A": {
-        属性s: ['Str', 'Dex', 'Int', 'Luk'],
-        属性值: [60, 60, 60, 60]
-    },
-    "S": {
-        属性s: ['Str', 'Dex', 'Int', 'Luk', 'Watk', 'Matk'],
-        属性值: [80, 80, 80, 80, 80, 80]
-    },
-    "SS": {
-        属性s: ['Str', 'Dex', 'Int', 'Luk', 'Watk', 'Matk', 'Hands'],
-        属性值: [100, 100, 100, 100, 100, 100, 100]
-    },
-    "SSS": {
-        属性s: ['Str', 'Dex', 'Int', 'Luk', 'Watk', 'Matk', 'Hands'],
-        属性值: [150, 150, 150, 150, 150, 150, 150]
-    }
-} //;['D', 'C', 'B', 'A', 'S', 'SS', 'SSS'];
-//
-function start() {
-    status = -1;
-    action(1, 0, 0);
-}
+var 所需物品ID = 2022355;
 
-function action(mode, type, selection) {
-    if (mode == -1) {
-        cm.dispose();
-    } else {
-        if (mode == 0) {
-            cm.dispose();
-            return;
-        }
-        if (mode == 1) status++;
-        if (status == 0) {
+
+var 数组1 =['Str', 'Dex', 'Int', 'Luk', 'Hp', 'Mp', 'Watk', 'Matk']
+var 数组2 =['力量', '敏捷', '智力', '运气', 'HP', 'Mp', '攻击', '魔力']
+
+function start() {
+
+            if (cm.判断物品(所需物品ID,1) == false ) {
+             cm.dispose();
+             return;				
+			} 
+
             var ii = Packages.server.MapleItemInformationProvider.getInstance();
             var item = cm.getInventory(1).getItem(1);
-            var itemId = item.getItemId();
-            if (item == null) {
-                cm.sendOk("当前背包第一格没有装备 ！");
+            //var itemId = item.getItemId();
+             if (item == null) {
+                
+				cm.消息(6,"[现金装备强化] : 装备栏第一格没有装备！");
                 cm.dispose();
-            }
-			            //cm.showEffect(false, "quest/party/clear");
-            //cm.playSound(false, "Game/Bird");
-           var text = "    #e 您好 ! 我是#r传说中的装备鉴定之神#k : \r\n";
-            text += "是否确认使用一枚#v4000025#鉴定当前道具 ？ \r\n";
-			text += "#b潜能等级分为：D-C-B-A-S-SS-SSS七档 等级随机升降 不会降低装备初始属性\r\n";
-            text += "当前道具 ： \r\n";
-            text += "#v" + itemId + "#\r\n";
-            cm.sendYesNo(text);
-        } else if (status == 1) {
-            var ii = Packages.server.MapleItemInformationProvider.getInstance();
-            if (cm.haveItem(所需物品ID, 1)) {
-                item = cm.getChar().getInventory(Packages.client.inventory.MapleInventoryType.EQUIP).getItem(1).copy();
-                try {
-/*                     if (ii.isCash(item.getItemId())) {
-                        cm.sendOk("对不起,点装不支持鉴定 ！");
+				return;
+            } 
+
+			if (ii.isCash(item.getItemId())== false ) {
+                        //cm.sendOk("只能用于现金装备！");
+						cm.消息(1,"只能用于现金装备！");
                         cm.dispose();
                         return;
-                    } */
-                } catch (e) {
-                    cm.dispose();
-                    return;
-                }
-                //获取当前物品的现有等级
+                    }  
+					if (取随机数(1,100) <= 35 ){  //强化失败
+						cm.gainItem(所需物品ID, -1);
+						cm.消息(6,"[现金装备强化] : 强化失败！");
+						cm.dispose();
+						return;
+						}
+                item = cm.getChar().getInventory(Packages.client.inventory.MapleInventoryType.EQUIP).getItem(1).copy();
                 var 装备头 = item.getOwner();
                 var lv = "",
                     newLv = "";
-                var 属性s, 属性值;
-                var 新装备 = false;
                 if (装备头 == "") {
+				cm.gainItem(所需物品ID, -1);
                     //没有鉴定过的装备 
-                    新装备 = true;
+					item.setOwner("0次混沌强化");
+					Packages.server.MapleInventoryManipulator.removeFromSlot(cm.getC(), Packages.client.inventory.MapleInventoryType.EQUIP, 1, 1, true);
+					Packages.server.MapleInventoryManipulator.addFromDrop(cm.getC(), item, false);
+					cm.dispose();
+					return;
+					
                 } else {
-                    lv = 装备头.substring(0, 装备头.length() - 1);
-                }
-                newLv = 随机属性ABC();
-                if (lv != newLv) {
-                    if (新装备) {
-                        // 属性追加
-                        属性s = 数组[newLv].属性s;
-                        属性值 = 数组[newLv].属性值;
-                        for (var i = 0; i < 属性s.length; i++) {
-                            var 老 = item['get' + 属性s[i]]();
-                            var 新 = 老 + parseInt(属性值[i]);
-                            item['set' + 属性s[i]](新);
-                        }
-                    } else {
-                        //replace new property
-                        //5 , 10
-                        //var opts = getNewProperty(数组[lv], 数组[newLv]);
-                        //清空旧的属性
-                        var oldPorps = 数组[lv].属性s;
-                        var oldVals = 数组[lv].属性值;
-                        for (var i = 0; i < oldPorps.length; i++) {
-                            var currVal = item['get' + oldPorps[i]]();
-                            var oldVal = oldVals[i];
-                            item['set' + oldPorps[i]](currVal - parseInt(oldVal));
-                        }
-                        //设置新的
-                        属性s = 数组[newLv].属性s;
-                        属性值 = 数组[newLv].属性值;
-                        for (var i = 0; i < 属性s.length; i++) {
-                            var 老 = item['get' + 属性s[i]]();
-                            var 新 = 老 + parseInt(属性值[i]);
-                            item['set' + 属性s[i]](新);
-                        }
+					cm.gainItem(所需物品ID, -1);
+                    lv = 装备头.substring(0, 装备头.length() - 5);
+					//cm.消息(1,lv);
+					if (lv == "NaN" ){
+						lv = "0"
+					}
+					var cc = parseInt(lv)+1
+						item.setOwner(cc + "次混沌强化");
+						for (var i = 0; i < 8; i++) {
+						if (取随机数(1,5) >= 3 ){
+							var 老 = item['get' + 数组1[i]]();
+							if (i==3 || i==4) {
+								var 新 = 老 + 取随机数(-6,10);
+								} else {
+							    var 新 = 老 + 取随机数(-5,5);
+							    }
+							if (新 <= 0 ){
+							item['set' + 数组1[i]](0);
+							//cm.消息(2,"[现金装备强化] : "+数组2[i]+" "+老+" ==》 "+ "0");
+							} else {
+							cm.消息(2,"[现金装备强化] : "+数组2[i]+" "+老+" ==》 "+ 新);
+							item['set' + 数组1[i]](新);
+
+							}
+						}
                     }
                 }
-                item.setOwner(newLv + "级");
+				cm.playSound(false, "Romio/discovery"); 
+				//cm.playWZSound("Game/EnchantSuccess");
+				//cm.getClient().getSession().write(Packages.tools.MaplePacketCreator.playSound("Romio/discovery"))
+				
+				Packages.handling.world.World.Broadcast.broadcastSmega(Packages.tools.MaplePacketCreator.itemMegaphone("[现金装备强化] : 玩家 "+cm.getPlayer().getName() +" 成功第 "+cc+" 次混沌强化，大家恭喜他/她吧!",true,cm.getClient().getChannel(),item).getBytes());
+				
+				
+				
+				//Packages.handling.world.World.Broadcast.broadcastMessage(Packages.tools.MaplePacketCreator.getGachaponMega("[现金装备强化]"," : 玩家 "+cm.getPlayer().getName() +" 成功第 "+cc+" 次混沌强化，大家恭喜他/她吧!",item,0, cm.getClient().getChannel()).getBytes());
+				
+				
+				//cm.gainGachaponItem(1142080,1,"现金商城22",100);
+				
+				
+				
+				//Packages.handling.world.World.Broadcast.broadcastSmega(Packages.tools.MaplePacketCreator.serverNotice(11, cm.getClient().getChannel(),"张三 : 你好啊啊",true).getBytes());
+				
+				
                 Packages.server.MapleInventoryManipulator.removeFromSlot(cm.getC(), Packages.client.inventory.MapleInventoryType.EQUIP, 1, 1, true);
                 Packages.server.MapleInventoryManipulator.addFromDrop(cm.getC(), item, false);
-                cm.gainItem(所需物品ID, -1);
-                cm.sendOk("恭喜,鉴定成功 , 快看看你的包袱吧 ！");
-                cm.worldMessage("[装备鉴定]]：恭喜[" + cm.getChar().getName() + "]成功使用了装备鉴定功能,获得[" + newLv + "]级道具 ！");
+                
+                //cm.sendOk("恭喜,鉴定成功 , 快看看你的包袱吧 ！");
+                //cm.worldMessage("[装备鉴定]]：恭喜[" + cm.getChar().getName() + "]成功使用了装备鉴定功能,获得[" + newLv + "]级道具 ！");
                 cm.dispose();
-            } else {
-                cm.sendOk("对不起,你没有足够的#v" + 所需物品ID + "# ！");
-                cm.dispose();
-                return;
-            }
-        } else {
-            cm.dispose();
-        }
+				return;
+} 
+        
+
+
+function 取随机数(a, b) {
+    if (!(typeof (a) === "number" && typeof (b) === "number")) {
+        return 0;
     }
+    if (b < a) {
+        b = a + 1;
+    }
+    if (a == b) {
+        return a;
+    }
+    return parseInt(Math.random() * (b - a + 1) + a);
 }
 
-function 随机属性ABC() {
-    //
-    //9 8 7 6 3 2 1
-    var num = Math.floor(Math.random() * 10000);
-    var flag = "D";
-    if (num > 1000 && num <= 2000) {
-        //C
-        flag = "C";
-    } else if (num > 2000 && num <= 2700) {
-        //B
-        flag = "B";
-    } else if (num > 2700 && num <= 3300) {
-        //A
-        flag = "A";
-    } else if (num > 3300 && num <= 3600) {
-        //S
-        flag = "S";
-    } else if (num > 3600 && num <= 3800) {
-        //SS
-        flag = "SS";
-    } else if (num > 3800 && num <= 3900) {
-        //SSS
-        flag = "SSS";
-    } else {
-        flag = "D";
-    }
-    return flag;
-}

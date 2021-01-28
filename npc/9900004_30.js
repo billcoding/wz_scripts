@@ -21,6 +21,7 @@ function action(mode, type, selection) {
         var iz = cm.getMap().getAllUniqueMonsters().iterator();
         while (iz.hasNext()) {
             var zz = iz.next();
+			//cm.消息(5,"[装备交换卡] : 装备已经可以交易了，不要重复使用！");
             selStr += "#L" +zz+ "##o" +zz+ "##l\r\n";
         }
         if (cm.getPlayer().isAdmin()) {
@@ -36,3 +37,4 @@ function action(mode, type, selection) {
         cm.dispose();
     }
 }
+

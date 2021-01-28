@@ -3,6 +3,7 @@
  Map(s): 		Mu Lung: Mu Lung(2500000000)
  Description: 		Potion Creator
  */
+       // importPackage(Packages.client);
 
 var status = 0;
 var selectedType = -1;
@@ -25,12 +26,12 @@ function action(mode, type, selection) {
     if (status == 0 && mode == 1) {
         if (cm.isQuestActive(3821)) {
             cm.forceCompleteQuest(3821);
-            cm.sendNext("������ɡ�");
+            cm.sendNext("任务完成。");
             cm.dispose();
             return;
         }
-        var selStr = "���Ǹ���Ŷ��յ��ˡ�����˵˵����Ҫʲô������ #b"
-        var options = new Array("��ҩ", "�������");
+        var selStr = "我是个多才多艺的人。跟我说说你想要什么东西。 #b"
+        var options = new Array("制药", "制造卷轴");
         for (var i = 0; i < options.length; i++) {
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -40,14 +41,14 @@ function action(mode, type, selection) {
         var selStr;
         var items;
         if (selectedType == 0) { //Make a medicine
-            cm.sendNext("�������ѧ��ҩ�����һ������ѧϰ��ҩ�䷽��û��ʲô��������ʺ��ˡ�");
+            cm.sendNext("如果你想学做药，你第一步就是学习中药配方，没有什么比这个更适合了。");
             cm.dispose();
             return;
         } else if (selectedType == 1) { //Make a scroll
-            selStr = "��Ҫ��Ҫʲô����#b";
+            selStr = "你要想要什么？？#b";
             items = new Array("#t2043000#", "#t2043100#", "#t2043200#", "#t2043300#", "#t2043700#", "#t2043800#", "#t2044000#", "#t2044100#", "#t2044200#", "#t2044300#", "#t2044400#", "#t2044500#", "#t2044600#", "#t2044700#", "#t2044800#", "#t2044900##k");
         } else if (selectedType == 2) { //Donate medicine ingredients
-            selStr = "ʲô����������е�ҩ�ľ��׳��������Ǻ���Ϣ�������׵�������#b100��#kΪ��λ���������߿�����������ħ�顣��ϸ���������ҩ�ģ� #b";
+            selStr = "什么？你想把所有的药材捐献出来？真是好消息啊！捐献道具是以#b100个#k为单位。给捐献者可以制造符咒的魔珠。你细想捐献那种药材？ #b";
             items = new Array("Acorn", "Thimble", "Needle Pouch", "Necki Flower", "Necki Swimming Cap", "Broken Piece of Pot", "Ginseng-Boiled Water", "Straw Doll", "Wooden Doll", "Bellflower Root", "100-Year-Old Bellflower", "Old Paper", "Yellow Belt", "Broken Deer Horn", "Red Belt", "Peach Seed", "Mr. Alli's Leather", "Cat Doll", "Mark of the Pirate", "Captain Hat#k");
         } else { //I want to forfeit the restoration of Portrait Scroll...
             cm.dispose();
@@ -66,7 +67,7 @@ function action(mode, type, selection) {
             item = itemSet[selectedItem];
             mats = matSet[selectedItem];
             matQty = matQtySet[selectedItem];
-            var prompt = "����Ҫ�� #t" + item + "#? \r\n����������Ҫ�Ĳ��ϡ�#k";
+            var prompt = "你想要做 #t" + item + "#? \r\n以下是你需要的材料。#k";
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++) {
                     prompt += "\r\n#i" + mats[i] + "# " + matQty[i] + " #t" + mats[i] + "#";
@@ -79,7 +80,7 @@ function action(mode, type, selection) {
             status = 3;
             var itemSet = new Array(4000276, 4000277, 4000278, 4000279, 4000280, 4000291, 4000292, 4000286, 4000287, 4000293, 4000294, 4000298, 4000284, 4000288, 4000285, 4000282, 4000295, 4000289, 4000296, 4031435);
             item = itemSet[selectedItem];
-            var prompt = "��ȷ������Ҫ���� #b100�� #t " + item + "##k";
+            var prompt = "你确定以想要赞助 #b100个 #t " + item + "##k";
             cm.sendYesNo(prompt);
         }
     } else if (status == 3 && mode == 1) {
@@ -110,7 +111,7 @@ function action(mode, type, selection) {
                 complete = false;
         }
         if (!complete || !cm.canHold(2044900)) {
-            cm.sendOk("�����û���㹻�Ĳ��ϡ�");
+            cm.sendOk("你好像没有足够的材料。");
             cm.dispose();
         } else {
             if (mats instanceof Array) {

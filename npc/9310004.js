@@ -1,3 +1,4 @@
+// importPackage(net.sf.odinms.client);
 var status = 0;
 
 var ttt = "#fUI/UIWindow.img/Quest/icon9/0#";
@@ -22,9 +23,9 @@ function action(mode, type, selection) {
 
         if (status == 0) {
 
-            var textz = "\r\n��Ҫ��ս#r �������#k��ϣ�������Ǹ�ʵ��\r\n";
+            var textz = "\r\n你要挑战#r 大蜈蚣王#k？希望你有那个实力\r\n";
 
-            textz += "#r#L0#" + ttt + "��ս�����    #d(ÿ������60��,��ǰ�Ѿ���ս"+cm.getBossLog("���")+"��)\r\n";
+            textz += "#r#L0#" + ttt + "挑战蜈蚣王    #d(每天限制60次,当前已经挑战"+cm.getBossLog("蜈蚣")+"次)\r\n";
 
             cm.sendSimple(textz);
 
@@ -33,18 +34,18 @@ function action(mode, type, selection) {
             if (selection == 0) {
 				if ((cm.getQuestStatus(4103) == 1 && cm.haveItem(4031289 ,1)) || cm.getQuestStatus(8510) == 2) {
 		} else {
-		cm.sendOk("��û�����ũ��İ�������!");
+		cm.sendOk("你没有完成农民的拜托任务!");
 		cm.dispose();
 	}
 				
                 if (cm.getLevel() < 40) {
-                    cm.sendOk("�ȼ�����40");
+                    cm.sendOk("等级不足40");
                     cm.dispose();
-                } else if (cm.getBossLog("���") >= 60) {
-                    cm.sendOk("#b�������#k ÿ��ֻ����ս#r 60 #k��");
+                } else if (cm.getBossLog("蜈蚣") >= 60) {
+                    cm.sendOk("#b大蜈蚣王#k 每天只能挑战#r 60 #k次");
                     cm.dispose();
                 } else {
-                    cm.setBossLog("���");
+                    cm.setBossLog("蜈蚣");
                     cm.warp(701010321, 0);
                     cm.dispose();
                 }
@@ -72,7 +73,7 @@ function action(mode, type, selection) {
 		cm.warp(701010321);
 		cm.dispose();
 		} else {
-		cm.sendOk("��û�����ũ��İ�������!");
+		cm.sendOk("你没有完成农民的拜托任务!");
 		cm.dispose();
 	}
 } */
