@@ -2,7 +2,7 @@ var 所需物品ID = 2022355;
 
 
 var 数组1 =['Str', 'Dex', 'Int', 'Luk', 'Hp', 'Mp', 'Watk', 'Matk']
-var 数组2 =['力量', '敏捷', '智力', '运气', 'HP', 'Mp', '攻击', '魔力']
+var 数组2 =['力量', '敏捷', '智力', '运气', ' HP ', ' Mp ', '攻击', '魔力']
 
 function start() {
 
@@ -16,20 +16,20 @@ function start() {
             //var itemId = item.getItemId();
              if (item == null) {
                 
-				cm.消息(6,"[现金装备强化] : 装备栏第一格没有装备！");
+				cm.消息(6,"[时装强化] : 装备栏第一格没有装备！");
                 cm.dispose();
 				return;
             } 
 
 			if (ii.isCash(item.getItemId())== false ) {
-                        //cm.sendOk("只能用于现金装备！");
-						cm.消息(1,"只能用于现金装备！");
+                        //cm.sendOk("只能用于时装！");
+						cm.消息(1,"只能用于时装！");
                         cm.dispose();
                         return;
                     }  
-					if (取随机数(1,100) <= 35 ){  //强化失败
+					if (取随机数啊(1,100) <= 35 ){  //强化失败
 						cm.gainItem(所需物品ID, -1);
-						cm.消息(6,"[现金装备强化] : 强化失败！");
+						cm.消息(6,"[时装强化] : 强化失败！");
 						cm.dispose();
 						return;
 						}
@@ -40,6 +40,7 @@ function start() {
                 if (装备头 == "") {
 				cm.gainItem(所需物品ID, -1);
                     //没有鉴定过的装备 
+					cm.playSound(false, "Romio/discovery");
 					item.setOwner("0次混沌强化");
 					Packages.server.MapleInventoryManipulator.removeFromSlot(cm.getC(), Packages.client.inventory.MapleInventoryType.EQUIP, 1, 1, true);
 					Packages.server.MapleInventoryManipulator.addFromDrop(cm.getC(), item, false);
@@ -56,18 +57,19 @@ function start() {
 					var cc = parseInt(lv)+1
 						item.setOwner(cc + "次混沌强化");
 						for (var i = 0; i < 8; i++) {
-						if (取随机数(1,5) >= 3 ){
+						if (取随机数啊(1,5) >= 4 ){
 							var 老 = item['get' + 数组1[i]]();
-							if (i==3 || i==4) {
-								var 新 = 老 + 取随机数(-6,10);
+							if (i==4 || i==5) {
+								var 新 = 老 + 取随机数啊(-6,10);
+								//cm.消息(2,"[属性变动1] : "+数组2[i]+" "+老+" --> "+ 新);
 								} else {
-							    var 新 = 老 + 取随机数(-5,5);
+							    var 新 = 老 + 取随机数啊(-5,5);
 							    }
 							if (新 <= 0 ){
 							item['set' + 数组1[i]](0);
-							//cm.消息(2,"[现金装备强化] : "+数组2[i]+" "+老+" ==》 "+ "0");
+							//cm.消息(2,"[时装强化] : "+数组2[i]+" "+老+" ==》 "+ "0");
 							} else {
-							cm.消息(2,"[现金装备强化] : "+数组2[i]+" "+老+" ==》 "+ 新);
+							cm.消息(2,"[属性变动] : "+数组2[i]+" "+老+" --> "+ 新);
 							item['set' + 数组1[i]](新);
 
 							}
@@ -78,11 +80,11 @@ function start() {
 				//cm.playWZSound("Game/EnchantSuccess");
 				//cm.getClient().getSession().write(Packages.tools.MaplePacketCreator.playSound("Romio/discovery"))
 				
-				Packages.handling.world.World.Broadcast.broadcastSmega(Packages.tools.MaplePacketCreator.itemMegaphone("[现金装备强化] : 玩家 "+cm.getPlayer().getName() +" 成功第 "+cc+" 次混沌强化，大家恭喜他/她吧!",true,cm.getClient().getChannel(),item).getBytes());
+				Packages.handling.world.World.Broadcast.broadcastSmega(Packages.tools.MaplePacketCreator.itemMegaphone("[时装强化] : 玩家 "+cm.getPlayer().getName() +" 成功第 "+cc+" 次混沌强化，大家恭喜他/她吧!~",true,cm.getClient().getChannel(),item).getBytes());
 				
 				
 				
-				//Packages.handling.world.World.Broadcast.broadcastMessage(Packages.tools.MaplePacketCreator.getGachaponMega("[现金装备强化]"," : 玩家 "+cm.getPlayer().getName() +" 成功第 "+cc+" 次混沌强化，大家恭喜他/她吧!",item,0, cm.getClient().getChannel()).getBytes());
+				//Packages.handling.world.World.Broadcast.broadcastMessage(Packages.tools.MaplePacketCreator.getGachaponMega("[时装强化]"," : 玩家 "+cm.getPlayer().getName() +" 成功第 "+cc+" 次混沌强化，大家恭喜他/她吧!",item,0, cm.getClient().getChannel()).getBytes());
 				
 				
 				//cm.gainGachaponItem(1142080,1,"现金商城22",100);
@@ -103,7 +105,7 @@ function start() {
         
 
 
-function 取随机数(a, b) {
+function 取随机数啊(a, b) {
     if (!(typeof (a) === "number" && typeof (b) === "number")) {
         return 0;
     }

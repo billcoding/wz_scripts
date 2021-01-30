@@ -21,6 +21,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
+			//cm.setBossLog('妖僧')
             cm.sendSimple("#e\r\n#b是否要挑战武陵妖僧副本? \r\n (每天可挑战10次! 当前已经挑战"+cm.getBossLog('妖僧')+"次)#k \r\n#L0##r我要挑战武陵妖僧#k#l");
         } else if (status == 1) {
             if (selection == 0) {
@@ -28,16 +29,16 @@ function action(mode, type, selection) {
                 if ( cm.getQuestStatus(8534) != 0 ) {
                     cm.sendOk("你似乎不够资格挑战武陵妖僧！");
                     cm.dispose();
-               } else if (cm.getBossLog('妖僧') >= 10) {
+/*                } else if (cm.getBossLog('妖僧') >= 10) {
                     cm.sendOk("每天只能打10次妖僧！");
-                    cm.dispose();
+                    cm.dispose(); */
                 } else if (cm.getParty() == null) {
                     cm.sendOk("请组队再来找我....");
                     cm.dispose();
                 } else if (!cm.isLeader()) {
                     cm.sendOk("请叫你的队长来找我!");
                     cm.dispose();
-                } else if (pt.getMembers().size() < 2) {
+                } else if (pt.getMembers().size() < 1) {
                     cm.sendOk("需要 3 人以上的组队才能进入！!");
                     cm.dispose();
                 } else {
@@ -45,16 +46,19 @@ function action(mode, type, selection) {
                     var mapId = cm.getMapId();
                     var next = true;
                     var levelValid = 0;
+					var levelValid2 = 0;
                     var inMap = 0;
 
                     var it = party.iterator();
                     while (it.hasNext()) {
                         var cPlayer = it.next();
-                        if ((cPlayer.getLevel() >= 100 && cPlayer.getLevel() <= 200) || cPlayer.getJobId() == 900) {
+                        if ((cPlayer.getLevel() >= 100 && cPlayer.getLevel() <= 200)  || cPlayer.getJobId() == 900) {
                             levelValid += 1;
+							//cm.消息(5,cm)
                         } else {
                             next = false;
                         }
+
                         if (cPlayer.getMapid() == mapId) {
                             inMap += (cPlayer.getJobId() == 900 ? 3 : 1);
                         }
@@ -79,7 +83,7 @@ function action(mode, type, selection) {
                             }
                         }
                     } else {
-                        cm.sendOk("等级尚未达到 #r100#k 或者已经超过 #r200#k");
+                        cm.sendOk("等级尚未达到 #r100#k 或者已经超过 #r200#k 或者有有队友超过挑战次数!");
                     }
                 }
                 cm.dispose();

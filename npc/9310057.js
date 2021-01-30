@@ -43,7 +43,7 @@ function action(mode, type, selection) {
 	case 800000000:
     	    if (status == 0) {
 			map = cm.getSavedLocation("ENGLISH");
-	        cm.sendSimple("安安 我是菇菇博士 #b英文村的菇菇博士!\r\n\r\n#L0#我要前往英文村#l\r\n#L1#我要兑换东西#l\r\n#L2#什么是英文村?#l");
+	        cm.sendSimple("#e<英语村副本：英语与智力考核>\r\n\r\n#v3994063##v3994072##v3994065##v3994070##v3994067##v3994077##v3994066#\r\n#r#L0#我要前往英文村#l\r\n#L1#我要兑换东西#l\r\n");
     	    } else if (status == 1) {
 	        if (selection == 0) {
 			cm.saveLocation("ENGLISH");

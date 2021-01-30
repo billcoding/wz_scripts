@@ -20,10 +20,10 @@ function action(mode, type, selection) {
 				cm.sendNext("我是守护希纳斯女王的神兽的部下。神兽接到了女皇的命令。女皇让我为参加骑士团的人提供引导，所以我在这里为你进行引导。在你成为骑士或者达到11级之前，我都会跟着你。如果有什么问题，可以随时问我。");
 				cm.dispose();
 			} else if (selection == 1) {
-				cm.sendNext("为了各位玩家方便期间，目前游戏所有职业转职都不需要做任务，直接在各村落找#bnpc 蘑菇博士#k就可进行正常转职！");
+				//cm.sendNext("为了各位玩家方便期间，目前游戏所有职业转职都不需要做任务，直接在各村落找#bnpc 蘑菇博士#k就可进行正常转职！");
 				cm.dispose();
 			} else if (selection == 2) {
-				cm.sendNext("对于目前游戏来说，经验已经很高了。辅助程序仅可使用挂机。但是不可使用无敌吸怪等，详细请见系统公告！");
+				cm.sendNext("不可使用任何辅助系统，一经发现直接封号！");
 				cm.dispose();
 			} else if (selection == 3) {
 				cm.sendNext("背包空间和盛大一样。需要到商城扩充才能得到更多的空间！");

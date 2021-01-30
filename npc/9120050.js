@@ -3,7 +3,7 @@ var status = -1;
 function start() {
     if (cm.getMapId() == 802000820) {
         if (cm.getPlayer().getClient().getChannel() != 2) {
-            cm.sendOk("参加远征任务请到 2 频道.");
+            cm.sendOk("参加欧碧拉远征任务请到 2 频道.");
             cm.dispose();
             return;
         }
@@ -22,7 +22,7 @@ function start() {
             var squadAvailability = cm.getSquadAvailability("Aufheben");
             if (squadAvailability == -1) {
                 status = 0;
-                cm.sendYesNo("你想成为远征队长吗？");
+                cm.sendYesNo("你想成为欧碧拉任务副本的远征队长吗？");
 
             } else if (squadAvailability == 1) {
                 // -1 = Cancelled, 0 = not, 1 = true
@@ -111,7 +111,7 @@ function action(mode, type, selection) {
             var squd = cm.getSquad("Aufhaven");
             if (squd != null && !squd.getAllNextPlayer().contains(cm.getPlayer().getName())) {
                 squd.setNextPlayer(cm.getPlayer().getName());
-                cm.sendOk("You have reserved the spot.");
+                cm.sendOk("你已经预订了位置.");
             }
         }
         cm.dispose();
@@ -163,6 +163,7 @@ function action(mode, type, selection) {
                 if (cm.getSquad("Aufheben") != null) {
                     var dd = cm.getEventManager("NamelessMagicMonster");
                     dd.startInstance(cm.getSquad("Aufheben"), cm.getMap());
+
                 } else {
                     cm.sendOk("由于未知的错误，对远征队的要求被拒绝。");
                 }
@@ -177,6 +178,7 @@ function action(mode, type, selection) {
         cm.dispose();
         break;
     case 12:
+	    //cm.消息(2,"[时装强化] : 123");
         if (selection != -1) {
             cm.acceptMember("Aufhaven", selection);
         }

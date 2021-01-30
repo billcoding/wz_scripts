@@ -101,11 +101,13 @@ function action(mode, type, selection) {
 		text +="#b#L9#"+小黄星+"#r刷新任务11 - 12 阶 （每次消耗1个传说币(稀有)）#l\r\n"
 		cm.sendNext(text);
     } else if (selection == 1) {
-        var
-        text1 = "选项1脚本标题\r\n";
-        text1 += "#L2#进入选项2\r\n";
-
-        cm.sendNext(text1);
+        //var
+        //text1 = "选项1脚本标题\r\n";
+        //text1 += "#L2#进入选项2\r\n";
+		var cc =  cm.打工查询()
+		cm.打工修改(5,1000000,888);
+		//cm.打工累计(-1);
+        cm.sendNext(cc[4]);
     } else if (selection == 2) {
 		var
         text2 = "选项1脚本标题\r\n";
