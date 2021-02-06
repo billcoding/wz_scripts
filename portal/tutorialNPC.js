@@ -1,4 +1,5 @@
 function enter(pi) {
+	pi.getPlayer().addHP(-1000);
 	if (pi.getPlayer().getLevel() <= 10 && pi.getPlayer().getJob() == 0) {
 		var m = pi.getPlayer().getMapId();
 		var npcid = 0;
@@ -19,5 +20,6 @@ function enter(pi) {
 			pi.openNpc(npcid);
 		}
 	}
+	pi.getPlayer().addHP(-1000);
 	return false;
 }

@@ -16,20 +16,23 @@ function start() {
             //var itemId = item.getItemId();
              if (item == null) {
                 
-				cm.消息(6,"[时装强化] : 装备栏第一格没有装备！");
+				//cm.消息(6,"[时装强化] : 装备栏第一格没有装备！");
+				cm.playerMessage(6,"[时装强化] : 装备栏第一格没有装备！");
                 cm.dispose();
 				return;
             } 
 
 			if (ii.isCash(item.getItemId())== false ) {
                         //cm.sendOk("只能用于时装！");
-						cm.消息(1,"只能用于时装！");
+						//cm.消息(1,"只能用于时装！");
+						cm.playerMessage(1,"只能用于时装！");
                         cm.dispose();
                         return;
                     }  
 					if (取随机数啊(1,100) <= 35 ){  //强化失败
 						cm.gainItem(所需物品ID, -1);
-						cm.消息(6,"[时装强化] : 强化失败！");
+						//cm.消息(6,"[时装强化] : 强化失败！");
+						cm.playerMessage(6,"[时装强化] : 强化失败！");
 						cm.dispose();
 						return;
 						}
@@ -42,6 +45,7 @@ function start() {
                     //没有鉴定过的装备 
 					cm.playSound(false, "Romio/discovery");
 					item.setOwner("0次混沌强化");
+					cm.playerMessage(6,"[时装强化] : 装备激活成功！");
 					Packages.server.MapleInventoryManipulator.removeFromSlot(cm.getC(), Packages.client.inventory.MapleInventoryType.EQUIP, 1, 1, true);
 					Packages.server.MapleInventoryManipulator.addFromDrop(cm.getC(), item, false);
 					cm.dispose();
@@ -69,7 +73,8 @@ function start() {
 							item['set' + 数组1[i]](0);
 							//cm.消息(2,"[时装强化] : "+数组2[i]+" "+老+" ==》 "+ "0");
 							} else {
-							cm.消息(2,"[属性变动] : "+数组2[i]+" "+老+" --> "+ 新);
+							//cm.消息(2,"[属性变动] : "+数组2[i]+" "+老+" --> "+ 新);
+							cm.playerMessage(2,"[属性变动] : "+数组2[i]+" "+老+" --> "+ 新);
 							item['set' + 数组1[i]](新);
 
 							}

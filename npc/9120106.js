@@ -28,7 +28,7 @@ status--;
 		 if(cm.getChar().isGM()){
 		 where+="#r管理员提示:#k吃进点卷:#r"+cm.seeAlltouzhu()+"#k 赔出点卷:#r"+cm.seeAllpeichu()+"#k(仅GM可见.)\r\n";
 		 }
-		// where+="#r2倍奖励#k\r\n#L0##b【单】#k#l#L1##b【双】#k#l\r\n\r\n";
+		 where+="#r2倍奖励#k\r\n#L0##b【单】#k#l#L1##b【双】#k#l\r\n\r\n";
 		 where+="#r3倍奖励#k\r\n\r\n#L2##b【小】#k#l#L3##b【中】#k#l#L4##b【大】#k#l\r\n\r\n";
 		 where+="#r6倍奖励#k\r\n#L5##b【一】#k#l#L6##b【二】#k#l#L7##b【三】#k#l#L8##b【四】#k#l#L9##b【五】#k#l#L10##b【六】#k#l\r\n\r\n\r\n";
 		 where+="本期开奖前投注统计,每5分钟开奖刷新统计:\r\n";

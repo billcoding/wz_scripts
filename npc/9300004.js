@@ -48,8 +48,26 @@ function action(mode, type, selection) {
                 cm.dispose();
             } else {
                 if (cm.getMeso() >= 1000000) {
-                    cm.handleDivorce();
-                    cm.gainMeso(-1000000);
+                var cPlayer = cm.getClient().getChannelServer().getPlayerStorage().getCharacterById(cm.getPlayer().getMarriageId());
+				if (cPlayer == null) {
+				cm.sendOk("请确定你的伴侣在线上。或者联系GM解决问题！");
+				cm.dispose();
+	    } else {
+	    	cPlayer.dropMessage(1, "你的伴侣想要跟你离婚。");
+	    	cPlayer.setMarriageId(0);
+	    	cm.setQuestRecord(cPlayer, 160001, "0");
+	    	cm.setQuestRecord(cm.getPlayer(), 160001, "0");
+	    	cm.setQuestRecord(cPlayer, 160002, "0");
+	    	cm.setQuestRecord(cm.getPlayer(), 160002, "0");
+	    	cm.getPlayer().setMarriageId(0);
+                for (var i = 1112300; i < 1112312; i++) {
+                cm.gainItem(i, -1);
+	        }
+			cm.gainMeso(-1000000);
+	    	cm.sendOk("成功离婚了。");
+			cm.dispose();
+	    }
+
                 } else {
                     cm.sendNext("离婚手续费需要100万金币,你没有足够的金币。");
                     cm.dispose();
@@ -67,3 +85,5 @@ function action(mode, type, selection) {
         cm.dispose();
     }
 }
+
+

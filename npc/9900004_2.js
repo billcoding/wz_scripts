@@ -39,7 +39,7 @@ function action(mode, type, selection) {
                 cm.getPlayer().gainqiandao(1);
                 //cm.sendOk("恭喜签到成功！");
 				//cm.gainDY(300)
-                cm.喇叭(1, "[每日签到]：" + cm.getPlayer().getName() + "，今日已成功签到！当前总签到天数为：" + cm.getPlayer().getqiandao() + "天.");
+                cm.消息(2, "[每日签到] : " + cm.getPlayer().getName() + "，今日已成功签到！当前连续签到天数为：" + cm.getPlayer().getqiandao() + "天.");
                 //cm.dispose();
             //} else {
 /*                 cm.sendOk("您今日已签到过了！");

@@ -12,17 +12,17 @@ function start() {
             //var itemId = item.getItemId();
              if (item == null) {
                 
-				cm.消息(5,"[装备交换卡] : 装备栏第一格没有装备！");
+				cm.playerMessage(5,"[装备交换卡] : 装备栏第一格没有装备！");
                 cm.dispose();
 				return;
             }
 			if (item.getFlag()==16){
-				cm.消息(5,"[装备交换卡] : 装备已经可以交易了，不要重复使用！");
+				cm.playerMessage(5,"[装备交换卡] : 装备已经可以交易了，不要重复使用！");
                 cm.dispose();
 				return;
 			}
 			if (ii.isCash(item.getItemId()) ) {
-			cm.消息(1,"不能用于现金装备！");
+			cm.playerMessage(1,"不能用于现金装备！");
             cm.dispose();
             return;
             }  
@@ -33,7 +33,7 @@ function start() {
 			item.setFlag(16)
 			Packages.server.MapleInventoryManipulator.removeFromSlot(cm.getC(), Packages.client.inventory.MapleInventoryType.EQUIP, 1, 1, true);
                 Packages.server.MapleInventoryManipulator.addFromDrop(cm.getC(), item, false);
-				cm.消息(5,"[装备交换卡] : 现在装备可以交易了！");
+				cm.playerMessage(5,"[装备交换卡] : 现在装备可以交易了！");
 			cm.dispose();
 			return;
 

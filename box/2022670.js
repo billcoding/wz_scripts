@@ -59,9 +59,9 @@ function action(mode, type, selection) {
 				var pd = 强化上限 - (已升级次数 + 剩余回合 );
                 fstype = 2;
 				
-				if (剩余回合+已升级次数<强化下限){
-				///if (true){	
-				cm.sendOk("#e#d提示:#n只能强化125次以上装备");
+				//if (剩余回合+已升级次数<强化下限){
+				if (true){	
+				cm.sendOk("#e#d提示:#n只能强化125次以上装备"+已升级次数+"  "+剩余回合);
                     cm.dispose();
 					return;
 				}

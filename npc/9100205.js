@@ -31,7 +31,7 @@ function action(mode, type, selection) {
         if (mode == 1) status++;
         else status--;
         if (status == 0) {
-            var add = "欢迎来到#d"+cm.getChannelServer().getServerName()+"#k,这里是本服#r金币赌博系统#k,";
+            var add = "欢迎来到#d"+cm.getChannelServer().getServerName()+"#k,这里是#r悠悠岛金币赌博系统#k,";
             add += "一个强大游戏,就要拥有最全面的功能,本服特色多多,时尚全面,";
             add += "为您打造一个冒险之家的感觉,喜欢的朋友记得带上朋友一起哦.\r\n\r\n ";
             add += "☆增加下注请点#b[加注]#n#k\r\n ";
@@ -52,7 +52,7 @@ function action(mode, type, selection) {
                 var add = "#b<#e#r 金币赌博 #n#b>\r\n\r\n";
                 add += "" + ttt + "-您选择的是[#r赔率1:1#b].\r\n";
                 add += "" + ttt + "-您的押注为[#r" + cost + "冒险币#b].\r\n";
-                add += "" + ttt + "-如果胜利将获取[#r除本金外" + cost * 1 + "冒险币#b]的奖励.\r\n";
+                add += "" + ttt + "-如果胜利将获取[#r除本金外" + cost * 1*0.9 + "冒险币#b]的奖励.\r\n";
                 add += "" + ttt + "-点击[#r是#b]开始赌博,点击[#r不是#b]放弃赌博.";
                 cm.sendYesNo(add);
                 jilv = 1;
@@ -61,7 +61,7 @@ function action(mode, type, selection) {
                 var add = "#b<#e#r 金币赌博 #n#b>\r\n\r\n";
                 add += "" + ttt + "-您选择的是[#r赔率1:2#b].\r\n";
                 add += "" + ttt + "-您的押注为[#r" + cost + "冒险币#b].\r\n";
-                add += "" + ttt + "-如果胜利将获取[#r除本金外" + cost * 2 + "冒险币#b]的奖励.\r\n";
+                add += "" + ttt + "-如果胜利将获取[#r除本金外" + cost * 2*0.9 + "冒险币#b]的奖励.\r\n";
                 add += "" + ttt + "-点击[#r是#b]开始赌博,点击[#r不是#b]放弃赌博.";
                 cm.sendYesNo(add);
                 jilv = 2;
@@ -70,7 +70,7 @@ function action(mode, type, selection) {
                 var add = "#b<#e#r 金币赌博 #n#b>\r\n\r\n";
                 add += "" + ttt + "-您选择的是[#r赔率1:3#b].\r\n";
                 add += "" + ttt + "-您的押注为[#r" + cost + "冒险币#b].\r\n";
-                add += "" + ttt + "-如果胜利将获取[#r除本金外" + cost * 3 + "冒险币#b]的奖励.\r\n";
+                add += "" + ttt + "-如果胜利将获取[#r除本金外" + cost * 3 *0.9 + "冒险币#b]的奖励.\r\n";
                 add += "" + ttt + "-点击[#r是#b]开始赌博,点击[#r不是#b]放弃赌博.";
                 cm.sendYesNo(add);
                 jilv = 3;
@@ -83,10 +83,10 @@ function action(mode, type, selection) {
                         cm.sendOk("#b您的冒险币不足,不能参加赌博.....");
                         status = -1;
                     } else {
-                        jiaru = GetRandomNum(0, jilv);
+                        jiaru = GetRandomNum(0, jilv+3);  //作弊 哈哈
                         if (jiaru == 0) {
                             costa = cost * jilv
-                            cm.gainMeso(costa)
+                            cm.gainMeso(costa*0.9)
                             cm.sendOk("#b恭喜,您已经大获全胜...");
 						//	cm.laba("[博彩公告]" + cm.getPlayer().getName() + " : " + "在博彩中赢得" + costa + "金币。",2);
                             status = -1;
